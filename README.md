@@ -69,11 +69,11 @@ Welcome to the game “15”. Please try to arrange the numbers sequentially. Us
  | 15 13     5 |
  |  9 12 10  7 |
  |  2  4  6 14 |
-  ------------
+   ------------
 Enter a number to move: top
 Scoreboard:
 1. Bay Ivan --> 4 moves
-  ------------
+   ------------
  |  3  8 11  1 |
  | 15 13     5 |
  |  9 12 10  7 |
