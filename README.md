@@ -13,22 +13,31 @@ The player’s input is shown in italic:
 Welcome to the game “15”. Please try to arrange the numbers sequentially. Use 'top' to view the top scoreboard, 'restart' to start a new game and 'exit' to quit the game.
   ------------
  |  1  2  3  4 |
+ 
  |  5     7  8 |
+ 
  |  9  6 10 12 |
+ 
  | 13 14 11 15 |
   ------------
 Enter a number to move: 6
   ------------
  |  1  2  3  4 |
+ 
  |  5  6  7  8 |
+ 
  |  9    10 12 |
+ 
  | 13 14 11 15 |
   ------------
 Enter a number to move: 10
   ------------
  |  1  2  3  4 |
+ 
  |  5  6  7  8 |
+ 
  |  9 10    12 |
+ 
  | 13 14 11 15 |
   ------------
 Enter a number to move: 3
@@ -38,15 +47,21 @@ Illegal command!
 Enter a number to move: 11
   ------------
  |  1  2  3  4 |
+ 
  |  5  6  7  8 |
+ 
  |  9 10 11 12 |
+ 
  | 13 14    15 |
   ------------
 Enter a number to move: 15
   ------------
  |  1  2  3  4 |
+ 
  |  5  6  7  8 |
+ 
  |  9 10 11 12 |
+ 
  | 13 14 15    |
   ------------
 Congratulations! You won the game in 4 moves.
@@ -57,8 +72,11 @@ Scoreboard:
 Welcome to the game “15”. Please try to arrange the numbers sequentially. Use 'top' to view the top scoreboard, 'restart' to start a new game and 'exit' to quit the game.
   ------------
  |  15 2 12  4 |
+ 
  |  5     7  8 |
+ 
  |  9 11 10 12 |
+ 
  | 13 14  6  1 |
   ------------
 Enter a number to move: restart
@@ -66,8 +84,11 @@ Enter a number to move: restart
 Welcome to the game “15”. Please try to arrange the numbers sequentially. Use 'top' to view the top scoreboard, 'restart' to start a new game and 'exit' to quit the game.
   ------------
  |  3  8 11  1 |
+ 
  | 15 13     5 |
+ 
  |  9 12 10  7 |
+ 
  |  2  4  6 14 |
    ------------
 Enter a number to move: top
@@ -75,15 +96,21 @@ Scoreboard:
 1. Bay Ivan --> 4 moves
    ------------
  |  3  8 11  1 |
+
  | 15 13     5 |
+ 
  |  9 12 10  7 |
+ 
  |  2  4  6 14 |
   ------------
 Enter a number to move: 10
   ------------
  |  3  8 11  1 |
+ 
  | 15 13 10  5 |
+ 
  |  9 12     7 |
+ 
  |  2  4  6 14 |
   ------------
 Enter a number to move: exit
