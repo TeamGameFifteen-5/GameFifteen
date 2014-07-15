@@ -4,21 +4,15 @@
 
     public class GameFifteen
     {
-        private static readonly int[,] BoardNumbers = new int[4, 4] 
-        { 
-            { 1, 2, 3, 4 }, 
-            { 5, 6, 7, 8 }, 
-            { 9, 10, 11, 12 }, 
-            { 13, 14, 15, 0 } 
-        };
+        private static int[,] BoardNumbers;
 
-        private static int currentBoardRow = 3, currentBoardCol = 3;
+        private static int currentBoardRow, currentBoardCol;
         private static bool repeat = true;
         private static int counter;
 
         private static string[] playersHighScore = new string[5];
         private static int highScore = 0;
-        
+
         public static void Main(string[] args)
         {
             while (repeat)
@@ -30,6 +24,8 @@
                 bool isSolved = IsGameSolved();
                 while (!isSolved)
                 {
+                    currentBoardRow = gameSingleton.CurrentBoardRow;
+                    currentBoardCol = gameSingleton.CurrentBoardCol;
                     Console.Write("Enter a number to move: ");
                     string numberForMove = Console.ReadLine();
                     int number;
@@ -141,93 +137,20 @@
             Console.WriteLine(" -------------");
         }
 
+
+
+        public static GameFactory gameFactory;
+        public static GameSingleton gameSingleton;
+
         private static void CreateGameField()
         {
-            counter = 0;
-            Random random = new Random();
-            int randomNumber;
-            int row = currentBoardRow - 1;
-            int col = currentBoardCol;
-            int numberForSwap;
-
-            for (int i = 0; i < 1000; i++)
-            {
-                randomNumber = random.Next(3);
-                if (randomNumber == 0)
-                {
-                    row = currentBoardRow - 1;
-                    col = currentBoardCol;
-                    if (row >= 0 && row <= 3 && col >= 0 && col <= 3)
-                    {
-                        numberForSwap = BoardNumbers[currentBoardRow, currentBoardCol];
-                        BoardNumbers[currentBoardRow, currentBoardCol] = BoardNumbers[row, col];
-                        BoardNumbers[row, col] = numberForSwap;
-                        currentBoardRow = row;
-                        currentBoardCol = col;
-                    }
-                    else
-                    {
-                        randomNumber++;
-                        i--;
-                    }
-                }
-
-                if (randomNumber == 1)
-                {
-                    row = currentBoardRow;
-                    col = currentBoardCol + 1;
-                    if (row >= 0 && row <= 3 && col >= 0 && col <= 3)
-                    {
-                        numberForSwap = BoardNumbers[currentBoardRow, currentBoardCol];
-                        BoardNumbers[currentBoardRow, currentBoardCol] = BoardNumbers[row, col];
-                        BoardNumbers[row, col] = numberForSwap;
-                        currentBoardRow = row;
-                        currentBoardCol = col;
-                    }
-                    else
-                    {
-                        randomNumber++;
-                        i--;
-                    }
-                }
-
-                if (randomNumber == 2)
-                {
-                    row = currentBoardRow + 1;
-                    col = currentBoardCol;
-                    if (row >= 0 && row <= 3 && col >= 0 && col <= 3)
-                    {
-                        numberForSwap = BoardNumbers[currentBoardRow, currentBoardCol];
-                        BoardNumbers[currentBoardRow, currentBoardCol] = BoardNumbers[row, col];
-                        BoardNumbers[row, col] = numberForSwap;
-                        currentBoardRow = row;
-                        currentBoardCol = col;
-                    }
-                    else
-                    {
-                        randomNumber++;
-                        i--;
-                    }
-                }
-
-                if (randomNumber == 3)
-                {
-                    row = currentBoardRow;
-                    col = currentBoardCol - 1;
-                    if (row >= 0 && row <= 3 && col >= 0 && col <= 3)
-                    {
-                        numberForSwap = BoardNumbers[currentBoardRow, currentBoardCol];
-                        BoardNumbers[currentBoardRow, currentBoardCol] = BoardNumbers[row, col];
-                        BoardNumbers[row, col] = numberForSwap;
-                        currentBoardRow = row;
-                        currentBoardCol = col;
-                    }
-                    else
-                    {
-                        i--;
-                    }
-                }
-            }
+            gameFactory = new GameFactory();
+            gameSingleton = gameFactory.initGame;
+            gameSingleton.CreateGameField();
+            BoardNumbers = gameSingleton.BoardNumbers;
+            counter = gameSingleton.Counter;
+            currentBoardCol = gameSingleton.CurrentBoardCol;
+            currentBoardRow = gameSingleton.CurrentBoardRow;
         }
 
         private static bool IsEmptyNeighbourCell(int row, int col)
@@ -255,7 +178,7 @@
                 {
                     for (int j = 0; j < 4; j++)
                     {
-                        if (BoardNumbers[i, j] == number)
+                        if (gameSingleton.BoardNumbers[i, j] == number)
                         {
                             row = i;
                             col = j;
@@ -277,11 +200,11 @@
             }
             else
             {
-                int numberForSwap = BoardNumbers[row, col];
-                BoardNumbers[row, col] = BoardNumbers[currentBoardRow, currentBoardCol];
-                BoardNumbers[currentBoardRow, currentBoardCol] = numberForSwap;
-                currentBoardRow = row;
-                currentBoardCol = col;
+                int numberForSwap = gameSingleton.BoardNumbers[row, col];
+                gameSingleton[row, col] = BoardNumbers[currentBoardRow, currentBoardCol];
+                gameSingleton[currentBoardRow, currentBoardCol] = numberForSwap;
+                gameSingleton.CurrentBoardRow = row;
+                gameSingleton.CurrentBoardCol = col;
                 counter++;
                 PrintTable();
             }
