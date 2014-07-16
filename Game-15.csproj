@@ -48,6 +48,9 @@
     <Compile Include="GameFifteen.cs" />
     <Compile Include="GameSingleton.cs" />
     <Compile Include="GameStrategy.cs" />
+    <Compile Include="IMovable.cs" />
+    <Compile Include="IPlayable.cs" />
+    <Compile Include="MoveGameNumber.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

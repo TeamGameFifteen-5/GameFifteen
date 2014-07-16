@@ -1,5 +1,5 @@
-C:\Users\Andrey\Documents\GitHub\GameFifteen\bin\Debug\IgraS15.exe
-C:\Users\Andrey\Documents\GitHub\GameFifteen\bin\Debug\IgraS15.pdb
-C:\Users\Andrey\Documents\GitHub\GameFifteen\obj\x86\Debug\Game-15.csprojResolveAssemblyReference.cache
 C:\Users\Andrey\Documents\GitHub\GameFifteen\obj\x86\Debug\IgraS15.exe
 C:\Users\Andrey\Documents\GitHub\GameFifteen\obj\x86\Debug\IgraS15.pdb
+C:\Users\Andrey\Documents\GitHub\GameFifteen\obj\x86\Debug\Game-15.csprojResolveAssemblyReference.cache
+C:\Users\Andrey\Documents\GitHub\GameFifteen\bin\Debug\IgraS15.exe
+C:\Users\Andrey\Documents\GitHub\GameFifteen\bin\Debug\IgraS15.pdb

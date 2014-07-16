@@ -8,13 +8,13 @@
 
         private static int currentBoardRow, currentBoardCol;
         private static bool repeat = true;
-        private static int counter;
 
         private static string[] playersHighScore = new string[5];
         private static int highScore = 0;
 
         public static void Main(string[] args)
         {
+
             while (repeat)
             {
                 CreateGameField();
@@ -74,13 +74,13 @@
 
                 if (isSolved)
                 {
-                    Console.WriteLine("Congratulations! You won the game in {0} moves.", counter);
+                    Console.WriteLine("Congratulations! You won the game in {0} moves.", gameSingleton.Counter);
 
                     Console.Write("Please enter your name for the top scoreboard: ");
 
                     string name = Console.ReadLine();
 
-                    string result = counter + " moves by " + name;
+                    string result = gameSingleton.Counter + " moves by " + name;
 
                     if (highScore < 5)
                     {
@@ -141,73 +141,24 @@
 
         public static GameFactory gameFactory;
         public static GameSingleton gameSingleton;
-
+        public static GameFacade gameFacade;
         private static void CreateGameField()
         {
             gameFactory = new GameFactory();
             gameSingleton = gameFactory.initGame;
             gameSingleton.CreateGameField();
             BoardNumbers = gameSingleton.BoardNumbers;
-            counter = gameSingleton.Counter;
+            gameSingleton.Counter = 0;
             currentBoardCol = gameSingleton.CurrentBoardCol;
             currentBoardRow = gameSingleton.CurrentBoardRow;
-        }
-
-        private static bool IsEmptyNeighbourCell(int row, int col)
-        {
-            if ((row == currentBoardRow - 1 || row == currentBoardRow + 1) && col == currentBoardCol)
-            {
-                return true;
-            }
-
-            if ((row == currentBoardRow) && (col == currentBoardCol - 1 || col == currentBoardCol + 1))
-            {
-                return true;
-            }
-
-            return false;
+            gameFacade = new GameFacade(gameSingleton);
         }
 
         private static void Move(int number)
         {
-            int row = currentBoardRow, col = currentBoardCol;
-            bool isFoundNumber = false;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!isFoundNumber)
-                {
-                    for (int j = 0; j < 4; j++)
-                    {
-                        if (gameSingleton.BoardNumbers[i, j] == number)
-                        {
-                            row = i;
-                            col = j;
-                            isFoundNumber = true;
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    break;
-                }
-            }
-
-            bool isFoundEmptyCell = IsEmptyNeighbourCell(row, col);
-            if (!isFoundEmptyCell)
-            {
-                Console.WriteLine("Illegal move!");
-            }
-            else
-            {
-                int numberForSwap = gameSingleton.BoardNumbers[row, col];
-                gameSingleton[row, col] = BoardNumbers[currentBoardRow, currentBoardCol];
-                gameSingleton[currentBoardRow, currentBoardCol] = numberForSwap;
-                gameSingleton.CurrentBoardRow = row;
-                gameSingleton.CurrentBoardCol = col;
-                counter++;
-                PrintTable();
-            }
+            gameFacade.Move(number);
+            
+            PrintTable();
         }
 
         private static bool IsGameSolved()

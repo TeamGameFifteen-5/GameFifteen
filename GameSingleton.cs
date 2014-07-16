@@ -6,7 +6,7 @@ namespace GameFifteen
     using System.Linq;
     using System.Text;
 
-    public sealed class GameSingleton
+    public sealed class GameSingleton : IPlayable
     {
         private static readonly int[,] boardNumbers = new int[4, 4] 
         { 

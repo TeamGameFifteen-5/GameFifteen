@@ -13,7 +13,7 @@ namespace GameFifteen
         public GameFactory()
         {
             initGame = GameSingleton.Instance;
-            facade = new GameFacade();
+            facade = new GameFacade(initGame);
         }
     }
 }

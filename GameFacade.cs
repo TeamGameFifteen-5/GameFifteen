@@ -7,10 +7,17 @@ namespace GameFifteen
 {
     public class GameFacade
     {
-        public GameStrategy strategy;
-        public GameFacade()
+        private GameStrategy strategy;
+        private MoveGameNumber moveNumber;
+        public GameFacade(IPlayable gameInstance)
         {
-           strategy = new GameStrategy();
+            strategy = new GameStrategy();
+            moveNumber = new MoveGameNumber(gameInstance);
+        }
+
+        public void Move(int number)
+        {
+            moveNumber.Move(number);
         }
     }
 }
