@@ -4,17 +4,51 @@
 
     public class GameFifteen
     {
+        private static Player player = new Player();
+
         private static int[,] BoardNumbers;
 
         private static int currentBoardRow, currentBoardCol;
         private static bool repeat = true;
+        private static bool userExit = false;
 
         private static string[] playersHighScore = new string[5];
         private static int highScore = 0;
 
+        public static Player Player
+        {
+            get
+            {
+                return player;
+            }
+        }
+
+        public static bool UserExit
+        {
+            get
+            {
+                return userExit;
+            }
+            set
+            {
+                userExit = value;
+            }
+        }
+
+        public static bool Repeat
+        {
+            get
+            {
+                return repeat;
+            }
+            set
+            {
+                repeat = value;
+            }
+        }
+
         public static void Main(string[] args)
         {
-
             while (repeat)
             {
                 CreateGameField();
@@ -27,46 +61,12 @@
                     currentBoardRow = gameSingleton.CurrentBoardRow;
                     currentBoardCol = gameSingleton.CurrentBoardCol;
                     Console.Write("Enter a number to move: ");
-                    string numberForMove = Console.ReadLine();
-                    int number;
-                    bool isIntNumber = int.TryParse(numberForMove, out number);
-                    if (isIntNumber)
+
+                    player.GetCommand();
+
+                    if (UserExit)
                     {
-                        if (number >= 1 && number <= 15)
-                        {
-                            Move(number);
-                        }
-                        else
-                        {
-                            Console.WriteLine("Illegal move!");
-                        }
-                    }
-                    else
-                    {
-                        if (numberForMove == "exit")
-                        {
-                            Console.WriteLine("Good bye!");
-                            repeat = false;
-                            break;
-                        }
-                        else
-                        {
-                            if (numberForMove == "restart")
-                            {
-                                RestartGame();
-                            }
-                            else
-                            {
-                                if (numberForMove == "top")
-                                {
-                                    PrintTopHighScore();
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Illegal command!");
-                                }
-                            }
-                        }
+                        break;
                     }
 
                     isSolved = IsGameSolved();
@@ -74,13 +74,13 @@
 
                 if (isSolved)
                 {
-                    Console.WriteLine("Congratulations! You won the game in {0} moves.", gameSingleton.Counter);
+                    Console.WriteLine("Congratulations! You won the game in {0} moves.", player.Score);
 
                     Console.Write("Please enter your name for the top scoreboard: ");
 
                     string name = Console.ReadLine();
 
-                    string result = gameSingleton.Counter + " moves by " + name;
+                    string result = player.Score + " moves by " + name;
 
                     if (highScore < 5)
                     {
@@ -106,7 +106,7 @@
             }
         }
 
-        private static void PrintTable()
+        public static void PrintTable()
         {
             Console.WriteLine(" -------------");
             for (int row = 0; row < 4; row++)
@@ -148,7 +148,7 @@
             gameSingleton = gameFactory.initGame;
             gameSingleton.CreateGameField();
             BoardNumbers = gameSingleton.BoardNumbers;
-            gameSingleton.Counter = 0;
+            player.ResetScore();
             currentBoardCol = gameSingleton.CurrentBoardCol;
             currentBoardRow = gameSingleton.CurrentBoardRow;
             gameFacade = new GameFacade(gameSingleton);
@@ -156,7 +156,7 @@
 
         private static void Move(int number)
         {
-            gameFacade.Move(number);
+            gameFacade.Operation(number.ToString());
             
             PrintTable();
         }
@@ -192,7 +192,7 @@
             return false;
         }
 
-        private static void RestartGame()
+        public static void RestartGame()
         {
             CreateGameField();
             PrintTable();
@@ -213,7 +213,7 @@
             playersHighScore[playerNumber] = result;
         }
 
-        private static void PrintTopHighScore()
+        public static void PrintTopHighScore()
         {
             Console.WriteLine("\nScoreboard:");
             if (highScore != 0)

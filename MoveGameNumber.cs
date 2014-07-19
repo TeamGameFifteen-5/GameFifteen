@@ -61,7 +61,7 @@ namespace GameFifteen
                 gameInstance[currentRow, currentCol] = numberForSwap;
                 gameInstance.CurrentBoardRow = row;
                 gameInstance.CurrentBoardCol = col;
-                gameInstance.Counter++;
+                GameFifteen.Player.AddPoint();
             }
         }
 

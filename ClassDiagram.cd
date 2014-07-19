@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GameFifteen.Command" Collapsed="true">
+    <Position X="3.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameFifteen.GameCommand" Collapsed="true">
+    <Position X="3.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAQQAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>GameCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameFifteen.GameEngine" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAASAAAAEAAAAAAAAAAAAIAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>GameEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameFifteen.GameFacade" Collapsed="true">
+    <Position X="6" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAQAAAA=</HashCode>
+      <FileName>GameFacade.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameFifteen.GameFactory" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>GameFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameFifteen.GameFifteen" Collapsed="true">
+    <Position X="9.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAEAAAQAAKBAAAQAAAQEAAAAIQAAAkCBECIABQAAkAA=</HashCode>
+      <FileName>GameFifteen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameFifteen.GameSingleton" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAEABEAAAABAABAAKAAAAQACAABAAAEAQCQAAAAAEAA=</HashCode>
+      <FileName>GameSingleton.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GameFifteen.GameStrategy" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAACAAAAEAAAAAAAAAAAAIAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>GameStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameFifteen.MoveGameNumber" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAUAAAIQAAAAAAAAAAAAAABAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>MoveGameNumber.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GameFifteen.Player" Collapsed="true">
+    <Position X="9.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAwAAgAAAAIAAAAAQAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="GameFifteen.IMovable" Collapsed="true">
+    <Position X="6" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IMovable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GameFifteen.IPlayable" Collapsed="true">
+    <Position X="7.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAABAABAAKAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IPlayable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

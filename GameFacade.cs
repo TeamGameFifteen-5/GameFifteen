@@ -7,17 +7,44 @@ namespace GameFifteen
 {
     public class GameFacade
     {
-        private GameStrategy strategy;
-        private MoveGameNumber moveNumber;
+        private GameStrategy engine;
+
         public GameFacade(IPlayable gameInstance)
         {
-            strategy = new GameStrategy();
-            moveNumber = new MoveGameNumber(gameInstance);
+            this.engine = new GameEngine(gameInstance);
         }
 
-        public void Move(int number)
+        public void Operation(string @command)
         {
-            moveNumber.Move(number);
+            switch (@command)
+            {
+                case "start":
+                    this.engine.Start();
+                    break;
+                case "restart":
+                    this.engine.Restart();
+                    break;
+                case "top":
+                    this.engine.Top();
+                    break;
+                case "exit":
+                    this.engine.Exit();
+                    break;
+                default:
+                    int number;
+                    bool isIntNumber = int.TryParse(@command, out number);
+
+                    if (isIntNumber)
+                    {
+                        this.engine.MoveNumber(number);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Illegal command!");
+                    }
+                    break;
+            }
+
         }
     }
 }

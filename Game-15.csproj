@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command.cs" />
+    <Compile Include="GameCommand.cs" />
+    <Compile Include="GameEngine.cs" />
     <Compile Include="GameFacade.cs" />
     <Compile Include="GameFactory.cs" />
     <Compile Include="GameFifteen.cs" />
@@ -51,9 +54,13 @@
     <Compile Include="IMovable.cs" />
     <Compile Include="IPlayable.cs" />
     <Compile Include="MoveGameNumber.cs" />
+    <Compile Include="Player.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

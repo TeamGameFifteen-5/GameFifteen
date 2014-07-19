@@ -43,12 +43,6 @@ namespace GameFifteen
             set { boardNumbers[i, j] = value; }
         }
 
-        public int Counter
-        {
-            get { return counter; }
-            set { counter = value; }
-        }
-
         public int CurrentBoardRow
         {
             get { return currentBoardRow; }
