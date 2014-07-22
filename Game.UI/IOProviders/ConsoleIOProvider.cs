@@ -3,7 +3,7 @@ using System;
 
 namespace Game.UI.IOProviders
 {
-	public class ConsoleIOProvider : IOProvider<ConsoleIOProvider>
+	public class ConsoleIOProvider : IOProvider
 	{
 		public override string GetTextInput()
 		{

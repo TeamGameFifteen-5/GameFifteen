@@ -4,8 +4,7 @@ using System.Drawing;
 
 namespace Game.UI.IOProviders
 {
-	public abstract class IOProvider<TIOProvider> : IIOProvider, IInputProvider
-		where TIOProvider : IIOProvider
+	public abstract class IOProvider : IIOProvider, IInputProvider
 	{
 		private IRenderer _renderer;
 
