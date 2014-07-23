@@ -16,24 +16,24 @@ namespace Game.Core.Actions
 
 			switch (actionType.Name)
 			{
-				case "Up":
-					undoActionType = ActionType.Get("Down");
+				case DefaultActionTypes.Up:
+					undoActionType = ActionType.Get(DefaultActionTypes.Down);
 					break;
 
-				case "Down":
-					undoActionType = ActionType.Get("Up");
+				case DefaultActionTypes.Down:
+					undoActionType = ActionType.Get(DefaultActionTypes.Up);
 					break;
 
-				case "Left":
-					undoActionType = ActionType.Get("Right");
+				case DefaultActionTypes.Left:
+					undoActionType = ActionType.Get(DefaultActionTypes.Right);
 					break;
 
-				case "Right":
-					undoActionType = ActionType.Get("Left");
+				case DefaultActionTypes.Right:
+					undoActionType = ActionType.Get(DefaultActionTypes.Left);
 					break;
 
 				default:
-					undoActionType = ActionType.Get("Unmapped");
+					undoActionType = ActionType.Get(DefaultActionTypes.Unmapped);
 					break;
 			}
 

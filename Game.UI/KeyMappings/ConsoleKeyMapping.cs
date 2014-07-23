@@ -13,39 +13,39 @@ namespace Game.UI.KeyMappings
 			{
 				case ConsoleKey.W:
 				case ConsoleKey.UpArrow:
-					key = ActionType.Get("Up");
+					key = ActionType.Get(DefaultActionTypes.Up);
 					break;
 
 				case ConsoleKey.S:
 				case ConsoleKey.DownArrow:
-					key = ActionType.Get("Down");
+					key = ActionType.Get(DefaultActionTypes.Down);
 					break;
 
 				case ConsoleKey.A:
 				case ConsoleKey.LeftArrow:
-					key = ActionType.Get("Left");
+					key = ActionType.Get(DefaultActionTypes.Left);
 					break;
 
 				case ConsoleKey.D:
 				case ConsoleKey.RightArrow:
-					key = ActionType.Get("Right");
+					key = ActionType.Get(DefaultActionTypes.Right);
 					break;
 
 				case ConsoleKey.Escape:
 				case ConsoleKey.Q:
-					key = ActionType.Get("Exit");
+					key = ActionType.Get(DefaultActionTypes.Exit);
 					break;
 
 				case ConsoleKey.R:
-					key = ActionType.Get("Reset");
+					key = ActionType.Get(DefaultActionTypes.Reset);
 					break;
 
 				case ConsoleKey.T:
-					key = ActionType.Get("Scores");
+					key = ActionType.Get(DefaultActionTypes.Scores);
 					break;
 
 				default:
-					key = ActionType.Get("Unmapped");
+					key = ActionType.Get(DefaultActionTypes.Unmapped);
 					break;
 			}
 
