@@ -12,7 +12,7 @@ namespace Game.Core
 
 	/// <summary>
 	/// Represents the Core engine.
-	/// Implements Observer and Bridge Design Pattern.
+	/// Implements Observer, Bridge and Command Design Pattern.
 	/// </summary>
 	/// <seealso cref="Game.Core.ICoreEngine"/>
 	public class CoreEngine : ICoreEngine

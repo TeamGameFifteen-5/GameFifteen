@@ -4,6 +4,7 @@ namespace Game.Core.Utils
 {
 	/// <summary>
 	/// Represents default random numbers generator in a singleton implementation.
+	/// Implements Singleton Design Pattern.
 	/// </summary>
 	/// <seealso cref="Game.Core.Utils.IRandomGenerator"/>
 	public sealed class DefaultRandomGenerator : IRandomGenerator

@@ -2,12 +2,13 @@
 using Game.Core.Utils;
 using Game.Core.World.Fillers;
 using Game.Core.World.Randomizers;
+using System.Collections.Generic;
 
 namespace Game.Core.World
 {
 	/// <summary>
 	/// Represents the game field.
-	/// Implements Bridge and Strategy Design Patterns.
+	/// Implements Bridge, Strategy and Iterator Design Pattern.
 	/// </summary>
 	/// <seealso cref="Game.Core.World.IField"/>
 	public class Field : IField
@@ -87,6 +88,29 @@ namespace Game.Core.World
 			bool isInColLimits = col >= 0 && col < this.Height;
 			return isInRowLimits && isInColLimits;
 		}
+
+		#region IEnumerable
+
+		IEnumerator<IEnumerable<int>> IEnumerable<IEnumerable<int>>.GetEnumerator()
+		{
+			for (int row = 0; row < this.Height; row++)
+			{
+				int[] rowColumns = new int[this.Width];
+				for (int col = 0; col < this.Width; col++)
+				{
+					rowColumns[col] = this.Area[row, col];
+				}
+
+				yield return rowColumns;
+			}
+		}
+
+		System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+		{
+			return this.Area.GetEnumerator();
+		}
+
+		#endregion IEnumerable
 
 		#endregion Methods
 	}

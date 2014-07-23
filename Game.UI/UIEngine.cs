@@ -71,26 +71,14 @@ namespace Game.UI
 			this.DisplayHeader();
 
 			this._ioProvider.DisplayLine(" -------------");
-			for (int row = 0; row < 4; row++)
+
+			foreach (var row in field)
 			{
 				this._ioProvider.Display("| ");
-				for (int col = 0; col < 4; col++)
+
+				foreach (var col in row)
 				{
-					if (field[row, col] >= 10)
-					{
-						this._ioProvider.Display("{0} ", field[row, col].ToString());
-					}
-					else
-					{
-						if (field[row, col] == 0)
-						{
-							this._ioProvider.Display("   ");
-						}
-						else
-						{
-							this._ioProvider.Display(" {0} ", field[row, col].ToString());
-						}
-					}
+					this._ioProvider.Display(col >= 10 ? "{0} " : " {0} ", col == 0 ? " " : col.ToString());
 				}
 
 				this._ioProvider.DisplayLine("|");

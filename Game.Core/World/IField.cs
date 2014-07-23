@@ -1,13 +1,14 @@
 ﻿using Game.Common;
 using Game.Core.World.Fillers;
 using Game.Core.World.Randomizers;
+using System.Collections.Generic;
 
 namespace Game.Core.World
 {
 	/// <summary>
 	/// Interface for field.
 	/// </summary>
-	public interface IField
+	public interface IField : IEnumerable<IEnumerable<int>>
 	{
 		/// <summary>
 		/// Gets or sets the area.
