@@ -101,6 +101,7 @@ namespace Game.Core
 
 		public virtual void ShowScore()
 		{
+			this.OnGameShowScore();
 		}
 
 		public virtual void Exit()

@@ -1,4 +1,4 @@
-﻿using Game.Core.Actions;
+﻿using Game.Common;
 
 namespace Game.Core.Input
 {

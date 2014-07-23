@@ -1,4 +1,6 @@
-﻿namespace Game.Core.Actions.ActionProviders
+﻿using Game.Common;
+
+namespace Game.Core.Actions.ActionProviders
 {
 	public interface IActionProvider
 	{

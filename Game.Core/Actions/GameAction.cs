@@ -1,4 +1,5 @@
-﻿using Game.Core.Actions.ActionInvokers;
+﻿using Game.Common;
+using Game.Core.Actions.ActionInvokers;
 
 namespace Game.Core.Actions
 {
@@ -26,7 +27,7 @@ namespace Game.Core.Actions
 
 		protected virtual ActionType GetUndoActionType(ActionType actionType)
 		{
-			return ActionType.Unmapped;
+			return new ActionType("Unmapped");
 		}
 	}
 }

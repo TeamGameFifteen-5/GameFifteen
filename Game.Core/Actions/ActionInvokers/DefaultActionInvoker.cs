@@ -14,29 +14,29 @@ namespace Game.Core.Actions.ActionInvokers
 
 		public void Invoke(ActionType actionType)
 		{
-			switch (actionType)
+			switch (actionType.Name)
 			{
-				case ActionType.Unmapped:
+				case "Unmapped":
 					this._coreEngine.IllegalMove();
 					break;
 
-				case ActionType.Up:
-				case ActionType.Down:
-				case ActionType.Left:
-				case ActionType.Right:
+				case "Up":
+				case "Down":
+				case "Left":
+				case "Right":
 					var direction = this.GetMoveDirection(actionType);
 					this._coreEngine.Move(direction);
 					break;
 
-				case ActionType.Exit:
+				case "Exit":
 					this._coreEngine.Exit();
 					break;
 
-				case ActionType.Reset:
+				case "Reset":
 					this._coreEngine.RestartGame();
 					break;
 
-				case ActionType.Scores:
+				case "Scores":
 					this._coreEngine.ShowScore();
 					break;
 
@@ -48,12 +48,12 @@ namespace Game.Core.Actions.ActionInvokers
 
 		private Direction GetMoveDirection(ActionType actionType)
 		{
-			switch (actionType)
+			switch (actionType.Name)
 			{
-				case ActionType.Up: return Direction.Up;
-				case ActionType.Down: return Direction.Down;
-				case ActionType.Left: return Direction.Left;
-				case ActionType.Right: return Direction.Right;
+				case "Up": return Direction.Up;
+				case "Down": return Direction.Down;
+				case "Left": return Direction.Left;
+				case "Right": return Direction.Right;
 				default:
 					throw new NotImplementedException();
 			}

@@ -1,4 +1,6 @@
-﻿namespace Game.Core.Actions.ActionInvokers
+﻿using Game.Common;
+
+namespace Game.Core.Actions.ActionInvokers
 {
 	public interface IActionInvoker
 	{

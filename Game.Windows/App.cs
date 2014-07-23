@@ -14,6 +14,7 @@ namespace Game.App
 			var consoleIOProvider = new ConsoleIOProvider();
 			var player = new Player();
 			var playerStats = new PlayerStats();
+
 			var field = new Field();
 
 			var gameEngine = new CoreEngine(consoleIOProvider, field);

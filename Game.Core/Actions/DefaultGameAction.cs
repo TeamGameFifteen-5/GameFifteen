@@ -1,4 +1,5 @@
-﻿using Game.Core.Actions.ActionInvokers;
+﻿using Game.Common;
+using Game.Core.Actions.ActionInvokers;
 
 namespace Game.Core.Actions
 {
@@ -13,26 +14,26 @@ namespace Game.Core.Actions
 		{
 			ActionType undoActionType;
 
-			switch (actionType)
+			switch (actionType.Name)
 			{
-				case ActionType.Up:
-					undoActionType = ActionType.Down;
+				case "Up":
+					undoActionType = ActionType.Get("Down");
 					break;
 
-				case ActionType.Down:
-					undoActionType = ActionType.Up;
+				case "Down":
+					undoActionType = ActionType.Get("Up");
 					break;
 
-				case ActionType.Left:
-					undoActionType = ActionType.Right;
+				case "Left":
+					undoActionType = ActionType.Get("Right");
 					break;
 
-				case ActionType.Right:
-					undoActionType = ActionType.Left;
+				case "Right":
+					undoActionType = ActionType.Get("Left");
 					break;
 
 				default:
-					undoActionType = ActionType.Unmapped;
+					undoActionType = ActionType.Get("Unmapped");
 					break;
 			}
 
