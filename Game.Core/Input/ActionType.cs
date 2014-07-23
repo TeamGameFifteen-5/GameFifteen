@@ -1,6 +1,6 @@
 ﻿namespace Game.Core.Input
 {
-	public enum KeyType
+	public enum ActionType
 	{
 		Unmapped,
 		Up,

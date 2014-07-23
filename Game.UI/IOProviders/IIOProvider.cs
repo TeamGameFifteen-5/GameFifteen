@@ -8,7 +8,7 @@ namespace Game.UI.IOProviders
 	{
 		string GetTextInput();
 
-		KeyType GetKeyInput(bool displayKey = false);
+		ActionType GetKeyInput(bool displayKey = false);
 
 		void Display(string output = null);
 

@@ -4,6 +4,6 @@
 	{
 		string GetTextInput();
 
-		KeyType GetKeyInput(bool displayKey = false);
+		ActionType GetKeyInput(bool displayKey = false);
 	}
 }

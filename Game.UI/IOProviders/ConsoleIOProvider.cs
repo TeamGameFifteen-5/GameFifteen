@@ -1,69 +1,38 @@
 ﻿using Game.Core.Input;
+using Game.UI.KeyMappings;
 using System;
 
 namespace Game.UI.IOProviders
 {
-	public class ConsoleIOProvider : IOProvider
+	public class ConsoleIOProvider : IOProvider<ConsoleKeyInfo>
 	{
+		private IKeyMapping<ConsoleKeyInfo> _keyMapping;
+
+		public ConsoleIOProvider()
+		{
+		}
+
+		protected override IKeyMapping<ConsoleKeyInfo> KeyMapping
+		{
+			get
+			{
+				if (this._keyMapping == null)
+				{
+					this._keyMapping = new ConsoleKeyMapping();
+				}
+				return this._keyMapping;
+			}
+		}
+
 		public override string GetTextInput()
 		{
 			return Console.ReadLine();
 		}
 
-		/// <summary>
-		/// Gets key input.
-		/// TODO: Pattern Implementation
-		/// </summary>
-		/// <param name="displayKey">(optional) the display key.</param>
-		/// <returns>
-		/// The key input.
-		/// </returns>
-		public override KeyType GetKeyInput(bool displayKey = false)
+		public override ActionType GetKeyInput(bool displayKey = false)
 		{
 			var consoleKeyInfo = Console.ReadKey(!displayKey);
-			KeyType key;
-
-			switch (consoleKeyInfo.Key)
-			{
-				case ConsoleKey.W:
-				case ConsoleKey.UpArrow:
-					key = KeyType.Up;
-					break;
-
-				case ConsoleKey.S:
-				case ConsoleKey.DownArrow:
-					key = KeyType.Down;
-					break;
-
-				case ConsoleKey.A:
-				case ConsoleKey.LeftArrow:
-					key = KeyType.Left;
-					break;
-
-				case ConsoleKey.D:
-				case ConsoleKey.RightArrow:
-					key = KeyType.Right;
-					break;
-
-				case ConsoleKey.Escape:
-				case ConsoleKey.Q:
-					key = KeyType.Exit;
-					break;
-
-				case ConsoleKey.R:
-					key = KeyType.Reset;
-					break;
-
-				case ConsoleKey.T:
-					key = KeyType.Scores;
-					break;
-
-				default:
-					key = KeyType.Unmapped;
-					break;
-			}
-
-			return key;
+			return this.Map(consoleKeyInfo);
 		}
 
 		public override void Display(string output = null)

@@ -1,7 +1,8 @@
-﻿namespace Game.Core.Movement
+﻿using Game.Common;
+namespace Game.Core.Movement
 {
 	public interface IMovement
 	{
-		bool Move(MovementDirection direction);
+		bool Move(Direction direction);
 	}
 }

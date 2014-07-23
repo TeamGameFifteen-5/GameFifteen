@@ -47,6 +47,8 @@
     <Compile Include="IOProviders\IIOProvider.cs" />
     <Compile Include="IOProviders\IOStyleType.cs" />
     <Compile Include="IUIEngine.cs" />
+    <Compile Include="KeyMappings\ConsoleKeyMapping.cs" />
+    <Compile Include="KeyMappings\IKeyMapping.cs" />
     <Compile Include="Renderers\DefaultRenderer.cs" />
     <Compile Include="Renderers\IRenderer.cs" />
     <Compile Include="UIEngine.cs" />

@@ -1,5 +1,7 @@
-﻿using Game.Core.Input;
+﻿using Game.Common;
+using Game.Core.Input;
 using Game.Core.Movement;
+using Game.Core.SolvedCheckers;
 using Game.Core.World;
 using System;
 
@@ -15,15 +17,16 @@ namespace Game.Core
 
 		private IInputProvider _inputProvider;
 		private IField _field;
-		private IMovement _movement;
 
 		#endregion Fields
 
-		public CoreEngine(IInputProvider inputProvider, IField field, IMovement movement)
+		public CoreEngine(IInputProvider inputProvider, IField field, IMovement movement = null, ISolveChecker solveChecker = null)
 		{
 			this._inputProvider = inputProvider;
 			this._field = field;
-			this._movement = movement;
+
+			this.Movement = movement ?? new StraightMovement(field);
+			this.SolveChecker = solveChecker ?? new DefaultSolveChecker();
 		}
 
 		#region Events
@@ -44,6 +47,10 @@ namespace Game.Core
 
 		#endregion Events
 
+		public IMovement Movement { get; set; }
+
+		public ISolveChecker SolveChecker { get; set; }
+
 		#region Methods
 
 		public void Start()
@@ -62,40 +69,40 @@ namespace Game.Core
 					this.OnGameMovement();
 
 					var key = this._inputProvider.GetKeyInput();
-					MovementDirection direction;
+					Direction direction;
 
 					switch (key)
 					{
-						case KeyType.Unmapped:
+						case ActionType.Unmapped:
 							this.OnGameIllegalMove();
 							continue;
-						case KeyType.Up:
-							direction = MovementDirection.Up;
+						case ActionType.Up:
+							direction = Direction.Up;
 							break;
 
-						case KeyType.Down:
-							direction = MovementDirection.Down;
+						case ActionType.Down:
+							direction = Direction.Down;
 							break;
 
-						case KeyType.Left:
-							direction = MovementDirection.Left;
+						case ActionType.Left:
+							direction = Direction.Left;
 							break;
 
-						case KeyType.Right:
-							direction = MovementDirection.Right;
+						case ActionType.Right:
+							direction = Direction.Right;
 							break;
 
-						case KeyType.Exit:
+						case ActionType.Exit:
 							this.OnGameExit();
 							_repeat = false;
 							exitGame = true;
 							continue;
 
-						case KeyType.Reset:
+						case ActionType.Reset:
 							this.RestartGame();
 							continue;
 
-						case KeyType.Scores:
+						case ActionType.Scores:
 							// PrintTopHighScore();
 							continue;
 
@@ -179,50 +186,22 @@ namespace Game.Core
 
 		#endregion Events
 
-		private bool Move(MovementDirection direction)
+		private bool Move(Direction direction)
 		{
-			var canMove = this._movement.Move(direction);
+			var canMove = this.Movement.Move(direction);
 			this.OnGameInvalidate();
 
 			return canMove;
 		}
 
-		/// <summary>
-		/// TODO: Refactor and implement pattern
-		/// </summary>
 		private bool IsGameSolved()
 		{
-			if (this._field[3, 3] == 0)
-			{
-				int numberInCurrentCell = 1;
-				for (int row = 0; row < 4; row++)
-				{
-					for (int col = 0; col < 4; col++)
-					{
-						if (numberInCurrentCell <= 15)
-						{
-							if (this._field[row, col] == numberInCurrentCell)
-							{
-								numberInCurrentCell++;
-							}
-							else
-							{
-								return false;
-							}
-						}
-						else
-						{
-							return true;
-						}
-					}
-				}
-			}
-
-			return false;
+			return this.SolveChecker.IsSolved(this._field);
 		}
 
 		private void RestartGame()
 		{
+			this._field.RandomizeField();
 			this.OnGameInvalidate();
 		}
 

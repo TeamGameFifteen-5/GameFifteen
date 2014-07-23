@@ -1,0 +1,9 @@
+﻿using Game.Core.Input;
+
+namespace Game.UI.KeyMappings
+{
+	public interface IKeyMapping<TKey>
+	{
+		ActionType Map(TKey key);
+	}
+}

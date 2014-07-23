@@ -1,4 +1,5 @@
-﻿using Game.Core.World;
+﻿using Game.Common;
+using Game.Core.World;
 using System;
 
 namespace Game.Core.Movement
@@ -12,26 +13,26 @@ namespace Game.Core.Movement
 			this._gameField = gameField;
 		}
 
-		public bool Move(MovementDirection direction)
+		public bool Move(Direction direction)
 		{
 			int row = this._gameField.Position.Y;
 			int col = this._gameField.Position.X;
 
 			switch (direction)
 			{
-				case MovementDirection.Up:
+				case Direction.Up:
 					row--;
 					break;
 
-				case MovementDirection.Down:
+				case Direction.Down:
 					row++;
 					break;
 
-				case MovementDirection.Left:
+				case Direction.Left:
 					col--;
 					break;
 
-				case MovementDirection.Right:
+				case Direction.Right:
 					col++;
 					break;
 
