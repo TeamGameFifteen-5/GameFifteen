@@ -31,10 +31,6 @@ namespace Game.Core.World
 
 		#region Properties
 
-		protected IFieldRandomizer DefaultRandomizer { get; set; }
-
-		protected IFieldFiller DefaultFiller { get; set; }
-
 		public int[,] Area { get; set; }
 
 		public int Width
@@ -54,6 +50,10 @@ namespace Game.Core.World
 		}
 
 		public Position Position { get; protected set; }
+
+		protected IFieldRandomizer DefaultRandomizer { get; set; }
+
+		protected IFieldFiller DefaultFiller { get; set; }
 
 		public int this[int row, int col]
 		{
