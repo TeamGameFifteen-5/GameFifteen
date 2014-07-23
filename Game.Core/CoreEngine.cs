@@ -11,6 +11,21 @@ namespace Game.Core
 	{
 		private static bool _repeat = true;
 
+		#region Fields
+
+		private IInputProvider _inputProvider;
+		private IField _field;
+		private IMovement _movement;
+
+		#endregion Fields
+
+		public CoreEngine(IInputProvider inputProvider, IField field, IMovement movement)
+		{
+			this._inputProvider = inputProvider;
+			this._field = field;
+			this._movement = movement;
+		}
+
 		#region Events
 
 		public event Action GameStart;
@@ -29,82 +44,7 @@ namespace Game.Core
 
 		#endregion Events
 
-		#region Fields
-
-		private IInputProvider _inputProvider;
-		private IField _field;
-		private IMovement _movement;
-
-		#endregion Fields
-
-		public CoreEngine(IInputProvider inputProvider, IField field, IMovement movement)
-		{
-			this._inputProvider = inputProvider;
-			this._field = field;
-			this._movement = movement;
-		}
-
 		#region Methods
-
-		#region Events
-
-		private void OnGameStart()
-		{
-			if (GameStart != null)
-			{
-				GameStart();
-			}
-		}
-
-		private void OnGameEnd()
-		{
-			if (GameEnd != null)
-			{
-				GameEnd();
-			}
-		}
-
-		private void OnGameExit()
-		{
-			if (GameExit != null)
-			{
-				GameExit();
-			}
-		}
-
-		private void OnGameMovement()
-		{
-			if (GameMovement != null)
-			{
-				GameMovement();
-			}
-		}
-
-		private void OnGameIllegalMove()
-		{
-			if (GameIllegalMove != null)
-			{
-				GameIllegalMove();
-			}
-		}
-
-		private void OnGameIllegalCommand()
-		{
-			if (GameIllegalCommand != null)
-			{
-				GameIllegalCommand();
-			}
-		}
-
-		private void OnGameInvalidate()
-		{
-			if (GameInvalidate != null)
-			{
-				GameInvalidate(this._field);
-			}
-		}
-
-		#endregion Events
 
 		public void Start()
 		{
@@ -115,7 +55,7 @@ namespace Game.Core
 				this.OnGameStart();
 				this.OnGameInvalidate();
 
-				bool isSolved = IsGameSolved();
+				bool isSolved = this.IsGameSolved();
 				bool exitGame = false;
 				while (!exitGame || !isSolved)
 				{
@@ -152,11 +92,11 @@ namespace Game.Core
 							continue;
 
 						case KeyType.Reset:
-							RestartGame();
+							this.RestartGame();
 							continue;
 
 						case KeyType.Scores:
-							//PrintTopHighScore();
+							// PrintTopHighScore();
 							continue;
 
 						default:
@@ -169,7 +109,7 @@ namespace Game.Core
 						this.OnGameIllegalMove();
 					}
 
-					isSolved = IsGameSolved();
+					isSolved = this.IsGameSolved();
 				}
 
 				if (isSolved)
@@ -178,6 +118,66 @@ namespace Game.Core
 				}
 			}
 		}
+
+		#region Events
+
+		private void OnGameStart()
+		{
+			if (this.GameStart != null)
+			{
+				this.GameStart();
+			}
+		}
+
+		private void OnGameEnd()
+		{
+			if (this.GameEnd != null)
+			{
+				this.GameEnd();
+			}
+		}
+
+		private void OnGameExit()
+		{
+			if (this.GameExit != null)
+			{
+				this.GameExit();
+			}
+		}
+
+		private void OnGameMovement()
+		{
+			if (this.GameMovement != null)
+			{
+				this.GameMovement();
+			}
+		}
+
+		private void OnGameIllegalMove()
+		{
+			if (this.GameIllegalMove != null)
+			{
+				this.GameIllegalMove();
+			}
+		}
+
+		private void OnGameIllegalCommand()
+		{
+			if (this.GameIllegalCommand != null)
+			{
+				this.GameIllegalCommand();
+			}
+		}
+
+		private void OnGameInvalidate()
+		{
+			if (this.GameInvalidate != null)
+			{
+				this.GameInvalidate(this._field);
+			}
+		}
+
+		#endregion Events
 
 		private bool Move(MovementDirection direction)
 		{

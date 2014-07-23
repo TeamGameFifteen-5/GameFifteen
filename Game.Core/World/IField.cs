@@ -8,13 +8,13 @@ namespace Game.Core.World
 	{
 		int[,] Area { get; set; }
 
-		int this[int row, int col] { get; set; }
-
 		int Width { get; }
 
 		int Height { get; }
 
 		Position Position { get; }
+
+		int this[int row, int col] { get; set; }
 
 		void RandomizeField(IFieldRandomizer randomizer = null);
 

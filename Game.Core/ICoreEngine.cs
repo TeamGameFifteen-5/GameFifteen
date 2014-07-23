@@ -4,8 +4,6 @@ namespace Game.Core
 {
 	public interface ICoreEngine
 	{
-		void Start();
-
 		event Action GameStart;
 
 		event Action GameEnd;
@@ -19,5 +17,7 @@ namespace Game.Core
 		event Action GameIllegalCommand;
 
 		event FieldEvent GameInvalidate;
+
+		void Start();
 	}
 }

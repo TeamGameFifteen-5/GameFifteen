@@ -35,18 +35,6 @@ namespace Game.Core.World
 
 		public int[,] Area { get; set; }
 
-		public int this[int row, int col]
-		{
-			get
-			{
-				return this.Area[row, col];
-			}
-			set
-			{
-				this.Area[row, col] = value;
-			}
-		}
-
 		public int Width
 		{
 			get
@@ -64,6 +52,18 @@ namespace Game.Core.World
 		}
 
 		public Position Position { get; protected set; }
+
+		public int this[int row, int col]
+		{
+			get
+			{
+				return this.Area[row, col];
+			}
+			set
+			{
+				this.Area[row, col] = value;
+			}
+		}
 
 		#endregion Properties
 
