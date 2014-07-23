@@ -10,9 +10,14 @@ namespace Game.Core
 {
 	public delegate void FieldEvent(IField field);
 
+	/// <summary>
+	/// Represents the Core engine.
+	/// Implements Observer and Bridge Design Pattern.
+	/// </summary>
+	/// <seealso cref="Game.Core.ICoreEngine"/>
 	public class CoreEngine : ICoreEngine
 	{
-		private static bool _repeat = true;
+		private bool _gameExit = false;
 
 		#region Fields
 
@@ -63,14 +68,13 @@ namespace Game.Core
 		{
 			this._field.RandomizeField();
 
-			while (_repeat)
+			while (!this._gameExit)
 			{
 				this.OnGameStart();
 				this.OnGameInvalidate();
 
 				bool isSolved = this.IsGameSolved();
-				bool exitGame = false;
-				while (!exitGame || !isSolved)
+				while (!this._gameExit || !isSolved)
 				{
 					this.OnGameMovement();
 
@@ -107,7 +111,7 @@ namespace Game.Core
 		public virtual void Exit()
 		{
 			this.OnGameExit();
-			_repeat = false;
+			this._gameExit = true;
 		}
 
 		public virtual void RestartGame()
@@ -124,6 +128,11 @@ namespace Game.Core
 		public virtual void IllegalCommand()
 		{
 			this.OnGameIllegalCommand();
+		}
+
+		protected virtual bool IsGameSolved()
+		{
+			return this.SolvedChecker.IsSolved(this._field);
 		}
 
 		#region Events
@@ -193,11 +202,6 @@ namespace Game.Core
 		}
 
 		#endregion Events
-
-		private bool IsGameSolved()
-		{
-			return this.SolvedChecker.IsSolved(this._field);
-		}
 
 		#endregion Methods
 	}

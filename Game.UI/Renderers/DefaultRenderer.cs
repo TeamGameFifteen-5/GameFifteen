@@ -3,6 +3,10 @@ using System.Drawing;
 
 namespace Game.UI.Renderers
 {
+	/// <summary>
+	/// Represents Default renderer.
+	/// </summary>
+	/// <seealso cref="Game.UI.Renderers.IRenderer"/>
 	public class DefaultRenderer : IRenderer
 	{
 		private static readonly Color _defaultColor = Color.Cyan;

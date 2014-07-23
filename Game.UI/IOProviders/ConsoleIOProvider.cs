@@ -4,6 +4,10 @@ using System;
 
 namespace Game.UI.IOProviders
 {
+	/// <summary>
+	/// Represents Console Input/Output provider.
+	/// </summary>
+	/// <seealso cref="Game.UI.IOProviders.IOProvider"/>
 	public class ConsoleIOProvider : IOProvider<ConsoleKeyInfo>
 	{
 		private IKeyMapping<ConsoleKeyInfo> _keyMapping;

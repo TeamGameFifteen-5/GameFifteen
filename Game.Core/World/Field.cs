@@ -5,6 +5,11 @@ using Game.Core.World.Randomizers;
 
 namespace Game.Core.World
 {
+	/// <summary>
+	/// Represents the game field.
+	/// Implements Bridge and Strategy Design Patterns.
+	/// </summary>
+	/// <seealso cref="Game.Core.World.IField"/>
 	public class Field : IField
 	{
 		#region Constants
@@ -13,17 +18,10 @@ namespace Game.Core.World
 
 		#endregion Constants
 
-		#region Fields
-
-		private IFieldRandomizer _defaultRandomizer;
-		private IFieldFiller _defaultFiller;
-
-		#endregion Fields
-
 		public Field(int size = SIZE, IFieldRandomizer defaultRandomizer = null, IFieldFiller defaultFiller = null)
 		{
-			this._defaultRandomizer = defaultRandomizer ?? new DefaultFieldRandomizer(DefaultRandomGenerator.Instance);
-			this._defaultFiller = defaultFiller ?? new DefaultFieldFiller();
+			this.DefaultRandomizer = defaultRandomizer ?? new DefaultFieldRandomizer(DefaultRandomGenerator.Instance);
+			this.DefaultFiller = defaultFiller ?? new DefaultFieldFiller();
 
 			var lastPosition = size - 1;
 			this.Position = new Position(lastPosition, lastPosition);
@@ -32,6 +30,10 @@ namespace Game.Core.World
 		}
 
 		#region Properties
+
+		protected IFieldRandomizer DefaultRandomizer { get; set; }
+
+		protected IFieldFiller DefaultFiller { get; set; }
 
 		public int[,] Area { get; set; }
 
@@ -71,12 +73,12 @@ namespace Game.Core.World
 
 		public void RandomizeField(IFieldRandomizer randomizer = null)
 		{
-			(randomizer ?? this._defaultRandomizer).Randomize(this);
+			(randomizer ?? this.DefaultRandomizer).Randomize(this);
 		}
 
 		public void Fill(int size, IFieldFiller filler = null)
 		{
-			(filler ?? this._defaultFiller).Fill(this, size);
+			(filler ?? this.DefaultFiller).Fill(this, size);
 		}
 
 		public bool IsInLimits(int row, int col)

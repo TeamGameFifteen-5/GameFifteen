@@ -11,8 +11,8 @@ namespace Game.Core.Actions
 			this.ActionType = actionType;
 		}
 
-		protected IActionInvoker ActionInvoker;
-		protected ActionType ActionType;
+		protected IActionInvoker ActionInvoker { get; private set; }
+		protected ActionType ActionType { get; private set; }
 
 		public virtual void Execute()
 		{

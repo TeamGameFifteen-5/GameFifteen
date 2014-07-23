@@ -3,6 +3,10 @@ using System;
 
 namespace Game.UI.KeyMappings
 {
+	/// <summary>
+	/// Represents Console key mapping.
+	/// </summary>
+	/// <seealso cref="Game.UI.KeyMappings.IKeyMapping"/>
 	public class ConsoleKeyMapping : IKeyMapping<ConsoleKeyInfo>
 	{
 		public ActionType Map(ConsoleKeyInfo consoleKeyInfo)

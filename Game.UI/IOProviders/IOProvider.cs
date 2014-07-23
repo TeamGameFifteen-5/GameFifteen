@@ -6,14 +6,22 @@ using System.Drawing;
 
 namespace Game.UI.IOProviders
 {
+	/// <summary>
+	/// Represents abstract Input/Output provider.
+	/// Implements Bridge, Strategy, Template Method Design Pattern.
+	/// </summary>
+	/// <typeparam name="TKey">Type of the key.</typeparam>
+	/// <seealso cref="Game.UI.IOProviders.IIOProvider"/>
+	/// <seealso cref="Game.Core.Input.IInputProvider"/>
+	/// <seealso cref="Game.UI.KeyMappings.IKeyMapping{TKey}"/>
 	public abstract class IOProvider<TKey> : IIOProvider, IInputProvider, IKeyMapping<TKey>
 	{
-		private IRenderer _renderer;
-
 		protected IOProvider(IRenderer renderer = null)
 		{
-			this._renderer = renderer ?? new DefaultRenderer();
+			this.Renderer = renderer ?? new DefaultRenderer();
 		}
+
+		protected IRenderer Renderer { get; set; }
 
 		protected abstract IKeyMapping<TKey> KeyMapping { get; }
 
@@ -37,7 +45,7 @@ namespace Game.UI.IOProviders
 
 		public virtual void Format(IRenderer renderer = null)
 		{
-			(renderer ?? this._renderer).Format(this);
+			(renderer ?? this.Renderer).Format(this);
 		}
 
 		public ActionType Map(TKey key)
