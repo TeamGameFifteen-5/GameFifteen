@@ -2,7 +2,7 @@
 
 namespace Game.Core.SolvedCheckers
 {
-	public interface ISolveChecker
+	public interface ISolvedChecker
 	{
 		bool IsSolved(IField field);
 	}

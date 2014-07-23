@@ -2,7 +2,7 @@
 
 namespace Game.Core.SolvedCheckers
 {
-	public class DefaultSolveChecker : ISolveChecker
+	public class DefaultSolvedChecker : ISolvedChecker
 	{
 		public bool IsSolved(IField field)
 		{

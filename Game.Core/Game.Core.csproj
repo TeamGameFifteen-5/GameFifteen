@@ -56,8 +56,8 @@
     <Compile Include="Movement\IMovement.cs" />
     <Compile Include="Players\IPlayer.cs" />
     <Compile Include="Players\Player.cs" />
-    <Compile Include="SolvedCheckers\DefaultSolveChecker.cs" />
-    <Compile Include="SolvedCheckers\ISolveChecker.cs" />
+    <Compile Include="SolvedCheckers\DefaultSolvedChecker.cs" />
+    <Compile Include="SolvedCheckers\ISolvedChecker.cs" />
     <Compile Include="Stats\IStatsStorage.cs" />
     <Compile Include="Stats\PlayerStats.cs" />
     <Compile Include="Utils\DefaultRandomGenerator.cs" />

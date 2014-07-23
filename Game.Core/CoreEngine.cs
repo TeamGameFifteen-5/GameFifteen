@@ -20,13 +20,13 @@ namespace Game.Core
 
 		#endregion Fields
 
-		public CoreEngine(IInputProvider inputProvider, IField field, IMovement movement = null, ISolveChecker solveChecker = null)
+		public CoreEngine(IInputProvider inputProvider, IField field, IMovement movement = null, ISolvedChecker solvedChecker = null)
 		{
 			this._inputProvider = inputProvider;
 			this._field = field;
 
 			this.Movement = movement ?? new StraightMovement(field);
-			this.SolveChecker = solveChecker ?? new DefaultSolveChecker();
+			this.SolvedChecker = solvedChecker ?? new DefaultSolvedChecker();
 		}
 
 		#region Events
@@ -49,7 +49,7 @@ namespace Game.Core
 
 		public IMovement Movement { get; set; }
 
-		public ISolveChecker SolveChecker { get; set; }
+		public ISolvedChecker SolvedChecker { get; set; }
 
 		#region Methods
 
@@ -196,7 +196,7 @@ namespace Game.Core
 
 		private bool IsGameSolved()
 		{
-			return this.SolveChecker.IsSolved(this._field);
+			return this.SolvedChecker.IsSolved(this._field);
 		}
 
 		private void RestartGame()
