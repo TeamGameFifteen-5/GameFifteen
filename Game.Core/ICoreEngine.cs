@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Game.Common;
+using System;
 
 namespace Game.Core
 {
@@ -12,6 +13,8 @@ namespace Game.Core
 
 		event Action GameMovement;
 
+		event Action GameShowScore;
+
 		event Action GameIllegalMove;
 
 		event Action GameIllegalCommand;
@@ -19,5 +22,17 @@ namespace Game.Core
 		event FieldEvent GameInvalidate;
 
 		void Start();
+
+		void Move(Direction direction);
+
+		void ShowScore();
+
+		void Exit();
+
+		void RestartGame();
+
+		void IllegalMove();
+
+		void IllegalCommand();
 	}
 }

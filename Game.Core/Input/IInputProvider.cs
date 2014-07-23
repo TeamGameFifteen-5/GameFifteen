@@ -1,4 +1,6 @@
-﻿namespace Game.Core.Input
+﻿using Game.Core.Actions;
+
+namespace Game.Core.Input
 {
 	public interface IInputProvider
 	{

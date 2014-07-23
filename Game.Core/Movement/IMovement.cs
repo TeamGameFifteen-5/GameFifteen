@@ -1,4 +1,5 @@
 ﻿using Game.Common;
+
 namespace Game.Core.Movement
 {
 	public interface IMovement

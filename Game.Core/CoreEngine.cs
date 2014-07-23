@@ -1,4 +1,5 @@
 ﻿using Game.Common;
+using Game.Core.Actions.ActionProviders;
 using Game.Core.Input;
 using Game.Core.Movement;
 using Game.Core.SolvedCheckers;
@@ -20,11 +21,12 @@ namespace Game.Core
 
 		#endregion Fields
 
-		public CoreEngine(IInputProvider inputProvider, IField field, IMovement movement = null, ISolvedChecker solvedChecker = null)
+		public CoreEngine(IInputProvider inputProvider, IField field, IActionProvider actionProvider = null, IMovement movement = null, ISolvedChecker solvedChecker = null)
 		{
 			this._inputProvider = inputProvider;
 			this._field = field;
 
+			this.ActionProvider = actionProvider ?? new DefaultActionProvider(this);
 			this.Movement = movement ?? new StraightMovement(field);
 			this.SolvedChecker = solvedChecker ?? new DefaultSolvedChecker();
 		}
@@ -39,6 +41,8 @@ namespace Game.Core
 
 		public event Action GameMovement;
 
+		public event Action GameShowScore;
+
 		public event Action GameIllegalMove;
 
 		public event Action GameIllegalCommand;
@@ -47,13 +51,15 @@ namespace Game.Core
 
 		#endregion Events
 
+		public IActionProvider ActionProvider { get; set; }
+
 		public IMovement Movement { get; set; }
 
 		public ISolvedChecker SolvedChecker { get; set; }
 
 		#region Methods
 
-		public void Start()
+		public virtual void Start()
 		{
 			this._field.RandomizeField();
 
@@ -69,52 +75,8 @@ namespace Game.Core
 					this.OnGameMovement();
 
 					var key = this._inputProvider.GetKeyInput();
-					Direction direction;
-
-					switch (key)
-					{
-						case ActionType.Unmapped:
-							this.OnGameIllegalMove();
-							continue;
-						case ActionType.Up:
-							direction = Direction.Up;
-							break;
-
-						case ActionType.Down:
-							direction = Direction.Down;
-							break;
-
-						case ActionType.Left:
-							direction = Direction.Left;
-							break;
-
-						case ActionType.Right:
-							direction = Direction.Right;
-							break;
-
-						case ActionType.Exit:
-							this.OnGameExit();
-							_repeat = false;
-							exitGame = true;
-							continue;
-
-						case ActionType.Reset:
-							this.RestartGame();
-							continue;
-
-						case ActionType.Scores:
-							// PrintTopHighScore();
-							continue;
-
-						default:
-							this.OnGameIllegalCommand();
-							continue;
-					}
-
-					if (!this.Move(direction))
-					{
-						this.OnGameIllegalMove();
-					}
+					var action = this.ActionProvider.CreateAction(key);
+					action.Execute();
 
 					isSolved = this.IsGameSolved();
 				}
@@ -124,6 +86,43 @@ namespace Game.Core
 					this.OnGameEnd();
 				}
 			}
+		}
+
+		public virtual void Move(Direction direction)
+		{
+			var canMove = this.Movement.Move(direction);
+			this.OnGameInvalidate();
+
+			if (!canMove)
+			{
+				this.OnGameIllegalMove();
+			}
+		}
+
+		public virtual void ShowScore()
+		{
+		}
+
+		public virtual void Exit()
+		{
+			this.OnGameExit();
+			_repeat = false;
+		}
+
+		public virtual void RestartGame()
+		{
+			this._field.RandomizeField();
+			this.OnGameInvalidate();
+		}
+
+		public virtual void IllegalMove()
+		{
+			this.OnGameIllegalMove();
+		}
+
+		public virtual void IllegalCommand()
+		{
+			this.OnGameIllegalCommand();
 		}
 
 		#region Events
@@ -160,6 +159,14 @@ namespace Game.Core
 			}
 		}
 
+		private void OnGameShowScore()
+		{
+			if (this.GameShowScore != null)
+			{
+				this.GameShowScore();
+			}
+		}
+
 		private void OnGameIllegalMove()
 		{
 			if (this.GameIllegalMove != null)
@@ -186,23 +193,9 @@ namespace Game.Core
 
 		#endregion Events
 
-		private bool Move(Direction direction)
-		{
-			var canMove = this.Movement.Move(direction);
-			this.OnGameInvalidate();
-
-			return canMove;
-		}
-
 		private bool IsGameSolved()
 		{
 			return this.SolvedChecker.IsSolved(this._field);
-		}
-
-		private void RestartGame()
-		{
-			this._field.RandomizeField();
-			this.OnGameInvalidate();
 		}
 
 		#endregion Methods

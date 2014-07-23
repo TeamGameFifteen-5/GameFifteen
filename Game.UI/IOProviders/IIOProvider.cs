@@ -1,4 +1,4 @@
-﻿using Game.Core.Input;
+﻿using Game.Core.Actions;
 using Game.UI.Renderers;
 using System.Drawing;
 

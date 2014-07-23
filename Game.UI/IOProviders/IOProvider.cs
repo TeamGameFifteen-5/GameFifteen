@@ -1,4 +1,5 @@
-﻿using Game.Core.Input;
+﻿using Game.Core.Actions;
+using Game.Core.Input;
 using Game.UI.KeyMappings;
 using Game.UI.Renderers;
 using System.Drawing;

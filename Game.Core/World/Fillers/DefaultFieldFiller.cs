@@ -1,6 +1,4 @@
-﻿using Game.Core.Utils;
-
-namespace Game.Core.World.Fillers
+﻿namespace Game.Core.World.Fillers
 {
 	public class DefaultFieldFiller : IFieldFiller
 	{

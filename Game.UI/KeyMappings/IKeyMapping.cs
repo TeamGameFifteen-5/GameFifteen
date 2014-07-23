@@ -1,4 +1,4 @@
-﻿using Game.Core.Input;
+﻿using Game.Core.Actions;
 
 namespace Game.UI.KeyMappings
 {

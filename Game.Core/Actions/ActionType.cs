@@ -1,4 +1,4 @@
-﻿namespace Game.Core.Input
+﻿namespace Game.Core.Actions
 {
 	public enum ActionType
 	{
