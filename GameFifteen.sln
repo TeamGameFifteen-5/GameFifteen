@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.Windows", "Game.Window
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.Common", "Game.Common\Game.Common.csproj", "{F0F3C450-90B5-4C57-A77E-4D4F208D7EAB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.UnitTests", "Game.UnitTests\Game.UnitTests.csproj", "{52FD249E-FC8F-4DF0-A956-E103F22E0899}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,16 @@ Global
 		{F0F3C450-90B5-4C57-A77E-4D4F208D7EAB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F0F3C450-90B5-4C57-A77E-4D4F208D7EAB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F0F3C450-90B5-4C57-A77E-4D4F208D7EAB}.Release|x86.ActiveCfg = Release|Any CPU
+		{52FD249E-FC8F-4DF0-A956-E103F22E0899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52FD249E-FC8F-4DF0-A956-E103F22E0899}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52FD249E-FC8F-4DF0-A956-E103F22E0899}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{52FD249E-FC8F-4DF0-A956-E103F22E0899}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{52FD249E-FC8F-4DF0-A956-E103F22E0899}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{52FD249E-FC8F-4DF0-A956-E103F22E0899}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52FD249E-FC8F-4DF0-A956-E103F22E0899}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52FD249E-FC8F-4DF0-A956-E103F22E0899}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{52FD249E-FC8F-4DF0-A956-E103F22E0899}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{52FD249E-FC8F-4DF0-A956-E103F22E0899}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
