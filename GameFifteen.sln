@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.Core", "Game.Core\Game
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.UI", "Game.UI\Game.UI.csproj", "{34C92930-54B7-48F6-8ED6-EA35C0AF964E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.Windows", "Game.App\Game.Windows.csproj", "{D7B504F5-CD9A-42F5-B4F2-49C7AE746B97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.Windows", "Game.Windows\Game.Windows.csproj", "{D7B504F5-CD9A-42F5-B4F2-49C7AE746B97}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.Common", "Game.Common\Game.Common.csproj", "{F0F3C450-90B5-4C57-A77E-4D4F208D7EAB}"
 EndProject

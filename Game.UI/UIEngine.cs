@@ -28,7 +28,6 @@ namespace Game.UI
 
 		public void OnGameStart()
 		{
-			this.DisplayHeader();
 		}
 
 		public void OnGameEnd()
