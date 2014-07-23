@@ -9,15 +9,7 @@ namespace Game.Core
 
 	public class CoreEngine : ICoreEngine
 	{
-		private static bool repeat = true;
-
-		#region Fields
-
-		private IInputProvider _inputProvider;
-		private IField _field;
-		private IMovement _movement;
-
-		#endregion Fields
+		private static bool _repeat = true;
 
 		#region Events
 
@@ -36,6 +28,14 @@ namespace Game.Core
 		public event FieldEvent GameInvalidate;
 
 		#endregion Events
+
+		#region Fields
+
+		private IInputProvider _inputProvider;
+		private IField _field;
+		private IMovement _movement;
+
+		#endregion Fields
 
 		public CoreEngine(IInputProvider inputProvider, IField field, IMovement movement)
 		{
@@ -110,7 +110,7 @@ namespace Game.Core
 		{
 			this._field.RandomizeField();
 
-			while (repeat)
+			while (_repeat)
 			{
 				this.OnGameStart();
 				this.OnGameInvalidate();
@@ -147,7 +147,7 @@ namespace Game.Core
 
 						case KeyType.Exit:
 							this.OnGameExit();
-							repeat = false;
+							_repeat = false;
 							exitGame = true;
 							continue;
 

@@ -1,4 +1,4 @@
-﻿namespace Game.Core.World
+﻿namespace Game.Core.World.Randomizers
 {
 	public interface IFieldRandomizer
 	{

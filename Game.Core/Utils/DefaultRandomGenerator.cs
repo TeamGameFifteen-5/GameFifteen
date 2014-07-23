@@ -2,6 +2,10 @@
 
 namespace Game.Core.Utils
 {
+	/// <summary>
+	/// Represents default random numbers generator in a singleton implementation.
+	/// </summary>
+	/// <seealso cref="Game.Core.Utils.IRandomGenerator"/>
 	public sealed class DefaultRandomGenerator : IRandomGenerator
 	{
 		private static readonly DefaultRandomGenerator _instance = new DefaultRandomGenerator();

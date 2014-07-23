@@ -61,11 +61,13 @@
     <Compile Include="Stats\PlayerStats.cs" />
     <Compile Include="Utils\DefaultRandomGenerator.cs" />
     <Compile Include="Utils\IRandomGenerator.cs" />
+    <Compile Include="World\Fillers\DefaultFieldFiller.cs" />
+    <Compile Include="World\Fillers\IFieldFiller.cs" />
     <Compile Include="World\IField.cs" />
     <Compile Include="Movement\StraightMovement.cs" />
     <Compile Include="World\Field.cs" />
-    <Compile Include="World\IFieldRandomizer.cs" />
-    <Compile Include="World\DefaultFieldRandomizer.cs" />
+    <Compile Include="World\Randomizers\IFieldRandomizer.cs" />
+    <Compile Include="World\Randomizers\DefaultFieldRandomizer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

@@ -1,5 +1,7 @@
 ﻿using Game.Common;
 using Game.Core.Utils;
+using Game.Core.World.Fillers;
+using Game.Core.World.Randomizers;
 
 namespace Game.Core.World
 {
@@ -13,18 +15,20 @@ namespace Game.Core.World
 
 		#region Fields
 
-		private IFieldRandomizer _randomizer;
+		private IFieldRandomizer _defaultRandomizer;
+		private IFieldFiller _defaultFiller;
 
 		#endregion Fields
 
-		public Field(int size = SIZE, IFieldRandomizer randomizer = null)
+		public Field(int size = SIZE, IFieldRandomizer defaultRandomizer = null, IFieldFiller defaultFiller = null)
 		{
-			this._randomizer = randomizer ?? new DefaultFieldRandomizer(DefaultRandomGenerator.Instance);
+			this._defaultRandomizer = defaultRandomizer ?? new DefaultFieldRandomizer(DefaultRandomGenerator.Instance);
+			this._defaultFiller = defaultFiller ?? new DefaultFieldFiller();
 
 			var lastPosition = size - 1;
 			this.Position = new Position(lastPosition, lastPosition);
 
-			this.CreateField(size);
+			this.Fill(size);
 		}
 
 		#region Properties
@@ -67,10 +71,13 @@ namespace Game.Core.World
 
 		public void RandomizeField(IFieldRandomizer randomizer = null)
 		{
-			(randomizer ?? this._randomizer).Randomize(this);
+			(randomizer ?? this._defaultRandomizer).Randomize(this);
 		}
 
-		#endregion Methods
+		public void Fill(int size, IFieldFiller filler = null)
+		{
+			(filler ?? this._defaultFiller).Fill(this, size);
+		}
 
 		public bool IsInLimits(int row, int col)
 		{
@@ -79,23 +86,6 @@ namespace Game.Core.World
 			return isInRowLimits && isInColLimits;
 		}
 
-		protected virtual void CreateField(int size)
-		{
-			var area = new int[size, size];
-			var currentNumber = 1;
-
-			for (int row = 0; row < size; row++)
-			{
-				for (int col = 0; col < size; col++)
-				{
-					area[row, col] = currentNumber++;
-				}
-			}
-
-			int lastXY = size - 1;
-			area[lastXY, lastXY] = 0;
-
-			this.Area = area;
-		}
+		#endregion Methods
 	}
 }
