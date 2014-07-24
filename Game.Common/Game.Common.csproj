@@ -41,6 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionType.cs" />
+    <Compile Include="CustomEvents\CustomEvent.cs" />
+    <Compile Include="CustomEvents\FieldInvalidateEvent.cs" />
+    <Compile Include="CustomEvents\ICustomEvent.cs" />
     <Compile Include="DefaultActionTypes.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="Players\IPlayer.cs" />

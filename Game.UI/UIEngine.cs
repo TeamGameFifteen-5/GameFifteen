@@ -1,4 +1,4 @@
-﻿using Game.Common.Map;
+﻿using Game.Common.CustomEvents;
 using Game.Common.Players;
 using Game.UI.IOProviders;
 using System;
@@ -7,16 +7,17 @@ namespace Game.UI
 {
 	public class UIEngine : IUIEngine
 	{
-        #region Constants
+		#region Constants
 
-        private const char Horizontal = '\u2500';
-        private const char Vertical = '\u2502';
-        private const char UpperLeftCorner = '\u250c';
-        private const char UpperRightCorner = '\u2510';
-        private const char LowerLeftCorner = '\u2514';
-        private const char LowerRightCorner = '\u2518';
+		private const char Horizontal = '\u2500';
+		private const char Vertical = '\u2502';
+		private const char UpperLeftCorner = '\u250c';
+		private const char UpperRightCorner = '\u2510';
+		private const char LowerLeftCorner = '\u2514';
+		private const char LowerRightCorner = '\u2518';
 
-        #endregion
+		#endregion Constants
+
 		private IIOProvider _ioProvider;
 		private IPlayer _player;
 
@@ -72,30 +73,36 @@ namespace Game.UI
 
 		public virtual void OnGameCustomEvent(Object eventObject)
 		{
-			if (eventObject is IField)
+			if (eventObject is FieldInvalidateEvent)
 			{
-				var field = (IField)eventObject;
-            var upperLine = string.Format("{0}{1}{2}", UpperLeftCorner, new string(Horizontal, 13), UpperRightCorner);
-            var lowerLine = string.Format("{0}{1}{2}", LowerLeftCorner, new string(Horizontal, 13), LowerRightCorner);
+				var fieldInvalidateEvent = (FieldInvalidateEvent)eventObject;
+				var field = fieldInvalidateEvent.EventArgs;
+
+				var upperLine = string.Format("{0}{1}{2}", UpperLeftCorner, new string(Horizontal, 13), UpperRightCorner);
+				var lowerLine = string.Format("{0}{1}{2}", LowerLeftCorner, new string(Horizontal, 13), LowerRightCorner);
 
 				this._ioProvider.Invalidate();
 				this.DisplayHeader();
 
-            this._ioProvider.DisplayLine(upperLine);
+				this._ioProvider.DisplayLine(upperLine);
 
 				foreach (var row in field)
 				{
-                this._ioProvider.Display(Vertical.ToString() + " ");
+					this._ioProvider.Display(Vertical.ToString() + " ");
 
 					foreach (var col in row)
 					{
 						this._ioProvider.Display(col >= 10 ? "{0} " : " {0} ", col == 0 ? " " : col.ToString());
 					}
 
-				this._ioProvider.DisplayLine(Vertical.ToString());
+					this._ioProvider.DisplayLine(Vertical.ToString());
 				}
 
-            this._ioProvider.DisplayLine(lowerLine);
+				this._ioProvider.DisplayLine(lowerLine);
+			}
+			else
+			{
+				throw new InvalidOperationException("Unhandled custom event is raised!");
 			}
 		}
 

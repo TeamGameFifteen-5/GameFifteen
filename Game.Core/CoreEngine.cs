@@ -1,4 +1,5 @@
 ﻿using Game.Common;
+using Game.Common.CustomEvents;
 using Game.Common.Map;
 using Game.Common.Players;
 using Game.Core.Actions.ActionProviders;
@@ -79,7 +80,7 @@ namespace Game.Core
 				this._field.RandomizeField();
 				this._player.Score = 0;
 				this.OnGameStart();
-				this.OnGameCustomEvent(this._field);
+				this.OnGameCustomEvent(new FieldInvalidateEvent(this._field));
 
 				bool isSolved = this.IsGameSolved();
 				while (!this._gameExit && !isSolved)
@@ -104,7 +105,7 @@ namespace Game.Core
 		public virtual void Move(Direction direction)
 		{
 			var canMove = this.Movement.Move(direction);
-			this.OnGameCustomEvent(this._field);
+			this.OnGameCustomEvent(new FieldInvalidateEvent(this._field));
 
 			if (!canMove)
 			{
@@ -126,7 +127,7 @@ namespace Game.Core
 		public virtual void RestartGame()
 		{
 			this._field.RandomizeField();
-			this.OnGameCustomEvent(this._field);
+			this.OnGameCustomEvent(new FieldInvalidateEvent(this._field));
 		}
 
 		public virtual void IllegalMove()
