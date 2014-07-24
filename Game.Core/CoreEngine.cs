@@ -2,6 +2,7 @@
 using Game.Core.Actions.ActionProviders;
 using Game.Core.Input;
 using Game.Core.Movement;
+using Game.Core.Players;
 using Game.Core.SolvedCheckers;
 using Game.Core.World;
 using System;
@@ -23,13 +24,14 @@ namespace Game.Core
 
 		private IInputProvider _inputProvider;
 		private IField _field;
-
+        private IPlayer _player;
 		#endregion Fields
 
-		public CoreEngine(IInputProvider inputProvider, IField field, IActionProvider actionProvider = null, IMovement movement = null, ISolvedChecker solvedChecker = null)
+		public CoreEngine(IInputProvider inputProvider, IField field, IPlayer player, IActionProvider actionProvider = null, IMovement movement = null, ISolvedChecker solvedChecker = null)
 		{
 			this._inputProvider = inputProvider;
 			this._field = field;
+            this._player = player;
 
 			this.ActionProvider = actionProvider ?? new DefaultActionProvider(this);
 			this.Movement = movement ?? new BackwardMovement(field);
@@ -69,12 +71,14 @@ namespace Game.Core
 			while (!this._gameExit)
 			{
                 this._field.RandomizeField();
+                this._player.Score = 0;
 				this.OnGameStart();
 				this.OnGameInvalidate();
 
 				bool isSolved = this.IsGameSolved();
 				while (!this._gameExit && !isSolved)
 				{
+                    this._player.Score++;
 					this.OnGameMovement();
 
 					var key = this._inputProvider.GetKeyInput();

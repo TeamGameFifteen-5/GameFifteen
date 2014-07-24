@@ -17,7 +17,7 @@ namespace Game.App
 
 			var field = new Field();
 
-			var gameEngine = new CoreEngine(consoleIOProvider, field);
+			var gameEngine = new CoreEngine(consoleIOProvider, field, player);
 			var gameUI = new UIEngine(gameEngine, player, consoleIOProvider);
 			gameUI.Start();
 		}

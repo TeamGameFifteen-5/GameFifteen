@@ -58,7 +58,7 @@ namespace Game.UI
 
 		public void OnGameMovement()
 		{
-			this._ioProvider.Display("Press a button to move: ");
+			this._ioProvider.DisplayLine("Press a button to move: ");
 		}
 
 		public void OnGameIllegalMove()
