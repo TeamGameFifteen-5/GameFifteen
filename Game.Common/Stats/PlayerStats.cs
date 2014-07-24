@@ -1,7 +1,7 @@
 ﻿using Game.Common.Players;
 using System;
 
-namespace Game.Core.Stats
+namespace Game.Common.Stats
 {
 	public class PlayerStats : IStatsStorage<IPlayer>
 	{

@@ -80,7 +80,7 @@ namespace Game.Core
 				this._field.RandomizeField();
 				this._player.Score = 0;
 				this.OnGameStart();
-				this.OnGameCustomEvent(new FieldInvalidateEvent(this._field));
+				this.Invalidate();
 
 				bool isSolved = this.IsGameSolved();
 				while (!this._gameExit && !isSolved)
@@ -105,7 +105,7 @@ namespace Game.Core
 		public virtual void Move(Direction direction)
 		{
 			var canMove = this.Movement.Move(direction);
-			this.OnGameCustomEvent(new FieldInvalidateEvent(this._field));
+			this.Invalidate();
 
 			if (!canMove)
 			{
@@ -127,7 +127,7 @@ namespace Game.Core
 		public virtual void RestartGame()
 		{
 			this._field.RandomizeField();
-			this.OnGameCustomEvent(new FieldInvalidateEvent(this._field));
+			this.Invalidate();
 		}
 
 		public virtual void IllegalMove()
@@ -138,6 +138,11 @@ namespace Game.Core
 		public virtual void IllegalCommand()
 		{
 			this.OnGameIllegalCommand();
+		}
+
+		public virtual void Invalidate()
+		{
+			this.OnGameCustomEvent(new FieldInvalidateEvent(this._field));
 		}
 
 		protected virtual bool IsGameSolved()

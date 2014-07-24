@@ -81,8 +81,6 @@
     <Compile Include="Movement\IMovement.cs" />
     <Compile Include="SolvedCheckers\DefaultSolvedChecker.cs" />
     <Compile Include="SolvedCheckers\ISolvedChecker.cs" />
-    <Compile Include="Stats\IStatsStorage.cs" />
-    <Compile Include="Stats\PlayerStats.cs" />
     <Compile Include="Movement\StraightMovement.cs" />
   </ItemGroup>
   <ItemGroup>

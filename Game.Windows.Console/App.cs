@@ -1,7 +1,7 @@
 ﻿using Game.Common.Map;
 using Game.Common.Players;
+using Game.Common.Stats;
 using Game.Core;
-using Game.Core.Stats;
 using Game.UI;
 using Game.UI.Windows.Console.IOProviders;
 
@@ -13,8 +13,6 @@ namespace Game.App
 		{
 			var consoleIOProvider = new ConsoleIOProvider();
 			var player = new Player();
-			var playerStats = new PlayerStats();
-
 			var field = new Field();
 
 			var gameUI = new UIEngine(player, consoleIOProvider);

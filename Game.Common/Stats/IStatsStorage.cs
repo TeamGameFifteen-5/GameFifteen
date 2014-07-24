@@ -1,4 +1,4 @@
-﻿namespace Game.Core.Stats
+﻿namespace Game.Common.Stats
 {
 	/// <summary>
 	/// Interface for stats storage.

@@ -83,5 +83,7 @@ namespace Game.Core
 		/// Illegal command.
 		/// </summary>
 		void IllegalCommand();
+
+		void Invalidate();
 	}
 }
