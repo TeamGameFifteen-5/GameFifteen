@@ -8,6 +8,8 @@ namespace Game.UI.Windows.Forms.IOProviders
 	{
 		Keys? LastKey { get; set; }
 
+		string GetTextInput();
+
 		Graphics CreateGraphics();
 
 		void Execute(Action action);

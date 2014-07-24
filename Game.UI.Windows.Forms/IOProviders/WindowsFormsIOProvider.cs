@@ -50,10 +50,7 @@ namespace Game.UI.Windows.Forms.IOProviders
 
 		public override string GetTextInput()
 		{
-			while (true)
-			{
-				Thread.Sleep(1000);
-			}
+			return this._gameForm.GetTextInput();
 		}
 
 		public override ActionType GetKeyInput(bool displayKey = false)

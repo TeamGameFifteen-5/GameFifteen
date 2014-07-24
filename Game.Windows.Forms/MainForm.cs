@@ -25,6 +25,27 @@ namespace Game.Windows.Forms
 			this.Invoke(action);
 		}
 
+		public string GetTextInput()
+		{
+			string text = "Please provide the required input:";
+			string caption = "Message";
+			Form prompt = new Form();
+			prompt.Width = 500;
+			prompt.Height = 150;
+			prompt.Text = caption;
+			prompt.StartPosition = FormStartPosition.CenterScreen;
+			Label textLabel = new Label() { Left = 50, Top = 20, Text = text, Width = 400 };
+			TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400 };
+			Button confirmation = new Button() { Text = "Ok", Left = 350, Width = 100, Top = 70 };
+			confirmation.Click += (sender, e) => { prompt.Close(); };
+			prompt.Controls.Add(textBox);
+			prompt.Controls.Add(confirmation);
+			prompt.Controls.Add(textLabel);
+			prompt.AcceptButton = confirmation;
+			prompt.ShowDialog();
+			return textBox.Text;
+		}
+
 		private void MainForm_Load(object sender, EventArgs e)
 		{
 			var consoleIOProvider = new WindowsFormsIOProvider(this);
