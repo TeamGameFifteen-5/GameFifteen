@@ -1,5 +1,6 @@
 ﻿using Game.Common;
 using Game.Common.Map;
+using Game.Common.Players;
 using Game.Core.Actions.ActionProviders;
 using Game.Core.Movement;
 using Game.Core.SolvedCheckers;
@@ -25,17 +26,19 @@ namespace Game.Core
 		private IUIEngine _uiEngine;
 		private IInputProvider _inputProvider;
 		private IField _field;
+		private IPlayer _player;
 
 		#endregion Fields
 
-		public CoreEngine(IUIEngine uiEngine, IField field, IActionProvider actionProvider = null, IMovement movement = null, ISolvedChecker solvedChecker = null)
+		public CoreEngine(IUIEngine uiEngine, IField field, IPlayer player, IActionProvider actionProvider = null, IMovement movement = null, ISolvedChecker solvedChecker = null)
 		{
 			this._uiEngine = uiEngine;
 			this._inputProvider = uiEngine.InputProvider;
 			this._field = field;
+			this._player = player;
 
 			this.ActionProvider = actionProvider ?? new DefaultActionProvider(this);
-			this.Movement = movement ?? new StraightMovement(field);
+			this.Movement = movement ?? new BackwardMovement(field);
 			this.SolvedChecker = solvedChecker ?? new DefaultSolvedChecker();
 
 			this.AttachUIToEvents();
@@ -71,16 +74,17 @@ namespace Game.Core
 
 		public virtual void Start()
 		{
-			this._field.RandomizeField();
-
 			while (!this._gameExit)
 			{
+				this._field.RandomizeField();
+				this._player.Score = 0;
 				this.OnGameStart();
 				this.OnGameCustomEvent(this._field);
 
 				bool isSolved = this.IsGameSolved();
-				while (!this._gameExit || !isSolved)
+				while (!this._gameExit && !isSolved)
 				{
+					this._player.Score++;
 					this.OnGameMovement();
 
 					var key = this._inputProvider.GetKeyInput();
