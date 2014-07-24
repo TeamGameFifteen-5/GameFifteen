@@ -78,6 +78,7 @@
     <Compile Include="CoreEngine.cs" />
     <Compile Include="ICoreEngine.cs" />
     <Compile Include="Input\IInputProvider.cs" />
+    <Compile Include="Movement\BackwardMovement.cs" />
     <Compile Include="Movement\IMovement.cs" />
     <Compile Include="Players\IPlayer.cs" />
     <Compile Include="Players\Player.cs" />

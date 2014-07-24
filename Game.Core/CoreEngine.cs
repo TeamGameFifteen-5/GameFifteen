@@ -32,7 +32,7 @@ namespace Game.Core
 			this._field = field;
 
 			this.ActionProvider = actionProvider ?? new DefaultActionProvider(this);
-			this.Movement = movement ?? new StraightMovement(field);
+			this.Movement = movement ?? new BackwardMovement(field);
 			this.SolvedChecker = solvedChecker ?? new DefaultSolvedChecker();
 		}
 
