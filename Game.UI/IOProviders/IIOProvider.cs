@@ -1,5 +1,4 @@
-﻿using Game.Common;
-using Game.UI.Renderers;
+﻿using Game.UI.IOProviders.Settings;
 using System.Drawing;
 
 namespace Game.UI.IOProviders
@@ -7,6 +6,7 @@ namespace Game.UI.IOProviders
 	/// <summary>
 	/// Interface for Input/Output provider.
 	/// </summary>
+	/// <seealso cref="IInputProvider"/>
 	public interface IIOProvider : IInputProvider
 	{
 		/// <summary>
@@ -53,9 +53,9 @@ namespace Game.UI.IOProviders
 		void Invalidate();
 
 		/// <summary>
-		/// Formats the given renderer.
+		/// Applies the settings described by settings.
 		/// </summary>
-		/// <param name="renderer">(optional) the renderer.</param>
-		void Format(IRenderer renderer = null);
+		/// <param name="settings">(optional) options for controlling the operation.</param>
+		void ApplySettings(IIOProviderSettings settings = null);
 	}
 }

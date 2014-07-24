@@ -26,7 +26,7 @@ namespace Game.UI
 			this._ioProvider = ioProvider;
 			this._player = player;
 
-			this._ioProvider.Format();
+			this._ioProvider.ApplySettings();
 		}
 
 		public IInputProvider InputProvider

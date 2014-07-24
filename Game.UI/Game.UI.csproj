@@ -49,8 +49,8 @@
     <Compile Include="IOProviders\IOStyleType.cs" />
     <Compile Include="IUIEngine.cs" />
     <Compile Include="KeyMappings\IKeyMapping.cs" />
-    <Compile Include="Renderers\DefaultRenderer.cs" />
-    <Compile Include="Renderers\IRenderer.cs" />
+    <Compile Include="IOProviders\Settings\DefaultIIOProviderSettings.cs" />
+    <Compile Include="IOProviders\Settings\IOProviderSettings.cs" />
     <Compile Include="UIEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IOProviders\IOProvider.cs" />
@@ -61,6 +61,7 @@
       <Name>Game.Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

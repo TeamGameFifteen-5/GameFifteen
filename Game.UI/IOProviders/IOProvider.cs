@@ -1,6 +1,6 @@
 ﻿using Game.Common;
+using Game.UI.IOProviders.Settings;
 using Game.UI.KeyMappings;
-using Game.UI.Renderers;
 using System.Drawing;
 
 namespace Game.UI.IOProviders
@@ -15,12 +15,12 @@ namespace Game.UI.IOProviders
 	/// <seealso cref="Game.UI.KeyMappings.IKeyMapping{TKey}"/>
 	public abstract class IOProvider<TKey> : IIOProvider, IKeyMapping<TKey>
 	{
-		protected IOProvider(IRenderer renderer = null)
+		protected IOProvider(IIOProviderSettings renderer = null)
 		{
-			this.Renderer = renderer ?? new DefaultRenderer();
+			this.Settings = renderer ?? new DefaultIOProviderSettings();
 		}
 
-		protected IRenderer Renderer { get; set; }
+		protected IIOProviderSettings Settings { get; set; }
 
 		protected abstract IKeyMapping<TKey> KeyMapping { get; }
 
@@ -42,9 +42,9 @@ namespace Game.UI.IOProviders
 
 		public abstract void Invalidate();
 
-		public virtual void Format(IRenderer renderer = null)
+		public virtual void ApplySettings(IIOProviderSettings settings = null)
 		{
-			(renderer ?? this.Renderer).Render(this);
+			(settings ?? this.Settings).Apply(this);
 		}
 
 		public ActionType Map(TKey key)

@@ -15,10 +15,6 @@
 	{
 		private IKeyMapping<ConsoleKeyInfo> _keyMapping;
 
-		public ConsoleIOProvider()
-		{
-		}
-
 		protected override IKeyMapping<ConsoleKeyInfo> KeyMapping
 		{
 			get
