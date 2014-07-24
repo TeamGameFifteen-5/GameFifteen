@@ -1,4 +1,7 @@
-﻿namespace Game.UI
+﻿using Game.UI.IOProviders;
+using System;
+
+namespace Game.UI
 {
 	/// <summary>
 	/// Interface for the UI Engine.
@@ -6,9 +9,9 @@
 	public interface IUIEngine
 	{
 		/// <summary>
-		/// Starts the main cycle.
+		/// The input provider.
 		/// </summary>
-		void Start();
+		IInputProvider InputProvider { get; }
 
 		/// <summary>
 		/// Executes the game start action.
@@ -39,5 +42,10 @@
 		/// Executes the game illegal command action.
 		/// </summary>
 		void OnGameIllegalCommand();
+
+		/// <summary>
+		/// Executes the game invalidate action.
+		/// </summary>
+		void OnGameCustomEvent(Object eventObject);
 	}
 }

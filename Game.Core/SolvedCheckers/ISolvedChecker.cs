@@ -1,4 +1,4 @@
-﻿using Game.Core.World;
+﻿using Game.Common.Map;
 
 namespace Game.Core.SolvedCheckers
 {

@@ -1,9 +1,12 @@
-﻿using Game.Common;
-using Game.UI.KeyMappings;
-using System;
-
-namespace Game.UI.IOProviders
+﻿namespace Game.UI.Windows.Console.IOProviders
 {
+	using Game.Common;
+	using Game.UI.IOProviders;
+	using Game.UI.KeyMappings;
+	using Game.UI.Windows.Console.KeyMappings;
+	using System;
+	using Console = System.Console;
+
 	/// <summary>
 	/// Represents Console Input/Output provider.
 	/// </summary>

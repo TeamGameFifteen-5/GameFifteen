@@ -1,5 +1,5 @@
 ﻿using Game.Common;
-using Game.Core.World;
+using Game.Common.Map;
 using System;
 
 namespace Game.Core.Movement

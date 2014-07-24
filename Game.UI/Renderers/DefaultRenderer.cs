@@ -18,9 +18,9 @@ namespace Game.UI.Renderers
 			this._color = color ?? _defaultColor;
 		}
 
-		public void Format(IIOProvider ioService)
+		public void Render(IIOProvider ioProvider)
 		{
-			ioService.ChangeColor(this._color);
+			ioProvider.ChangeColor(this._color);
 		}
 	}
 }

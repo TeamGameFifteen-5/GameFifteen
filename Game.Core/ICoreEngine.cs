@@ -44,9 +44,9 @@ namespace Game.Core
 		event Action GameIllegalCommand;
 
 		/// <summary>
-		/// Event queue for all listeners interested in GameInvalidate events.
+		/// Event queue for all listeners interested in GameCustomEvent events.
 		/// </summary>
-		event FieldEvent GameInvalidate;
+		event CustomEventHandler GameCustomEvent;
 
 		/// <summary>
 		/// Starts the main cycle.

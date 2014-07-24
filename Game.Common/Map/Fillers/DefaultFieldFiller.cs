@@ -1,4 +1,4 @@
-﻿namespace Game.Core.World.Fillers
+﻿namespace Game.Common.Map.Fillers
 {
 	public class DefaultFieldFiller : IFieldFiller
 	{

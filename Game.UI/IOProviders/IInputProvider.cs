@@ -1,6 +1,6 @@
 ﻿using Game.Common;
 
-namespace Game.Core.Input
+namespace Game.UI.IOProviders
 {
 	/// <summary>
 	/// Interface for input provider.

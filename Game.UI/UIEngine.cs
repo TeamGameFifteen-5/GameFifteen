@@ -1,29 +1,29 @@
-﻿using Game.Core;
-using Game.Core.Players;
-using Game.Core.World;
+﻿using Game.Common.Map;
+using Game.Common.Players;
 using Game.UI.IOProviders;
+using System;
 
 namespace Game.UI
 {
 	public class UIEngine : IUIEngine
 	{
-		private ICoreEngine _coreEngine;
 		private IIOProvider _ioProvider;
 		private IPlayer _player;
 
-		public UIEngine(ICoreEngine coreEngine, IPlayer player, IIOProvider ioProvider)
+		public UIEngine(IPlayer player, IIOProvider ioProvider)
 		{
-			this._coreEngine = coreEngine;
 			this._ioProvider = ioProvider;
 			this._player = player;
 
 			this._ioProvider.Format();
-			this.BindEvents();
 		}
 
-		public void Start()
+		public IInputProvider InputProvider
 		{
-			this._coreEngine.Start();
+			get
+			{
+				return this._ioProvider;
+			}
 		}
 
 		public void OnGameStart()
@@ -60,47 +60,35 @@ namespace Game.UI
 			this._ioProvider.DisplayLine("Illegal command!");
 		}
 
-		/// <summary>
-		/// Executes the game invalidate action.
-		/// TODO: move to separete class Bridge/Strategy Pattern
-		/// </summary>
-		/// <param name="field">The field.</param>
-		public void OnGameInvalidate(IField field)
+		public virtual void OnGameCustomEvent(Object eventObject)
 		{
-			this._ioProvider.Invalidate();
-			this.DisplayHeader();
-
-			this._ioProvider.DisplayLine(" -------------");
-
-			foreach (var row in field)
+			if (eventObject is IField)
 			{
-				this._ioProvider.Display("| ");
+				var field = (IField)eventObject;
+				this._ioProvider.Invalidate();
+				this.DisplayHeader();
 
-				foreach (var col in row)
+				this._ioProvider.DisplayLine(" -------------");
+
+				foreach (var row in field)
 				{
-					this._ioProvider.Display(col >= 10 ? "{0} " : " {0} ", col == 0 ? " " : col.ToString());
+					this._ioProvider.Display("| ");
+
+					foreach (var col in row)
+					{
+						this._ioProvider.Display(col >= 10 ? "{0} " : " {0} ", col == 0 ? " " : col.ToString());
+					}
+
+					this._ioProvider.DisplayLine("|");
 				}
 
-				this._ioProvider.DisplayLine("|");
+				this._ioProvider.DisplayLine(" -------------");
 			}
-
-			this._ioProvider.DisplayLine(" -------------");
 		}
 
 		private void DisplayHeader()
 		{
 			this._ioProvider.DisplayLine("Welcome to the game “15”.\nPlease try to arrange the numbers sequentially.\nUse 'T' to view the top scoreboard, 'R' to start a new game and 'Escape, Q' to quit the game.\nAnd 'W, A, S, D or Arrows' for movement.\n");
-		}
-
-		private void BindEvents()
-		{
-			this._coreEngine.GameStart += this.OnGameStart;
-			this._coreEngine.GameEnd += this.OnGameEnd;
-			this._coreEngine.GameExit += this.OnGameExit;
-			this._coreEngine.GameMovement += this.OnGameMovement;
-			this._coreEngine.GameIllegalMove += this.OnGameIllegalMove;
-			this._coreEngine.GameIllegalCommand += this.OnGameIllegalCommand;
-			this._coreEngine.GameInvalidate += this.OnGameInvalidate;
 		}
 	}
 }

@@ -1,7 +1,8 @@
 ﻿using Game.Common;
+using Game.UI.KeyMappings;
 using System;
 
-namespace Game.UI.KeyMappings
+namespace Game.UI.Windows.Console.KeyMappings
 {
 	/// <summary>
 	/// Represents Console key mapping.

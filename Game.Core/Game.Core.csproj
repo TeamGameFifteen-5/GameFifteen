@@ -77,23 +77,12 @@
     <Compile Include="Actions\IGameAction.cs" />
     <Compile Include="CoreEngine.cs" />
     <Compile Include="ICoreEngine.cs" />
-    <Compile Include="Input\IInputProvider.cs" />
     <Compile Include="Movement\IMovement.cs" />
-    <Compile Include="Players\IPlayer.cs" />
-    <Compile Include="Players\Player.cs" />
     <Compile Include="SolvedCheckers\DefaultSolvedChecker.cs" />
     <Compile Include="SolvedCheckers\ISolvedChecker.cs" />
     <Compile Include="Stats\IStatsStorage.cs" />
     <Compile Include="Stats\PlayerStats.cs" />
-    <Compile Include="Utils\DefaultRandomGenerator.cs" />
-    <Compile Include="Utils\IRandomGenerator.cs" />
-    <Compile Include="World\Fillers\DefaultFieldFiller.cs" />
-    <Compile Include="World\Fillers\IFieldFiller.cs" />
-    <Compile Include="World\IField.cs" />
     <Compile Include="Movement\StraightMovement.cs" />
-    <Compile Include="World\Field.cs" />
-    <Compile Include="World\Randomizers\IFieldRandomizer.cs" />
-    <Compile Include="World\Randomizers\DefaultFieldRandomizer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
@@ -102,6 +91,10 @@
     <ProjectReference Include="..\Game.Common\Game.Common.csproj">
       <Project>{f0f3c450-90b5-4c57-a77e-4d4f208d7eab}</Project>
       <Name>Game.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Game.UI\Game.UI.csproj">
+      <Project>{34c92930-54b7-48f6-8ed6-ea35c0af964e}</Project>
+      <Name>Game.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

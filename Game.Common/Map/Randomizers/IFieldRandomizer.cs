@@ -1,4 +1,4 @@
-﻿namespace Game.Core.World.Randomizers
+﻿namespace Game.Common.Map.Randomizers
 {
 	/// <summary>
 	/// Interface for field randomizer.

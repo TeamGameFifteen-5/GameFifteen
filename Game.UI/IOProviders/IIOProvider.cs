@@ -7,7 +7,7 @@ namespace Game.UI.IOProviders
 	/// <summary>
 	/// Interface for Input/Output provider.
 	/// </summary>
-	public interface IIOProvider
+	public interface IIOProvider : IInputProvider
 	{
 		/// <summary>
 		/// Gets text input.

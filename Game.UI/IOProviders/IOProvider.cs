@@ -1,5 +1,4 @@
 ﻿using Game.Common;
-using Game.Core.Input;
 using Game.UI.KeyMappings;
 using Game.UI.Renderers;
 using System.Drawing;
@@ -14,7 +13,7 @@ namespace Game.UI.IOProviders
 	/// <seealso cref="Game.UI.IOProviders.IIOProvider"/>
 	/// <seealso cref="Game.Core.Input.IInputProvider"/>
 	/// <seealso cref="Game.UI.KeyMappings.IKeyMapping{TKey}"/>
-	public abstract class IOProvider<TKey> : IIOProvider, IInputProvider, IKeyMapping<TKey>
+	public abstract class IOProvider<TKey> : IIOProvider, IKeyMapping<TKey>
 	{
 		protected IOProvider(IRenderer renderer = null)
 		{
@@ -45,7 +44,7 @@ namespace Game.UI.IOProviders
 
 		public virtual void Format(IRenderer renderer = null)
 		{
-			(renderer ?? this.Renderer).Format(this);
+			(renderer ?? this.Renderer).Render(this);
 		}
 
 		public ActionType Map(TKey key)

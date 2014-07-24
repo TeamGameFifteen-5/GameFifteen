@@ -1,4 +1,4 @@
-﻿namespace Game.Core.Utils
+﻿namespace Game.Common.Utils
 {
 	/// <summary>
 	/// Interface for random generator.

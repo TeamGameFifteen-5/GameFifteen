@@ -1,14 +1,15 @@
 ﻿using Game.Common;
+using Game.Common.Map;
 using Game.Core.Actions.ActionProviders;
-using Game.Core.Input;
 using Game.Core.Movement;
 using Game.Core.SolvedCheckers;
-using Game.Core.World;
+using Game.UI;
+using Game.UI.IOProviders;
 using System;
 
 namespace Game.Core
 {
-	public delegate void FieldEvent(IField field);
+	public delegate void CustomEventHandler(Object eventObject);
 
 	/// <summary>
 	/// Represents the Core engine.
@@ -21,19 +22,23 @@ namespace Game.Core
 
 		#region Fields
 
+		private IUIEngine _uiEngine;
 		private IInputProvider _inputProvider;
 		private IField _field;
 
 		#endregion Fields
 
-		public CoreEngine(IInputProvider inputProvider, IField field, IActionProvider actionProvider = null, IMovement movement = null, ISolvedChecker solvedChecker = null)
+		public CoreEngine(IUIEngine uiEngine, IField field, IActionProvider actionProvider = null, IMovement movement = null, ISolvedChecker solvedChecker = null)
 		{
-			this._inputProvider = inputProvider;
+			this._uiEngine = uiEngine;
+			this._inputProvider = uiEngine.InputProvider;
 			this._field = field;
 
 			this.ActionProvider = actionProvider ?? new DefaultActionProvider(this);
 			this.Movement = movement ?? new StraightMovement(field);
 			this.SolvedChecker = solvedChecker ?? new DefaultSolvedChecker();
+
+			this.AttachUIToEvents();
 		}
 
 		#region Events
@@ -52,7 +57,7 @@ namespace Game.Core
 
 		public event Action GameIllegalCommand;
 
-		public event FieldEvent GameInvalidate;
+		public event CustomEventHandler GameCustomEvent;
 
 		#endregion Events
 
@@ -71,7 +76,7 @@ namespace Game.Core
 			while (!this._gameExit)
 			{
 				this.OnGameStart();
-				this.OnGameInvalidate();
+				this.OnGameCustomEvent(this._field);
 
 				bool isSolved = this.IsGameSolved();
 				while (!this._gameExit || !isSolved)
@@ -95,7 +100,7 @@ namespace Game.Core
 		public virtual void Move(Direction direction)
 		{
 			var canMove = this.Movement.Move(direction);
-			this.OnGameInvalidate();
+			this.OnGameCustomEvent(this._field);
 
 			if (!canMove)
 			{
@@ -117,7 +122,7 @@ namespace Game.Core
 		public virtual void RestartGame()
 		{
 			this._field.RandomizeField();
-			this.OnGameInvalidate();
+			this.OnGameCustomEvent(this._field);
 		}
 
 		public virtual void IllegalMove()
@@ -133,6 +138,17 @@ namespace Game.Core
 		protected virtual bool IsGameSolved()
 		{
 			return this.SolvedChecker.IsSolved(this._field);
+		}
+
+		protected virtual void AttachUIToEvents()
+		{
+			this.GameStart += this._uiEngine.OnGameStart;
+			this.GameEnd += this._uiEngine.OnGameEnd;
+			this.GameExit += this._uiEngine.OnGameExit;
+			this.GameMovement += this._uiEngine.OnGameMovement;
+			this.GameIllegalMove += this._uiEngine.OnGameIllegalMove;
+			this.GameIllegalCommand += this._uiEngine.OnGameIllegalCommand;
+			this.GameCustomEvent += this._uiEngine.OnGameCustomEvent;
 		}
 
 		#region Events
@@ -193,11 +209,11 @@ namespace Game.Core
 			}
 		}
 
-		private void OnGameInvalidate()
+		private void OnGameCustomEvent(Object eventObject)
 		{
-			if (this.GameInvalidate != null)
+			if (this.GameCustomEvent != null)
 			{
-				this.GameInvalidate(this._field);
+				this.GameCustomEvent(eventObject);
 			}
 		}
 

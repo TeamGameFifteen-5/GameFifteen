@@ -1,4 +1,4 @@
-﻿namespace Game.Core.World.Fillers
+﻿namespace Game.Common.Map.Fillers
 {
 	/// <summary>
 	/// Interface for field filler.

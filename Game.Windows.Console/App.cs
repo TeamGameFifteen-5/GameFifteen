@@ -1,9 +1,9 @@
-﻿using Game.Core;
-using Game.Core.Players;
+﻿using Game.Common.Map;
+using Game.Common.Players;
+using Game.Core;
 using Game.Core.Stats;
-using Game.Core.World;
 using Game.UI;
-using Game.UI.IOProviders;
+using Game.UI.Windows.Console.IOProviders;
 
 namespace Game.App
 {
@@ -17,9 +17,9 @@ namespace Game.App
 
 			var field = new Field();
 
-			var gameEngine = new CoreEngine(consoleIOProvider, field);
-			var gameUI = new UIEngine(gameEngine, player, consoleIOProvider);
-			gameUI.Start();
+			var gameUI = new UIEngine(player, consoleIOProvider);
+			var gameEngine = new CoreEngine(gameUI, field);
+			gameEngine.Start();
 		}
 	}
 }

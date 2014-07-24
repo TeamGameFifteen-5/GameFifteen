@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace Game.Core.Utils
+namespace Game.Common.Utils
 {
 	/// <summary>
 	/// Represents default random numbers generator in a singleton implementation.
 	/// Implements Singleton Design Pattern.
 	/// </summary>
-	/// <seealso cref="Game.Core.Utils.IRandomGenerator"/>
+	/// <seealso cref="Game.Common.Utils.IRandomGenerator"/>
 	public sealed class DefaultRandomGenerator : IRandomGenerator
 	{
 		private static readonly DefaultRandomGenerator _instance = new DefaultRandomGenerator();

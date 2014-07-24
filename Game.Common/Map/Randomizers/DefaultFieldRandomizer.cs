@@ -1,6 +1,6 @@
-﻿using Game.Core.Utils;
+﻿using Game.Common.Utils;
 
-namespace Game.Core.World.Randomizers
+namespace Game.Common.Map.Randomizers
 {
 	public class DefaultFieldRandomizer : IFieldRandomizer
 	{

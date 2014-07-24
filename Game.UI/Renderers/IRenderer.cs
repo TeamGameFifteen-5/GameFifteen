@@ -8,9 +8,9 @@ namespace Game.UI.Renderers
 	public interface IRenderer
 	{
 		/// <summary>
-		/// Formats the given i/o provider.
+		/// Renders the given i/o provider.
 		/// </summary>
 		/// <param name="ioProvider">The i/o provider.</param>
-		void Format(IIOProvider ioProvider);
+		void Render(IIOProvider ioProvider);
 	}
 }

@@ -1,16 +1,16 @@
 ﻿using Game.Common;
-using Game.Core.Utils;
-using Game.Core.World.Fillers;
-using Game.Core.World.Randomizers;
+using Game.Common.Utils;
+using Game.Common.Map.Fillers;
+using Game.Common.Map.Randomizers;
 using System.Collections.Generic;
 
-namespace Game.Core.World
+namespace Game.Common.Map
 {
 	/// <summary>
 	/// Represents the game field.
 	/// Implements Bridge, Strategy and Iterator Design Pattern.
 	/// </summary>
-	/// <seealso cref="Game.Core.World.IField"/>
+	/// <seealso cref="Game.Common.World.IField"/>
 	public class Field : IField
 	{
 		#region Constants

@@ -1,4 +1,4 @@
-﻿namespace Game.Core.Players
+﻿namespace Game.Common.Players
 {
 	/// <summary>
 	/// Interface for player.
