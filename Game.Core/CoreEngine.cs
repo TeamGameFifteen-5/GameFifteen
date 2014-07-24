@@ -66,15 +66,14 @@ namespace Game.Core
 
 		public virtual void Start()
 		{
-			this._field.RandomizeField();
-
 			while (!this._gameExit)
 			{
+                this._field.RandomizeField();
 				this.OnGameStart();
 				this.OnGameInvalidate();
 
 				bool isSolved = this.IsGameSolved();
-				while (!this._gameExit || !isSolved)
+				while (!this._gameExit && !isSolved)
 				{
 					this.OnGameMovement();
 
