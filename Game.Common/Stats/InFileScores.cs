@@ -69,6 +69,7 @@
 			}
 			catch (Exception)
 			{
+				// TODO: Implement appropriate message for the user
 				if (stream != null)
 				{
 					stream.Close();
