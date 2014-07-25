@@ -17,7 +17,7 @@
 			var field = new Field();
 
 			var gameUI = new UIEngine(player, consoleIOProvider);
-			var gameEngineSettings = new GameEngineSettings<IDefaultUIEngine, IIntegerStats>(Difficulty.Normal, gameUI, field, player, InMemoryScores.Instance);
+			var gameEngineSettings = new GameEngineSettings<IDefaultUIEngine, IIntegerStats>(Difficulty.Easy, gameUI, field, player, InMemoryScores.Instance);
 			var gameEngine = new GameEngine(gameEngineSettings);
 			gameEngine.Start();
 		}

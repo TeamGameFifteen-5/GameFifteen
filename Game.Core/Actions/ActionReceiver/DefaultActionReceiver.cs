@@ -1,7 +1,7 @@
 ﻿namespace Game.Core.Actions.ActionReceiver
 {
-    using System;
-    using Game.Common;
+	using Game.Common;
+	using System;
 
 	public class DefaultActionReceiver : IActionReceiver
 	{
@@ -26,6 +26,7 @@
 				case DefaultActionTypes.Right:
 					var direction = this.GetMoveDirection(actionType);
 					this._gameEngine.Move(direction);
+					this._gameEngine.Player.Score++;
 					break;
 
 				case DefaultActionTypes.Exit:

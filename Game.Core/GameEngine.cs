@@ -12,7 +12,6 @@
 	using Game.UI;
 	using Game.UI.IOProviders;
 	using System;
-	using System.Linq;
 
 	public delegate void CustomEventHandler(object eventObject);
 
@@ -64,25 +63,25 @@
 
 		#region Properties
 
-		protected virtual Difficulty Difficulty { get; set; }
+		public virtual Difficulty Difficulty { get; set; }
 
-		protected virtual IDefaultUIEngine UIEngine { get; set; }
+		public virtual IDefaultUIEngine UIEngine { get; set; }
 
-		protected virtual IInputProvider InputProvider { get; set; }
+		public virtual IInputProvider InputProvider { get; set; }
 
-		protected virtual IField Field { get; set; }
+		public virtual IField Field { get; set; }
 
-		protected virtual IPlayer Player { get; set; }
+		public virtual IPlayer Player { get; set; }
 
-		protected virtual IIntegerStats HighScores { get; set; }
+		public virtual IIntegerStats HighScores { get; set; }
 
-		protected virtual IMoveable MoveableEntity { get; set; }
+		public virtual IMoveable MoveableEntity { get; set; }
+
+		public virtual IGameOverChecker GameOverChecker { get; set; }
 
 		protected virtual IActionProvider ActionProvider { get; set; }
 
 		protected virtual IActionReceiver ActionReceiver { get; set; }
-
-		protected virtual IGameOverChecker GameOverChecker { get; set; }
 
 		#endregion Properties
 
@@ -93,20 +92,12 @@
 			while (!this._gameExit)
 			{
 				this.Field.RandomizeField(this.Difficulty);
-				this.Player.Score = 0;
 				this.OnGameStart();
 				this.FieldInvalidate();
 
 				bool isSolved = this.IsItGameOver();
 				while (!this._gameExit && !isSolved)
 				{
-					var scores = this.HighScores.Load();
-					if (this.Player.Score == 0 && scores.Any())
-					{
-						this.ShowScore();
-					}
-
-					this.Player.Score++;
 					this.OnGameMovement();
 
 					var key = this.InputProvider.GetKeyInput();
@@ -119,6 +110,9 @@
 				if (isSolved)
 				{
 					this.OnGameEnd();
+
+					var playerScore = new NameValue<int>(this.Player.Name, this.Player.Score);
+					this.HighScores.Save(playerScore);
 				}
 			}
 		}
