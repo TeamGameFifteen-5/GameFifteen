@@ -1,9 +1,9 @@
-﻿using Game.Common;
-using Game.UI.KeyMappings;
-using System.Windows.Forms;
-
-namespace Game.UI.Windows.Forms.KeyMappings
+﻿namespace Game.UI.Windows.Forms.KeyMappings
 {
+    using System.Windows.Forms;
+    using Game.Common;
+    using Game.UI.KeyMappings;
+
 	public class WindowsFormsKeyMapping : IKeyMapping<Keys>
 	{
 		public Common.ActionType Map(Keys windowsFormsKeys)

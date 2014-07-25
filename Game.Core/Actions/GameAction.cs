@@ -1,8 +1,8 @@
-﻿using Game.Common;
-using Game.Core.Actions.ActionInvokers;
-
-namespace Game.Core.Actions
+﻿namespace Game.Core.Actions
 {
+    using Game.Common;
+    using Game.Core.Actions.ActionInvokers;
+
 	public abstract class GameAction : IGameAction
 	{
 		public GameAction(ActionType actionType, IActionInvoker actionInvoker)

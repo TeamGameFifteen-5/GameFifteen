@@ -1,10 +1,10 @@
-﻿using Game.Common.CustomEvents;
-using Game.Common.Players;
-using Game.UI.IOProviders;
-using System;
-
-namespace Game.UI
+﻿namespace Game.UI
 {
+    using System;
+    using Game.Common.CustomEvents;
+    using Game.Common.Players;
+    using Game.UI.IOProviders;
+
 	public class UIEngine : IUIEngine
 	{
 		#region Constants

@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Game.Common.Utils
+﻿namespace Game.Common.Utils
 {
+    using System;
+
 	/// <summary>
 	/// Represents default random numbers generator in a singleton implementation.
 	/// Implements Singleton Design Pattern.

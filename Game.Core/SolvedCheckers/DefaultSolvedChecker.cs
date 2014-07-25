@@ -1,7 +1,7 @@
-﻿using Game.Common.Map;
-
-namespace Game.Core.SolvedCheckers
+﻿namespace Game.Core.SolvedCheckers
 {
+    using Game.Common.Map;
+
 	public class DefaultSolvedChecker : ISolvedChecker
 	{
 		public bool IsSolved(IField field)

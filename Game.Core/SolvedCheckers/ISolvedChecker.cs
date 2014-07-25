@@ -1,7 +1,7 @@
-﻿using Game.Common.Map;
-
-namespace Game.Core.SolvedCheckers
+﻿namespace Game.Core.SolvedCheckers
 {
+    using Game.Common.Map;
+
 	/// <summary>
 	/// Interface for solved checker.
 	/// </summary>

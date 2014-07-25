@@ -1,7 +1,7 @@
-﻿using System.Collections.Concurrent;
-
-namespace Game.Common
+﻿namespace Game.Common
 {
+    using System.Collections.Concurrent;
+
 	/// <summary>
 	/// Represents Action type.
 	/// Implements FlyWeight Design Pattern.

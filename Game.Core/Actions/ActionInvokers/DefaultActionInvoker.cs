@@ -1,8 +1,8 @@
-﻿using Game.Common;
-using System;
-
-namespace Game.Core.Actions.ActionInvokers
+﻿namespace Game.Core.Actions.ActionInvokers
 {
+    using System;
+    using Game.Common;
+
 	public class DefaultActionInvoker : IActionInvoker
 	{
 		private ICoreEngine _coreEngine;

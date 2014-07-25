@@ -1,7 +1,7 @@
-﻿using Game.Common;
-
-namespace Game.UI.KeyMappings
+﻿namespace Game.UI.KeyMappings
 {
+    using Game.Common;
+
 	/// <summary>
 	/// Interface for key mapping.
 	/// </summary>

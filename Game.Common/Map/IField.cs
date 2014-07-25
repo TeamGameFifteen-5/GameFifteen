@@ -1,10 +1,9 @@
-﻿using Game.Common;
-using Game.Common.Map.Fillers;
-using Game.Common.Map.Randomizers;
-using System.Collections.Generic;
-
-namespace Game.Common.Map
+﻿namespace Game.Common.Map
 {
+    using Game.Common.Map.Fillers;
+    using Game.Common.Map.Randomizers;
+    using System.Collections.Generic;
+
 	/// <summary>
 	/// Interface for field.
 	/// </summary>

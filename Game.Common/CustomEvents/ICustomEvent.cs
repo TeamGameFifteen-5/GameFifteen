@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Game.Common.CustomEvents
+﻿namespace Game.Common.CustomEvents
 {
+    using System;
+
 	public interface ICustomEvent
 	{
 		Object EventArgs { get; }

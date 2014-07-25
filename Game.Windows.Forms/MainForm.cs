@@ -1,14 +1,14 @@
-﻿using Game.Common.Map;
-using Game.Common.Players;
-using Game.Core;
-using Game.UI;
-using Game.UI.Windows.Forms.IOProviders;
-using System;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Game.Windows.Forms
+﻿namespace Game.Windows.Forms
 {
+    using System;
+    using System.Threading.Tasks;
+    using System.Windows.Forms;
+    using Game.Common.Map;
+    using Game.Common.Players;
+    using Game.Core;
+    using Game.UI;
+    using Game.UI.Windows.Forms.IOProviders;
+
 	public partial class MainForm : Form, IGameForm
 	{
 		private CoreEngine _gameEngine;

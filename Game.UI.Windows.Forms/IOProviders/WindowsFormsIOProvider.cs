@@ -1,15 +1,15 @@
-﻿using Game.Common;
-using Game.UI.IOProviders;
-using Game.UI.KeyMappings;
-using Game.UI.Windows.Forms.IOProviders.Settings;
-using Game.UI.Windows.Forms.KeyMappings;
-using System;
-using System.Drawing;
-using System.Threading;
-using System.Windows.Forms;
-
-namespace Game.UI.Windows.Forms.IOProviders
+﻿namespace Game.UI.Windows.Forms.IOProviders
 {
+    using System;
+    using System.Drawing;
+    using System.Threading;
+    using System.Windows.Forms;
+    using Game.Common;
+    using Game.UI.IOProviders;
+    using Game.UI.KeyMappings;
+    using Game.UI.Windows.Forms.IOProviders.Settings;
+    using Game.UI.Windows.Forms.KeyMappings;
+    
 	public class WindowsFormsIOProvider : IOProvider<Keys>
 	{
 		private Font _drawFont = new Font("Arial", 16);

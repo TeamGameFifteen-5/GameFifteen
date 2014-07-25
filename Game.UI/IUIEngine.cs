@@ -1,8 +1,8 @@
-﻿using Game.UI.IOProviders;
-using System;
-
-namespace Game.UI
+﻿namespace Game.UI
 {
+    using System;
+    using Game.UI.IOProviders;
+
 	/// <summary>
 	/// Interface for the UI Engine.
 	/// </summary>

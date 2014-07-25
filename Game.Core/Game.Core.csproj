@@ -77,11 +77,8 @@
     <Compile Include="Actions\IGameAction.cs" />
     <Compile Include="CoreEngine.cs" />
     <Compile Include="ICoreEngine.cs" />
-    <Compile Include="Movement\BackwardMovement.cs" />
-    <Compile Include="Movement\IMovement.cs" />
     <Compile Include="SolvedCheckers\DefaultSolvedChecker.cs" />
     <Compile Include="SolvedCheckers\ISolvedChecker.cs" />
-    <Compile Include="Movement\StraightMovement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

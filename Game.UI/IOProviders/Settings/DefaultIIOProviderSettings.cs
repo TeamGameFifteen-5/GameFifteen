@@ -1,7 +1,7 @@
-﻿using System.Drawing;
-
-namespace Game.UI.IOProviders.Settings
+﻿namespace Game.UI.IOProviders.Settings
 {
+    using System.Drawing;
+
 	/// <summary>
 	/// Default i/o provider settings.
 	/// </summary>

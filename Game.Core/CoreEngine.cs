@@ -1,16 +1,16 @@
-﻿using Game.Common;
-using Game.Common.CustomEvents;
-using Game.Common.Map;
-using Game.Common.Players;
-using Game.Core.Actions.ActionProviders;
-using Game.Core.Movement;
-using Game.Core.SolvedCheckers;
-using Game.UI;
-using Game.UI.IOProviders;
-using System;
-
-namespace Game.Core
+﻿namespace Game.Core
 {
+    using System;
+    using Game.Common;
+    using Game.Common.CustomEvents;
+    using Game.Common.Map;
+    using Game.Common.Movement;
+    using Game.Common.Players;
+    using Game.Core.Actions.ActionProviders;
+    using Game.Core.SolvedCheckers;
+    using Game.UI;
+    using Game.UI.IOProviders;
+
 	public delegate void CustomEventHandler(Object eventObject);
 
 	/// <summary>
