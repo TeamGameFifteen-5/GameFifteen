@@ -27,6 +27,7 @@
 
 		public GameEngine(IGameEngineSettings<IDefaultUIEngine, IIntegerStats> settings)
 		{
+			this.Difficulty = settings.Difficulty;
 			this.UIEngine = settings.UIEngine;
 			this.InputProvider = this.UIEngine.InputProvider;
 			this.Field = settings.Field;
@@ -63,6 +64,8 @@
 
 		#region Properties
 
+		protected virtual Difficulty Difficulty { get; set; }
+
 		protected virtual IDefaultUIEngine UIEngine { get; set; }
 
 		protected virtual IInputProvider InputProvider { get; set; }
@@ -89,7 +92,7 @@
 		{
 			while (!this._gameExit)
 			{
-				this.Field.RandomizeField();
+				this.Field.RandomizeField(this.Difficulty);
 				this.Player.Score = 0;
 				this.OnGameStart();
 				this.FieldInvalidate();
@@ -141,7 +144,7 @@
 
 		public virtual void RestartGame()
 		{
-			this.Field.RandomizeField();
+			this.Field.RandomizeField(this.Difficulty);
 			this.FieldInvalidate();
 		}
 

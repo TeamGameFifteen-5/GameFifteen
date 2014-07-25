@@ -71,9 +71,9 @@
 
 		#region Methods
 
-		public void RandomizeField(IFieldRandomizer randomizer = null)
+		public void RandomizeField(Difficulty difficulty, IFieldRandomizer randomizer = null)
 		{
-			(randomizer ?? this.DefaultRandomizer).Randomize(this);
+			(randomizer ?? this.DefaultRandomizer).Randomize(this, difficulty);
 		}
 
 		public void Fill(int size, IFieldFiller filler = null)

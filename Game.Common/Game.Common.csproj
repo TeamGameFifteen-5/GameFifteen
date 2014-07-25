@@ -46,6 +46,7 @@
     <Compile Include="CustomEvents\ICustomEvent.cs" />
     <Compile Include="CustomEvents\ShowScoreEvent.cs" />
     <Compile Include="DefaultActionTypes.cs" />
+    <Compile Include="Difficulty.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="IMoveable.cs" />
     <Compile Include="INameValue_1.cs" />

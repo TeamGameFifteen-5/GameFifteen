@@ -1,39 +1,58 @@
 ﻿namespace Game.Common.Map.Randomizers
 {
-    using System;
 	using Game.Common.Map.Movement;
-    using Game.Common.Utils;
-    
-    public class DefaultFieldRandomizer : IFieldRandomizer
-    {
-        private IRandomGenerator _randomGenerator;
-        private int _totalElementsInDirection;
+	using Game.Common.Utils;
+	using System;
 
-        public DefaultFieldRandomizer(IRandomGenerator randomGenerator)
-        {
-            this._randomGenerator = randomGenerator;
-            this._totalElementsInDirection = Enum.GetNames(typeof(Direction)).Length;
-        }
+	public class DefaultFieldRandomizer : IFieldRandomizer
+	{
+		private IRandomGenerator _randomGenerator;
+		private int _totalElementsInDirection;
 
-        /// <summary>
-        /// Randomizes the given field.
-        /// </summary>
-        /// <param name="field">The field.</param>
-        public void Randomize(IField field)
-        {
+		public DefaultFieldRandomizer(IRandomGenerator randomGenerator)
+		{
+			this._randomGenerator = randomGenerator;
+			this._totalElementsInDirection = Enum.GetNames(typeof(Direction)).Length;
+		}
+
+		/// <summary>
+		/// Randomizes the given field.
+		/// </summary>
+		/// <param name="field">The field.</param>
+		public void Randomize(IField field, Difficulty difficulty)
+		{
 			var movement = new StraightMovement(field);
+			int randomizeCycles;
 
-            for (int i = 0; i < 1000; i++)
-            {
-                int randomNumber = this._randomGenerator.Next(this._totalElementsInDirection);
-                
-                Direction direction = (Direction)Enum.Parse(typeof(Direction), randomNumber.ToString());
+			switch (difficulty)
+			{
+				case Difficulty.Easy:
+					randomizeCycles = 10;
+					break;
 
-                if (!movement.Move(direction))
-                {
-                    i--;
-                }
-            }
-        }
-    }
+				case Difficulty.Normal:
+					randomizeCycles = 100;
+					break;
+
+				case Difficulty.Hard:
+					randomizeCycles = 1000;
+					break;
+
+				default:
+					throw new NotImplementedException();
+			}
+
+			for (int cycleIndex = 0; cycleIndex < randomizeCycles; cycleIndex++)
+			{
+				int randomNumber = this._randomGenerator.Next(this._totalElementsInDirection);
+
+				Direction direction = (Direction)Enum.Parse(typeof(Direction), randomNumber.ToString());
+
+				if (!movement.Move(direction))
+				{
+					cycleIndex--;
+				}
+			}
+		}
+	}
 }

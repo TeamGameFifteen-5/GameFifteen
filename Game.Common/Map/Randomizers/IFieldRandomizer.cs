@@ -10,7 +10,8 @@
 		/// <summary>
 		/// Randomizes the given field.
 		/// </summary>
-		/// <param name="field">The field.</param>
-		void Randomize(IField field);
+		/// <param name="field">	 The field.</param>
+		/// <param name="difficulty">The difficulty.</param>
+		void Randomize(IField field, Difficulty difficulty);
 	}
 }

@@ -55,7 +55,7 @@
 		/// Randomize the field.
 		/// </summary>
 		/// <param name="randomizer">(optional) the randomizer.</param>
-		void RandomizeField(IFieldRandomizer randomizer = null);
+		void RandomizeField(Difficulty difficulty, IFieldRandomizer randomizer = null);
 
 		/// <summary>
 		/// Fills the field with the specified filler and size.

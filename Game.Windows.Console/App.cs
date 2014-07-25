@@ -1,5 +1,6 @@
 ﻿namespace Game.App
 {
+	using Game.Common;
 	using Game.Common.Map;
 	using Game.Common.Players;
 	using Game.Common.Stats;
@@ -16,7 +17,7 @@
 			var field = new Field();
 
 			var gameUI = new UIEngine(player, consoleIOProvider);
-			var gameEngineSettings = new GameEngineSettings<IDefaultUIEngine, IIntegerStats>(gameUI, field, player, InMemoryScores.Instance);
+			var gameEngineSettings = new GameEngineSettings<IDefaultUIEngine, IIntegerStats>(Difficulty.Normal, gameUI, field, player, InMemoryScores.Instance);
 			var gameEngine = new GameEngine(gameEngineSettings);
 			gameEngine.Start();
 		}
