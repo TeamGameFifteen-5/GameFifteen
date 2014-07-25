@@ -1,19 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace Game.Common.Stats
+﻿namespace Game.Common.Stats
 {
-	public sealed class InMemoryScores : StatsStorage<INameValue<int>>, IInMemoryScores
+	public sealed class InMemoryScores : StatsStorage<INameValue<int>>, IIntegerStats
 	{
 		private const int MAX_TOP_PLAYERS = 5;
-		private static readonly InMemoryScores _Instance = new InMemoryScores();
+		private static readonly IIntegerStats _Instance = new InMemoryScores();
 
 		private InMemoryScores()
 			: base(MAX_TOP_PLAYERS)
 		{
 		}
 
-		public static InMemoryScores Instance
+		public static IIntegerStats Instance
 		{
 			get
 			{
@@ -40,7 +37,7 @@ namespace Game.Common.Stats
 				}
 			}
 
-			Stats = Stats.OrderBy(x => x.ValueObject).ToList();
+			this.Sort<int>(x => x.ValueObject);
 		}
 	}
 }

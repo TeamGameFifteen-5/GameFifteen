@@ -159,7 +159,7 @@
 
 		private TResult LockGraphics<TResult>(Func<TResult> action)
 		{
-			lock (_locker)
+			//lock (_locker)
 			{
 				return action();
 			}

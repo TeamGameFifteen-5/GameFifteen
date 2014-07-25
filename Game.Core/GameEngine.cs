@@ -1,8 +1,5 @@
 ﻿namespace Game.Core
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
 	using Game.Common;
 	using Game.Common.CustomEvents;
 	using Game.Common.GameOverCheckers;
@@ -14,6 +11,8 @@
 	using Game.Core.Actions.ActionReceiver;
 	using Game.UI;
 	using Game.UI.IOProviders;
+	using System;
+	using System.Linq;
 
 	public delegate void CustomEventHandler(Object eventObject);
 
@@ -26,7 +25,7 @@
 	{
 		private bool _gameExit = false;
 
-		public GameEngine(IGameEngineSettings<IDefaultUIEngine, IInMemoryScores> settings)
+		public GameEngine(IGameEngineSettings<IDefaultUIEngine, IIntegerStats> settings)
 		{
 			this.UIEngine = settings.UIEngine;
 			this.InputProvider = this.UIEngine.InputProvider;
@@ -72,7 +71,7 @@
 
 		protected virtual IPlayer Player { get; set; }
 
-		protected virtual IInMemoryScores HighScores { get; set; }
+		protected virtual IIntegerStats HighScores { get; set; }
 
 		protected virtual IMoveable MoveableEntity { get; set; }
 

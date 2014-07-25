@@ -17,6 +17,7 @@
 		private const char UpperRightCorner = '\u2510';
 		private const char LowerLeftCorner = '\u2514';
 		private const char LowerRightCorner = '\u2518';
+        private const string UpAndDownTableFrame = "-------------------------";
 
 		#endregion Constants
 
@@ -41,6 +42,7 @@
 
 		public void OnGameStart()
 		{
+				this._player.Score = 0;
 		}
 
 		public void OnGameEnd()
@@ -69,18 +71,18 @@
 			this._ioProvider.DisplayLine("Press a button to move . . .");
 		}
 
-		public void OnGameShowScore(IInMemoryScores scores)
+		public void OnGameShowScore(IIntegerStats scores)
 		{
 			var playerScores = scores.Load();
 
-			this._ioProvider.DisplayLine("{0}{1}", Environment.NewLine, "-------------------------");
+            this._ioProvider.DisplayLine("{0}{1}", Environment.NewLine, UpAndDownTableFrame);
 
 			foreach (var playerScore in playerScores)
 			{
 				this._ioProvider.DisplayLine("{0}: {1}", playerScore.Name, playerScore.Value);
 			}
 
-			this._ioProvider.DisplayLine("{0}{1}", "-------------------------", Environment.NewLine);
+            this._ioProvider.DisplayLine("{0}{1}", UpAndDownTableFrame, Environment.NewLine);
 		}
 
 		public void OnGameIllegalMove()

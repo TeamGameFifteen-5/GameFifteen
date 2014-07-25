@@ -1,5 +1,8 @@
 ﻿namespace Game.Common
 {
+	using System;
+
+	[Serializable]
 	public abstract class NameValue : INameValue
 	{
 		public NameValue(string name)

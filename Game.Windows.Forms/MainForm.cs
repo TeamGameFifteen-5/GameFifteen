@@ -54,7 +54,7 @@
 			var field = new Field();
 
 			var gameUI = new UIEngine(player, consoleIOProvider);
-			var gameEngineSettings = new GameEngineSettings<IDefaultUIEngine, IInMemoryScores>(gameUI, field, player, InMemoryScores.Instance);
+			var gameEngineSettings = new GameEngineSettings<IDefaultUIEngine, IIntegerStats>(gameUI, field, player, InMemoryScores.Instance);
 			var gameEngine = new GameEngine(gameEngineSettings);
 			this._gameEngine = gameEngine;
 

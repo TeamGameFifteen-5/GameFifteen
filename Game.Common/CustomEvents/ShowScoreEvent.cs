@@ -2,9 +2,9 @@
 {
 	using Game.Common.Stats;
 
-	public class ShowScoreEvent : CustomEvent<IInMemoryScores>
+	public class ShowScoreEvent : CustomEvent<IIntegerStats>
 	{
-		public ShowScoreEvent(IInMemoryScores playerScores)
+		public ShowScoreEvent(IIntegerStats playerScores)
 			: base(playerScores)
 		{
 		}

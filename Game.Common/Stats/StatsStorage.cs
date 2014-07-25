@@ -1,6 +1,8 @@
 ﻿namespace Game.Common.Stats
 {
+	using System;
 	using System.Collections.Generic;
+	using System.Linq;
 
 	public abstract class StatsStorage<TNameValue> : IStatsStorage<TNameValue>
 		where TNameValue : INameValue
@@ -18,5 +20,10 @@
 		}
 
 		public abstract void Save(TNameValue stats);
+
+		public virtual void Sort<TCondition>(Func<TNameValue, TCondition> expression)
+		{
+			this.Stats = this.Stats.OrderBy(expression).ToList();
+		}
 	}
 }
