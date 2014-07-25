@@ -2,12 +2,14 @@
 using Game.Common.CustomEvents;
 using Game.Common.Map;
 using Game.Common.Players;
+using Game.Common.Stats;
 using Game.Core.Actions.ActionProviders;
 using Game.Core.Movement;
 using Game.Core.SolvedCheckers;
 using Game.UI;
 using Game.UI.IOProviders;
 using System;
+using System.Collections.Generic;
 
 namespace Game.Core
 {
@@ -28,6 +30,8 @@ namespace Game.Core
 		private IInputProvider _inputProvider;
 		private IField _field;
 		private IPlayer _player;
+        private IHighScores _highScores;
+        private List<IPlayer> _highScoresList;
 
 		#endregion Fields
 
@@ -37,6 +41,7 @@ namespace Game.Core
 			this._inputProvider = uiEngine.InputProvider;
 			this._field = field;
 			this._player = player;
+            this._highScores = HighScores.Instance;
 
 			this.ActionProvider = actionProvider ?? new DefaultActionProvider(this);
 			this.Movement = movement ?? new BackwardMovement(field);
@@ -85,6 +90,11 @@ namespace Game.Core
 				bool isSolved = this.IsGameSolved();
 				while (!this._gameExit && !isSolved)
 				{
+                    this._highScoresList = this._highScores.Load();
+                    if(this._player.Score == 0 && this._highScoresList.Count != 0){
+                        this.ShowScore();
+                    }
+
 					this._player.Score++;
 					this.OnGameMovement();
 
@@ -156,6 +166,7 @@ namespace Game.Core
 			this.GameEnd += this._uiEngine.OnGameEnd;
 			this.GameExit += this._uiEngine.OnGameExit;
 			this.GameMovement += this._uiEngine.OnGameMovement;
+            this.GameShowScore += this._uiEngine.OnGameShowScore;
 			this.GameIllegalMove += this._uiEngine.OnGameIllegalMove;
 			this.GameIllegalCommand += this._uiEngine.OnGameIllegalCommand;
 			this.GameCustomEvent += this._uiEngine.OnGameCustomEvent;

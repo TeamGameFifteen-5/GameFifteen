@@ -56,6 +56,8 @@
     <Compile Include="Map\IField.cs" />
     <Compile Include="Map\Randomizers\DefaultFieldRandomizer.cs" />
     <Compile Include="Map\Randomizers\IFieldRandomizer.cs" />
+    <Compile Include="Stats\HighScores.cs" />
+    <Compile Include="Stats\IHighScores.cs" />
     <Compile Include="Stats\IStatsStorage.cs" />
     <Compile Include="Stats\PlayerStats.cs" />
     <Compile Include="Utils\DefaultRandomGenerator.cs" />
