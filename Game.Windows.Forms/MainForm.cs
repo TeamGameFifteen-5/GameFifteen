@@ -1,14 +1,14 @@
 ﻿namespace Game.Windows.Forms
 {
-    using System;
-    using System.Threading.Tasks;
-    using System.Windows.Forms;
-    using Game.Common.Map;
-    using Game.Common.Players;
-    using Game.Core;
-    using Game.UI;
-    using Game.UI.Windows.Forms.IOProviders;
+	using Game.Common.Map;
+	using Game.Common.Players;
 	using Game.Common.Stats;
+	using Game.Core;
+	using Game.UI;
+	using Game.UI.Windows.Forms.IOProviders;
+	using System;
+	using System.Threading.Tasks;
+	using System.Windows.Forms;
 
 	public partial class MainForm : Form, IGameForm
 	{
@@ -54,7 +54,7 @@
 			var field = new Field();
 
 			var gameUI = new UIEngine(player, consoleIOProvider);
-			var gameEngineSettings = new GameEngineSettings<IDefaultUIEngine>(gameUI, field, player, HighScores.Instance);
+			var gameEngineSettings = new GameEngineSettings<IDefaultUIEngine, IInMemoryScores>(gameUI, field, player, InMemoryScores.Instance);
 			var gameEngine = new GameEngine(gameEngineSettings);
 			this._gameEngine = gameEngine;
 

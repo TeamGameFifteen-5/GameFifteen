@@ -1,5 +1,8 @@
 ﻿namespace Game.Core
 {
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
 	using Game.Common;
 	using Game.Common.CustomEvents;
 	using Game.Common.GameOverCheckers;
@@ -11,8 +14,6 @@
 	using Game.Core.Actions.ActionReceiver;
 	using Game.UI;
 	using Game.UI.IOProviders;
-	using System;
-	using System.Collections.Generic;
 
 	public delegate void CustomEventHandler(Object eventObject);
 
@@ -25,13 +26,7 @@
 	{
 		private bool _gameExit = false;
 
-		#region Fields
-
-		private List<IPlayer> _highScoresList;
-
-		#endregion Fields
-
-		public GameEngine(IGameEngineSettings<IDefaultUIEngine> settings)
+		public GameEngine(IGameEngineSettings<IDefaultUIEngine, IInMemoryScores> settings)
 		{
 			this.UIEngine = settings.UIEngine;
 			this.InputProvider = this.UIEngine.InputProvider;
@@ -77,7 +72,7 @@
 
 		protected virtual IPlayer Player { get; set; }
 
-		protected virtual IHighScores HighScores { get; set; }
+		protected virtual IInMemoryScores HighScores { get; set; }
 
 		protected virtual IMoveable MoveableEntity { get; set; }
 
@@ -103,8 +98,8 @@
 				bool isSolved = this.IsItGameOver();
 				while (!this._gameExit && !isSolved)
 				{
-					this._highScoresList = this.HighScores.Load();
-					if (this.Player.Score == 0 && this._highScoresList.Count != 0)
+					var scores = this.HighScores.Load();
+					if (this.Player.Score == 0 && scores.Any())
 					{
 						this.ShowScore();
 					}
@@ -139,11 +134,6 @@
 			return canMove;
 		}
 
-		public virtual void ShowScore()
-		{
-			this.OnGameShowScore();
-		}
-
 		public virtual void Exit()
 		{
 			this.OnGameExit();
@@ -171,6 +161,11 @@
 			this.OnGameCustomEvent(new FieldInvalidateEvent(this.Field));
 		}
 
+		public virtual void ShowScore()
+		{
+			this.OnGameCustomEvent(new ShowScoreEvent(this.HighScores));
+		}
+
 		protected virtual bool IsItGameOver()
 		{
 			return this.GameOverChecker.IsItOver(this.Field);
@@ -182,7 +177,6 @@
 			this.GameEnd += this.UIEngine.OnGameEnd;
 			this.GameExit += this.UIEngine.OnGameExit;
 			this.GameMovement += this.UIEngine.OnGameMovement;
-			this.GameShowScore += this.UIEngine.OnGameShowScore;
 			this.GameIllegalMove += this.UIEngine.OnGameIllegalMove;
 			this.GameIllegalCommand += this.UIEngine.OnGameIllegalCommand;
 			this.GameCustomEvent += this.UIEngine.OnGameCustomEvent;

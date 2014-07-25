@@ -8,7 +8,7 @@
 	using Game.Core.Actions.ActionProviders;
 	using Game.UI;
 
-	public interface IGameEngineSettings<TUIEngine>
+	public interface IGameEngineSettings<TUIEngine, TStats>
 		where TUIEngine : IUIEngine
 	{
 		TUIEngine UIEngine { get; }
@@ -17,7 +17,7 @@
 
 		IPlayer Player { get; }
 
-		IHighScores HighScores { get; }
+		TStats HighScores { get; }
 
 		IActionProvider ActionProvider { get; }
 

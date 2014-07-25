@@ -11,11 +11,6 @@
 		void OnGameMovement();
 
 		/// <summary>
-		/// Executes the game score action.
-		/// </summary>
-		void OnGameShowScore();
-
-		/// <summary>
 		/// Executes the game illegal move action.
 		/// </summary>
 		void OnGameIllegalMove();

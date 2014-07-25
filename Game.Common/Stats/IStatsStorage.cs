@@ -1,10 +1,13 @@
-﻿namespace Game.Common.Stats
+﻿using System.Collections.Generic;
+
+namespace Game.Common.Stats
 {
 	/// <summary>
 	/// Interface for stats storage.
 	/// </summary>
-	/// <typeparam name="TStats">Type of the stats.</typeparam>
-	internal interface IStatsStorage<TStats>
+	/// <typeparam name="TNameValue">Type of the stats.</typeparam>
+	public interface IStatsStorage<TNameValue>
+		where TNameValue : INameValue
 	{
 		/// <summary>
 		/// Gets the load.
@@ -12,12 +15,12 @@
 		/// <returns>
 		/// The loaded stats.
 		/// </returns>
-		TStats Load();
+		IEnumerable<TNameValue> Load();
 
 		/// <summary>
 		/// Saves the given stats.
 		/// </summary>
 		/// <param name="stats">The stats to save.</param>
-		void Save(TStats stats);
+		void Save(TNameValue stats);
 	}
 }

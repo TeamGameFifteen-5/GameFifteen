@@ -1,17 +1,19 @@
 ﻿namespace Game.UI.Windows.Forms.IOProviders
 {
-    using System;
-    using System.Drawing;
-    using System.Threading;
-    using System.Windows.Forms;
-    using Game.Common;
-    using Game.UI.IOProviders;
-    using Game.UI.KeyMappings;
-    using Game.UI.Windows.Forms.IOProviders.Settings;
-    using Game.UI.Windows.Forms.KeyMappings;
-    
+	using Game.Common;
+	using Game.UI.IOProviders;
+	using Game.UI.KeyMappings;
+	using Game.UI.Windows.Forms.IOProviders.Settings;
+	using Game.UI.Windows.Forms.KeyMappings;
+	using System;
+	using System.Drawing;
+	using System.Threading;
+	using System.Windows.Forms;
+
 	public class WindowsFormsIOProvider : IOProvider<Keys>
 	{
+		private static readonly object _locker = new Object();
+
 		private Font _drawFont = new Font("Arial", 16);
 		private SolidBrush _drawBrush = new SolidBrush(Color.White);
 		private float _x;
@@ -121,14 +123,12 @@
 
 		public override void Invalidate()
 		{
-			this._graphics.Clear(Color.Black);
-			this._x = 0;
-			this._y = 0;
-		}
-
-		private void RunOnUIThread(Action action)
-		{
-			this._gameForm.Execute(action);
+			this.RunOnUIThread(() =>
+			{
+				this._graphics.Clear(Color.Black);
+				this._x = 0;
+				this._y = 0;
+			});
 		}
 
 		private void DrawString(string output)
@@ -141,8 +141,28 @@
 
 		private SizeF MeasureText(string text)
 		{
-			var sizeF = this._graphics.MeasureString(text, this._drawFont, new PointF(this._x, this._y), this._drawFormat);
-			return sizeF;
+			return this.LockGraphics<SizeF>(() =>
+			{
+				var sizeF = this._graphics.MeasureString(text, this._drawFont, new PointF(this._x, this._y), this._drawFormat);
+				return sizeF;
+			});
+		}
+
+		private void RunOnUIThread(Action action)
+		{
+			this.LockGraphics<bool>(() =>
+			{
+				this._gameForm.Execute(action);
+				return true;
+			});
+		}
+
+		private TResult LockGraphics<TResult>(Func<TResult> action)
+		{
+			lock (_locker)
+			{
+				return action();
+			}
 		}
 	}
 }

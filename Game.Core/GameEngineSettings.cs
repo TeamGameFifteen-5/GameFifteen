@@ -4,12 +4,11 @@
 	using Game.Common.Map;
 	using Game.Common.Map.Movement;
 	using Game.Common.Players;
-	using Game.Common.Stats;
 	using Game.Common.Utils;
 	using Game.Core.Actions.ActionProviders;
 	using Game.UI;
 
-	public class GameEngineSettings<TUIEngine> : IGameEngineSettings<TUIEngine>
+	public class GameEngineSettings<TUIEngine, TStats> : IGameEngineSettings<TUIEngine, TStats>
 		where TUIEngine : IUIEngine
 	{
 		#region Fields
@@ -17,7 +16,7 @@
 		private TUIEngine _uiEngine;
 		private IField _field;
 		private IPlayer _player;
-		private IHighScores _highScores;
+		private TStats _highScores;
 		private IMovement _movement;
 		private IActionProvider _actionProvider;
 		private IGameOverChecker _gameOverChecker;
@@ -26,42 +25,42 @@
 
 		#region Constructors
 
-		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores)
+		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, TStats highscores)
 			: this(uiEngine, field, player, highscores, null, null, null)
 		{
 		}
 
-		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores, IActionProvider actionProvider)
+		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, TStats highscores, IActionProvider actionProvider)
 			: this(uiEngine, field, player, highscores, actionProvider, null, null)
 		{
 		}
 
-		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores, IMovement movement)
+		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, TStats highscores, IMovement movement)
 			: this(uiEngine, field, player, highscores, null, movement, null)
 		{
 		}
 
-		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores, IGameOverChecker gameOverChecker)
+		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, TStats highscores, IGameOverChecker gameOverChecker)
 			: this(uiEngine, field, player, highscores, null, null, gameOverChecker)
 		{
 		}
 
-		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores, IActionProvider actionProvider, IGameOverChecker gameOverChecker)
+		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, TStats highscores, IActionProvider actionProvider, IGameOverChecker gameOverChecker)
 			: this(uiEngine, field, player, highscores, actionProvider, null, gameOverChecker)
 		{
 		}
 
-		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores, IActionProvider actionProvider, IMovement movement)
+		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, TStats highscores, IActionProvider actionProvider, IMovement movement)
 			: this(uiEngine, field, player, highscores, actionProvider, movement, null)
 		{
 		}
 
-		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores, IMovement movement, IGameOverChecker gameOverChecker)
+		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, TStats highscores, IMovement movement, IGameOverChecker gameOverChecker)
 			: this(uiEngine, field, player, highscores, null, movement, gameOverChecker)
 		{
 		}
 
-		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores, IActionProvider actionProvider, IMovement movement, IGameOverChecker gameOverChecker)
+		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, TStats highscores, IActionProvider actionProvider, IMovement movement, IGameOverChecker gameOverChecker)
 		{
 			this.UIEngine = uiEngine;
 			this.Field = field;
@@ -116,7 +115,7 @@
 			}
 		}
 
-		public IHighScores HighScores
+		public TStats HighScores
 		{
 			get
 			{
