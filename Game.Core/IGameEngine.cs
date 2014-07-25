@@ -4,9 +4,9 @@
     using System;
 
 	/// <summary>
-	/// Interface for Core Engine.
+	/// Interface for Game Engine.
 	/// </summary>
-	public interface ICoreEngine
+	public interface IGameEngine
 	{
 		/// <summary>
 		/// Event queue for all listeners interested in GameStart events.

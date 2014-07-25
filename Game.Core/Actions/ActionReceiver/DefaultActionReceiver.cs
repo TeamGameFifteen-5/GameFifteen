@@ -1,23 +1,23 @@
-﻿namespace Game.Core.Actions.ActionInvokers
+﻿namespace Game.Core.Actions.ActionReceiver
 {
     using System;
     using Game.Common;
 
-	public class DefaultActionInvoker : IActionInvoker
+	public class DefaultActionReceiver : IActionReceiver
 	{
-		private ICoreEngine _coreEngine;
+		private IGameEngine _gameEngine;
 
-		public DefaultActionInvoker(ICoreEngine coreEngine)
+		public DefaultActionReceiver(IGameEngine gameEngine)
 		{
-			this._coreEngine = coreEngine;
+			this._gameEngine = gameEngine;
 		}
 
-		public void Invoke(ActionType actionType)
+		public void Execute(ActionType actionType)
 		{
 			switch (actionType.Name)
 			{
 				case DefaultActionTypes.Unmapped:
-					this._coreEngine.IllegalMove();
+					this._gameEngine.IllegalMove();
 					break;
 
 				case DefaultActionTypes.Up:
@@ -25,23 +25,23 @@
 				case DefaultActionTypes.Left:
 				case DefaultActionTypes.Right:
 					var direction = this.GetMoveDirection(actionType);
-					this._coreEngine.Move(direction);
+					this._gameEngine.Move(direction);
 					break;
 
 				case DefaultActionTypes.Exit:
-					this._coreEngine.Exit();
+					this._gameEngine.Exit();
 					break;
 
 				case DefaultActionTypes.Reset:
-					this._coreEngine.RestartGame();
+					this._gameEngine.RestartGame();
 					break;
 
 				case DefaultActionTypes.Scores:
-					this._coreEngine.ShowScore();
+					this._gameEngine.ShowScore();
 					break;
 
 				default:
-					this._coreEngine.IllegalCommand();
+					this._gameEngine.IllegalCommand();
 					break;
 			}
 		}

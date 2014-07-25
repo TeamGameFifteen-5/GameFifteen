@@ -1,11 +1,11 @@
-﻿namespace Game.Core.SolvedCheckers
+﻿namespace Game.Common.GameOverCheckers
 {
     using Game.Common.Map;
 
 	/// <summary>
 	/// Interface for solved checker.
 	/// </summary>
-	public interface ISolvedChecker
+	public interface IGameOverChecker
 	{
 		/// <summary>
 		/// Query if 'field' is solved.
@@ -14,6 +14,6 @@
 		/// <returns>
 		/// true if solved, false if not.
 		/// </returns>
-		bool IsSolved(IField field);
+		bool IsItOver(IField field);
 	}
 }

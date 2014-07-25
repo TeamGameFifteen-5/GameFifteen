@@ -1,6 +1,6 @@
 ﻿namespace Game.Common.Map.Randomizers
 {
-    using Game.Common.Movement;
+	using Game.Common.Map.Movement;
 
 	/// <summary>
 	/// Interface for field randomizer.
@@ -11,6 +11,6 @@
 		/// Randomizes the given field.
 		/// </summary>
 		/// <param name="field">The field.</param>
-		void Randomize(IMovement movement);
+		void Randomize(IField field);
 	}
 }

@@ -8,10 +8,11 @@
     using Game.Core;
     using Game.UI;
     using Game.UI.Windows.Forms.IOProviders;
+	using Game.Common.Stats;
 
 	public partial class MainForm : Form, IGameForm
 	{
-		private CoreEngine _gameEngine;
+		private GameEngine _gameEngine;
 
 		public MainForm()
 		{
@@ -53,7 +54,8 @@
 			var field = new Field();
 
 			var gameUI = new UIEngine(player, consoleIOProvider);
-			var gameEngine = new CoreEngine(gameUI, field, player);
+			var gameEngineSettings = new GameEngineSettings(gameUI, field, player, HighScores.Instance);
+			var gameEngine = new GameEngine(gameEngineSettings);
 			this._gameEngine = gameEngine;
 
 			Task.Run(() => gameEngine.Start());

@@ -1,10 +1,10 @@
-﻿namespace Game.Core.SolvedCheckers
+﻿namespace Game.Common.GameOverCheckers
 {
     using Game.Common.Map;
 
-	public class DefaultSolvedChecker : ISolvedChecker
+	public class DefaultGameOverChecker : IGameOverChecker
 	{
-		public bool IsSolved(IField field)
+		public bool IsItOver(IField field)
 		{
 			if (field[3, 3] == 0)
 			{

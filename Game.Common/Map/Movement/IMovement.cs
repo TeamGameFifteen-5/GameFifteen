@@ -1,4 +1,4 @@
-﻿namespace Game.Common.Movement
+﻿namespace Game.Common.Map.Movement
 {
     /// <summary>
     /// Interface for movement.

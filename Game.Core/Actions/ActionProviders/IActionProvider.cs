@@ -1,6 +1,7 @@
 ﻿namespace Game.Core.Actions.ActionProviders
 {
     using Game.Common;
+	using Game.Core.Actions.ActionReceiver;
 
 	/// <summary>
 	/// Interface for action provider.
@@ -8,12 +9,13 @@
 	public interface IActionProvider
 	{
 		/// <summary>
-		/// Creates an action.
+		/// Gets an action.
 		/// </summary>
-		/// <param name="actionType">Type of the action.</param>
+		/// <param name="actionType">	 Type of the action.</param>
+		/// <param name="actionReceiver">The action receiver.</param>
 		/// <returns>
-		/// The new action.
+		/// The action.
 		/// </returns>
-		IGameAction CreateAction(ActionType actionType);
+		IGameAction GetAction(ActionType actionType, IActionReceiver actionReceiver);
 	}
 }

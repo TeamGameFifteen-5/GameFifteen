@@ -12,7 +12,7 @@
 		/// The ActionType cache.
 		/// Made ThreadSafe because the whole project depends on it and the whole project is extendable, except for this class
 		/// </summary>
-		private static readonly ConcurrentDictionary<string, ActionType> _cache = new ConcurrentDictionary<string, ActionType>();
+		private static readonly ConcurrentDictionary<string, ActionType> _ActionTypesCache = new ConcurrentDictionary<string, ActionType>();
 
 		private string _name;
 
@@ -36,7 +36,7 @@
 
 		public static ActionType Get(string name)
 		{
-			return _cache.GetOrAdd(name, actionTypeName => new ActionType(actionTypeName));
+			return _ActionTypesCache.GetOrAdd(name, actionTypeName => new ActionType(actionTypeName));
 		}
 
 		public static bool operator ==(ActionType actionType1, ActionType actionType2)

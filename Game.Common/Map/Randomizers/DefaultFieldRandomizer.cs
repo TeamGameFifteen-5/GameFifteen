@@ -1,7 +1,7 @@
 ﻿namespace Game.Common.Map.Randomizers
 {
     using System;
-    using Game.Common.Movement;
+	using Game.Common.Map.Movement;
     using Game.Common.Utils;
     
     public class DefaultFieldRandomizer : IFieldRandomizer
@@ -19,8 +19,10 @@
         /// Randomizes the given field.
         /// </summary>
         /// <param name="field">The field.</param>
-        public void Randomize(IMovement movement)
+        public void Randomize(IField field)
         {
+			var movement = new StraightMovement(field);
+
             for (int i = 0; i < 1000; i++)
             {
                 int randomNumber = this._randomGenerator.Next(_totalElementsInDirection);

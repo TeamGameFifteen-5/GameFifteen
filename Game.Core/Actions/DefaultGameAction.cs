@@ -1,12 +1,12 @@
 ﻿namespace Game.Core.Actions
 {
     using Game.Common;
-    using Game.Core.Actions.ActionInvokers;
+	using Game.Core.Actions.ActionReceiver;
 
 	public class DefaultGameAction : GameAction
 	{
-		public DefaultGameAction(ICoreEngine coreEngine, ActionType actionType, IActionInvoker actionInvoker = null)
-			: base(actionType, actionInvoker ?? new DefaultActionInvoker(coreEngine))
+		public DefaultGameAction(ActionType actionType, IActionReceiver actionReceiver)
+			: base(actionType, actionReceiver)
 		{
 		}
 
