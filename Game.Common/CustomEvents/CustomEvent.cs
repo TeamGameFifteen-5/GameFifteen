@@ -13,7 +13,7 @@
 		{
 			get
 			{
-				return EventArgs;
+				return this.EventArgs;
 			}
 		}
 	}

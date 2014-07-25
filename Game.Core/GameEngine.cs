@@ -14,7 +14,7 @@
 	using System;
 	using System.Linq;
 
-	public delegate void CustomEventHandler(Object eventObject);
+	public delegate void CustomEventHandler(object eventObject);
 
 	/// <summary>
 	/// Represents the Core engine.
@@ -239,7 +239,7 @@
 			}
 		}
 
-		private void OnGameCustomEvent(Object eventObject)
+		private void OnGameCustomEvent(object eventObject)
 		{
 			if (this.GameCustomEvent != null)
 			{

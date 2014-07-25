@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace Game.Common.Stats
+﻿namespace Game.Common.Stats
 {
+	using System.Collections.Generic;
+
 	/// <summary>
 	/// Interface for stats storage.
 	/// </summary>

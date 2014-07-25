@@ -25,7 +25,7 @@
 
             for (int i = 0; i < 1000; i++)
             {
-                int randomNumber = this._randomGenerator.Next(_totalElementsInDirection);
+                int randomNumber = this._randomGenerator.Next(this._totalElementsInDirection);
                 
                 Direction direction = (Direction)Enum.Parse(typeof(Direction), randomNumber.ToString());
 

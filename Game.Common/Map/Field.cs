@@ -1,10 +1,9 @@
 ﻿namespace Game.Common.Map
 {
-    using Game.Common.Utils;
-    using Game.Common.Map.Fillers;
-    using Game.Common.Map.Randomizers;
-    using System.Collections.Generic;
-	using Game.Common.Map.Movement;
+	using Game.Common.Map.Fillers;
+	using Game.Common.Map.Randomizers;
+	using Game.Common.Utils;
+	using System.Collections.Generic;
 
 	/// <summary>
 	/// Represents the game field.

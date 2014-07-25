@@ -1,10 +1,9 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
-
-namespace Game.Common.Stats
+﻿namespace Game.Common.Stats
 {
+	using System;
+	using System.IO;
+	using System.Runtime.Serialization.Formatters.Binary;
+
 	public sealed class InFileScores : StatsStorage<INameValue<int>>, IIntegerStats
 	{
 		private const int MAX_TOP_PLAYERS = 5;

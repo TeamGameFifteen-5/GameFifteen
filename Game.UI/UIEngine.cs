@@ -1,6 +1,5 @@
 ﻿namespace Game.UI
 {
-﻿    using Game.Common;
 	using Game.Common.CustomEvents;
 	using Game.Common.Players;
 	using Game.Common.Stats;
@@ -17,7 +16,7 @@
 		private const char UpperRightCorner = '\u2510';
 		private const char LowerLeftCorner = '\u2514';
 		private const char LowerRightCorner = '\u2518';
-        private const string UpAndDownTableFrame = "-------------------------";
+		private const string UpAndDownTableFrame = "-------------------------";
 
 		#endregion Constants
 
@@ -42,7 +41,7 @@
 
 		public void OnGameStart()
 		{
-				this._player.Score = 0;
+			this._player.Score = 0;
 		}
 
 		public void OnGameEnd()
@@ -57,8 +56,8 @@
 			this._player.Name = name;
 			this._ioProvider.DisplayLine(result);
 
-			//var playerScore = new NameValue<int>(this._player.Name, this._player.Score);
-			//this.OnGameShowScore(this);
+			// var playerScore = new NameValue<int>(this._player.Name, this._player.Score);
+			// this.OnGameShowScore(this);
 		}
 
 		public void OnGameExit()
@@ -75,14 +74,14 @@
 		{
 			var playerScores = scores.Load();
 
-            this._ioProvider.DisplayLine("{0}{1}", Environment.NewLine, UpAndDownTableFrame);
+			this._ioProvider.DisplayLine("{0}{1}", Environment.NewLine, UpAndDownTableFrame);
 
 			foreach (var playerScore in playerScores)
 			{
 				this._ioProvider.DisplayLine("{0}: {1}", playerScore.Name, playerScore.Value);
 			}
 
-            this._ioProvider.DisplayLine("{0}{1}", UpAndDownTableFrame, Environment.NewLine);
+			this._ioProvider.DisplayLine("{0}{1}", UpAndDownTableFrame, Environment.NewLine);
 		}
 
 		public void OnGameIllegalMove()
@@ -95,7 +94,7 @@
 			this._ioProvider.DisplayLine("Illegal command!");
 		}
 
-		public virtual void OnGameCustomEvent(Object eventObject)
+		public virtual void OnGameCustomEvent(object eventObject)
 		{
 			if (eventObject is FieldInvalidateEvent)
 			{

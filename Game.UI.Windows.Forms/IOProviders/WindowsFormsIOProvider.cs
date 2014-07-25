@@ -12,7 +12,7 @@
 
 	public class WindowsFormsIOProvider : IOProvider<Keys>
 	{
-		private static readonly object _locker = new Object();
+		private static readonly object _locker = new object();
 
 		private Font _drawFont = new Font("Arial", 16);
 		private SolidBrush _drawBrush = new SolidBrush(Color.White);
@@ -159,7 +159,7 @@
 
 		private TResult LockGraphics<TResult>(Func<TResult> action)
 		{
-			//lock (_locker)
+			// lock (_locker)
 			{
 				return action();
 			}

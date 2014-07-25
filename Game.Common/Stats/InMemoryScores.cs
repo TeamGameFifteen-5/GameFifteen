@@ -20,18 +20,18 @@
 
 		public override void Save(INameValue<int> score)
 		{
-			if (Stats.Count < MAX_TOP_PLAYERS)
+			if (this.Stats.Count < MAX_TOP_PLAYERS)
 			{
-				Stats.Add(score);
+				this.Stats.Add(score);
 			}
 			else
 			{
-				foreach (var personScore in Stats)
+				foreach (var personScore in this.Stats)
 				{
 					if (score.ValueObject <= personScore.ValueObject)
 					{
-						Stats.Remove(Stats[MAX_TOP_PLAYERS - 1]);
-						Stats.Add(score);
+						this.Stats.Remove(this.Stats[MAX_TOP_PLAYERS - 1]);
+						this.Stats.Add(score);
 						break;
 					}
 				}

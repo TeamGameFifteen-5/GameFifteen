@@ -1,11 +1,11 @@
 ﻿namespace Game.UI.Windows.Console.IOProviders
 {
-    using System;
-    using Console = System.Console;
-    using Game.Common;
+	using Game.Common;
 	using Game.UI.IOProviders;
 	using Game.UI.KeyMappings;
 	using Game.UI.Windows.Console.KeyMappings;
+	using System;
+	using Console = System.Console;
 
 	/// <summary>
 	/// Represents Console Input/Output provider.

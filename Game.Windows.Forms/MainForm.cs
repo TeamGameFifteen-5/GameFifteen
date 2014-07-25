@@ -16,7 +16,7 @@
 
 		public MainForm()
 		{
-			InitializeComponent();
+			this.InitializeComponent();
 		}
 
 		public Keys? LastKey { get; set; }
@@ -68,9 +68,9 @@
 
 		private void MainForm_Paint(object sender, PaintEventArgs e)
 		{
-			if (_gameEngine != null)
+			if (this._gameEngine != null)
 			{
-				Task.Run(() => _gameEngine.FieldInvalidate());
+				Task.Run(() => this._gameEngine.FieldInvalidate());
 			}
 		}
 	}

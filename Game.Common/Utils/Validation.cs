@@ -4,7 +4,7 @@
 
 	public static class Validation
 	{
-		public static void ThrowIfNull(Object instance, string message = null)
+		public static void ThrowIfNull(object instance, string message = null)
 		{
 			if (instance == null)
 			{

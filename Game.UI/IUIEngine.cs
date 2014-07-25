@@ -31,6 +31,6 @@
 		/// <summary>
 		/// Executes the game invalidate action.
 		/// </summary>
-		void OnGameCustomEvent(Object eventObject);
+		void OnGameCustomEvent(object eventObject);
 	}
 }
