@@ -1,16 +1,17 @@
 ﻿namespace Game.Core
 {
 	using Game.Common.GameOverCheckers;
-using Game.Common.Map;
-using Game.Common.Map.Movement;
-using Game.Common.Players;
-using Game.Common.Stats;
-using Game.Core.Actions.ActionProviders;
-using Game.UI;
+	using Game.Common.Map;
+	using Game.Common.Map.Movement;
+	using Game.Common.Players;
+	using Game.Common.Stats;
+	using Game.Core.Actions.ActionProviders;
+	using Game.UI;
 
-	public interface IGameEngineSettings
+	public interface IGameEngineSettings<TUIEngine>
+		where TUIEngine : IUIEngine
 	{
-		IUIEngine UIEngine { get; }
+		TUIEngine UIEngine { get; }
 
 		IField Field { get; }
 

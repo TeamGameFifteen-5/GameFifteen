@@ -54,7 +54,7 @@
 			var field = new Field();
 
 			var gameUI = new UIEngine(player, consoleIOProvider);
-			var gameEngineSettings = new GameEngineSettings(gameUI, field, player, HighScores.Instance);
+			var gameEngineSettings = new GameEngineSettings<IDefaultUIEngine>(gameUI, field, player, HighScores.Instance);
 			var gameEngine = new GameEngine(gameEngineSettings);
 			this._gameEngine = gameEngine;
 

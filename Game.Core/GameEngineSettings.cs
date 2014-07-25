@@ -9,11 +9,12 @@
 	using Game.Core.Actions.ActionProviders;
 	using Game.UI;
 
-	public class GameEngineSettings : IGameEngineSettings
+	public class GameEngineSettings<TUIEngine> : IGameEngineSettings<TUIEngine>
+		where TUIEngine : IUIEngine
 	{
 		#region Fields
 
-		private IUIEngine _uiEngine;
+		private TUIEngine _uiEngine;
 		private IField _field;
 		private IPlayer _player;
 		private IHighScores _highScores;
@@ -25,42 +26,42 @@
 
 		#region Constructors
 
-		public GameEngineSettings(IUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores)
+		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores)
 			: this(uiEngine, field, player, highscores, null, null, null)
 		{
 		}
 
-		public GameEngineSettings(IUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores, IActionProvider actionProvider)
+		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores, IActionProvider actionProvider)
 			: this(uiEngine, field, player, highscores, actionProvider, null, null)
 		{
 		}
 
-		public GameEngineSettings(IUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores, IMovement movement)
+		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores, IMovement movement)
 			: this(uiEngine, field, player, highscores, null, movement, null)
 		{
 		}
 
-		public GameEngineSettings(IUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores, IGameOverChecker gameOverChecker)
+		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores, IGameOverChecker gameOverChecker)
 			: this(uiEngine, field, player, highscores, null, null, gameOverChecker)
 		{
 		}
 
-		public GameEngineSettings(IUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores, IActionProvider actionProvider, IGameOverChecker gameOverChecker)
+		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores, IActionProvider actionProvider, IGameOverChecker gameOverChecker)
 			: this(uiEngine, field, player, highscores, actionProvider, null, gameOverChecker)
 		{
 		}
 
-		public GameEngineSettings(IUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores, IActionProvider actionProvider, IMovement movement)
+		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores, IActionProvider actionProvider, IMovement movement)
 			: this(uiEngine, field, player, highscores, actionProvider, movement, null)
 		{
 		}
 
-		public GameEngineSettings(IUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores, IMovement movement, IGameOverChecker gameOverChecker)
+		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores, IMovement movement, IGameOverChecker gameOverChecker)
 			: this(uiEngine, field, player, highscores, null, movement, gameOverChecker)
 		{
 		}
 
-		public GameEngineSettings(IUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores, IActionProvider actionProvider, IMovement movement, IGameOverChecker gameOverChecker)
+		public GameEngineSettings(TUIEngine uiEngine, IField field, IPlayer player, IHighScores highscores, IActionProvider actionProvider, IMovement movement, IGameOverChecker gameOverChecker)
 		{
 			this.UIEngine = uiEngine;
 			this.Field = field;
@@ -76,7 +77,7 @@
 
 		#region Properties
 
-		public IUIEngine UIEngine
+		public TUIEngine UIEngine
 		{
 			get
 			{

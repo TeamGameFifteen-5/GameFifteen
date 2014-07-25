@@ -7,7 +7,7 @@
     using System;
     using System.Collections.Generic;
 
-    public class UIEngine : IUIEngine
+	public class UIEngine : IDefaultUIEngine
     {
         #region Constants
 

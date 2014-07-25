@@ -31,7 +31,7 @@
 
 		#endregion Fields
 
-		public GameEngine(IGameEngineSettings settings)
+		public GameEngine(IGameEngineSettings<IDefaultUIEngine> settings)
 		{
 			this.UIEngine = settings.UIEngine;
 			this.InputProvider = this.UIEngine.InputProvider;
@@ -69,7 +69,7 @@
 
 		#region Properties
 
-		protected virtual IUIEngine UIEngine { get; set; }
+		protected virtual IDefaultUIEngine UIEngine { get; set; }
 
 		protected virtual IInputProvider InputProvider { get; set; }
 
