@@ -1,8 +1,8 @@
-﻿using Game.Common;
-using System;
-
-namespace Game.Core
+﻿namespace Game.Core
 {
+    using Game.Common;
+    using System;
+
 	/// <summary>
 	/// Interface for Core Engine.
 	/// </summary>

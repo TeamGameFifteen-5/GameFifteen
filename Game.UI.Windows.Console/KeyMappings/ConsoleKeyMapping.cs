@@ -1,9 +1,9 @@
-﻿using Game.Common;
-using Game.UI.KeyMappings;
-using System;
-
-namespace Game.UI.Windows.Console.KeyMappings
+﻿namespace Game.UI.Windows.Console.KeyMappings
 {
+    using System;
+    using Game.Common;
+    using Game.UI.KeyMappings;
+
 	/// <summary>
 	/// Represents Console key mapping.
 	/// </summary>

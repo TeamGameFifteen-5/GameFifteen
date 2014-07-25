@@ -1,12 +1,11 @@
-﻿using Game.Common.Map;
-using Game.Common.Players;
-using Game.Common.Stats;
-using Game.Core;
-using Game.UI;
-using Game.UI.Windows.Console.IOProviders;
-
-namespace Game.App
+﻿namespace Game.App
 {
+    using Game.Common.Map;
+    using Game.Common.Players;
+    using Game.Core;
+    using Game.UI;
+    using Game.UI.Windows.Console.IOProviders;
+
 	internal class App
 	{
 		public static void Main(string[] args)

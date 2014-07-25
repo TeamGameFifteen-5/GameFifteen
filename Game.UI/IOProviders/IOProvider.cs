@@ -1,10 +1,10 @@
-﻿using Game.Common;
-using Game.UI.IOProviders.Settings;
-using Game.UI.KeyMappings;
-using System.Drawing;
-
-namespace Game.UI.IOProviders
+﻿namespace Game.UI.IOProviders
 {
+    using System.Drawing;
+    using Game.Common;
+    using Game.UI.IOProviders.Settings;
+    using Game.UI.KeyMappings;
+
 	/// <summary>
 	/// Represents abstract Input/Output provider.
 	/// Implements Bridge, Strategy, Template Method Design Pattern.

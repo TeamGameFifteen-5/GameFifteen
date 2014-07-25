@@ -1,8 +1,8 @@
-﻿using Game.Common;
-using Game.Core.Actions.ActionInvokers;
-
-namespace Game.Core.Actions.ActionProviders
+﻿namespace Game.Core.Actions.ActionProviders
 {
+    using Game.Common;
+    using Game.Core.Actions.ActionInvokers;
+
 	public class DefaultActionProvider : ActionProvider
 	{
 		private ICoreEngine _coreEngine;

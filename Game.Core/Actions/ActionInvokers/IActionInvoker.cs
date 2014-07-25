@@ -1,7 +1,7 @@
-﻿using Game.Common;
-
-namespace Game.Core.Actions.ActionInvokers
+﻿namespace Game.Core.Actions.ActionInvokers
 {
+    using Game.Common;
+
 	/// <summary>
 	/// Interface for action invoker.
 	/// </summary>

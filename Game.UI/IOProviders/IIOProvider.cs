@@ -1,8 +1,8 @@
-﻿using Game.UI.IOProviders.Settings;
-using System.Drawing;
-
-namespace Game.UI.IOProviders
+﻿namespace Game.UI.IOProviders
 {
+    using System.Drawing;
+    using Game.UI.IOProviders.Settings;
+    
 	/// <summary>
 	/// Interface for Input/Output provider.
 	/// </summary>

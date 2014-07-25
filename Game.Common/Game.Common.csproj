@@ -46,6 +46,9 @@
     <Compile Include="CustomEvents\ICustomEvent.cs" />
     <Compile Include="DefaultActionTypes.cs" />
     <Compile Include="Direction.cs" />
+    <Compile Include="Movement\BackwardMovement.cs" />
+    <Compile Include="Movement\IMovement.cs" />
+    <Compile Include="Movement\StraightMovement.cs" />
     <Compile Include="Players\IPlayer.cs" />
     <Compile Include="Players\Player.cs" />
     <Compile Include="Position.cs" />

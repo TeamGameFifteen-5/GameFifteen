@@ -1,7 +1,7 @@
-﻿using Game.Common;
-
-namespace Game.Core.Actions.ActionProviders
+﻿namespace Game.Core.Actions.ActionProviders
 {
+    using Game.Common;
+
 	/// <summary>
 	/// Interface for action provider.
 	/// </summary>

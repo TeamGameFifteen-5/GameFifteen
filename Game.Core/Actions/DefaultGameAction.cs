@@ -1,8 +1,8 @@
-﻿using Game.Common;
-using Game.Core.Actions.ActionInvokers;
-
-namespace Game.Core.Actions
+﻿namespace Game.Core.Actions
 {
+    using Game.Common;
+    using Game.Core.Actions.ActionInvokers;
+
 	public class DefaultGameAction : GameAction
 	{
 		public DefaultGameAction(ICoreEngine coreEngine, ActionType actionType, IActionInvoker actionInvoker = null)

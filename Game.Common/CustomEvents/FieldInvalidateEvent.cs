@@ -1,7 +1,7 @@
-﻿using Game.Common.Map;
-
-namespace Game.Common.CustomEvents
+﻿namespace Game.Common.CustomEvents
 {
+    using Game.Common.Map;
+
 	public class FieldInvalidateEvent : CustomEvent<IField>
 	{
 		/// <summary>

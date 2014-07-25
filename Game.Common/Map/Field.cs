@@ -1,11 +1,11 @@
-﻿using Game.Common;
-using Game.Common.Utils;
-using Game.Common.Map.Fillers;
-using Game.Common.Map.Randomizers;
-using System.Collections.Generic;
-
-namespace Game.Common.Map
+﻿namespace Game.Common.Map
 {
+    using Game.Common.Utils;
+    using Game.Common.Map.Fillers;
+    using Game.Common.Map.Randomizers;
+    using System.Collections.Generic;
+    using Game.Common.Movement;
+
 	/// <summary>
 	/// Represents the game field.
 	/// Implements Bridge, Strategy and Iterator Design Pattern.
@@ -74,7 +74,7 @@ namespace Game.Common.Map
 
 		public void RandomizeField(IFieldRandomizer randomizer = null)
 		{
-			(randomizer ?? this.DefaultRandomizer).Randomize(this);
+			(randomizer ?? this.DefaultRandomizer).Randomize(new StraightMovement(this));
 		}
 
 		public void Fill(int size, IFieldFiller filler = null)

@@ -1,7 +1,7 @@
-﻿using Game.Common;
-
-namespace Game.UI.IOProviders
+﻿namespace Game.UI.IOProviders
 {
+    using Game.Common;
+
 	/// <summary>
 	/// Interface for input provider.
 	/// </summary>
