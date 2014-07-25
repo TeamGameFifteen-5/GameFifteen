@@ -1,10 +1,11 @@
 ﻿namespace Game.App
 {
-    using Game.Common.Map;
-    using Game.Common.Players;
-    using Game.Core;
-    using Game.UI;
-    using Game.UI.Windows.Console.IOProviders;
+	using Game.Common.Map;
+	using Game.Common.Players;
+	using Game.Common.Stats;
+	using Game.Core;
+	using Game.UI;
+	using Game.UI.Windows.Console.IOProviders;
 
 	internal class App
 	{
@@ -15,7 +16,8 @@
 			var field = new Field();
 
 			var gameUI = new UIEngine(player, consoleIOProvider);
-			var gameEngine = new CoreEngine(gameUI, field, player);
+			var gameEngineSettings = new GameEngineSettings<IDefaultUIEngine>(gameUI, field, player, HighScores.Instance);
+			var gameEngine = new GameEngine(gameEngineSettings);
 			gameEngine.Start();
 		}
 	}

@@ -27,26 +27,6 @@
 		/// Executes the game exit action.
 		/// </summary>
 		void OnGameExit();
-        
-		/// <summary>
-		/// Executes the game movement action.
-		/// </summary>
-		void OnGameMovement();
-        
-		/// <summary>
-		/// Executes the game score action.
-		/// </summary>
-		void OnGameShowScore();
-
-		/// <summary>
-		/// Executes the game illegal move action.
-		/// </summary>
-		void OnGameIllegalMove();
-
-		/// <summary>
-		/// Executes the game illegal command action.
-		/// </summary>
-		void OnGameIllegalCommand();
 
 		/// <summary>
 		/// Executes the game invalidate action.

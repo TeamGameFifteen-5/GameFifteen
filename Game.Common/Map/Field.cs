@@ -4,7 +4,7 @@
     using Game.Common.Map.Fillers;
     using Game.Common.Map.Randomizers;
     using System.Collections.Generic;
-    using Game.Common.Movement;
+	using Game.Common.Map.Movement;
 
 	/// <summary>
 	/// Represents the game field.
@@ -25,7 +25,7 @@
 			this.DefaultFiller = defaultFiller ?? new DefaultFieldFiller();
 
 			var lastPosition = size - 1;
-			this.Position = new Position(lastPosition, lastPosition);
+			this.StartPosition = new Position(lastPosition, lastPosition);
 
 			this.Fill(size);
 		}
@@ -50,7 +50,7 @@
 			}
 		}
 
-		public Position Position { get; protected set; }
+		public Position StartPosition { get; protected set; }
 
 		protected IFieldRandomizer DefaultRandomizer { get; set; }
 
@@ -74,7 +74,7 @@
 
 		public void RandomizeField(IFieldRandomizer randomizer = null)
 		{
-			(randomizer ?? this.DefaultRandomizer).Randomize(new StraightMovement(this));
+			(randomizer ?? this.DefaultRandomizer).Randomize(this);
 		}
 
 		public void Fill(int size, IFieldFiller filler = null)

@@ -34,12 +34,12 @@
 		int Height { get; }
 
 		/// <summary>
-		/// Gets the position.
+		/// Gets the start position.
 		/// </summary>
 		/// <value>
-		/// The position.
+		/// The start position.
 		/// </value>
-		Position Position { get; }
+		Position StartPosition { get; }
 
 		/// <summary>
 		/// Indexer to get or set items within this collection using array index syntax.

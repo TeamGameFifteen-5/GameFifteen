@@ -7,7 +7,7 @@
     using System;
     using System.Collections.Generic;
 
-    public class UIEngine : IUIEngine
+	public class UIEngine : IDefaultUIEngine
     {
         #region Constants
 
@@ -17,13 +17,14 @@
         private const char UpperRightCorner = '\u2510';
         private const char LowerLeftCorner = '\u2514';
         private const char LowerRightCorner = '\u2518';
+        private const string UpAndDownTableFrame = "-------------------------";
 
         #endregion Constants
 
         private IIOProvider _ioProvider;
         private IPlayer _player;
         private IHighScores _highScores;
-        private List<IPlayer> players;
+        private List<IPlayer> _players;
 
         public UIEngine(IPlayer player, IIOProvider ioProvider)
         {
@@ -44,6 +45,7 @@
 
         public void OnGameStart()
         {
+				this._player.Score = 0;
         }
 
         public void OnGameEnd()
@@ -73,16 +75,16 @@
 
         public void OnGameShowScore()
         {
-            this.players = this._highScores.Load();
+            this._players = this._highScores.Load();
 
-            this._ioProvider.DisplayLine("{0}{1}", Environment.NewLine, "-------------------------");
+            this._ioProvider.DisplayLine("{0}{1}", Environment.NewLine, UpAndDownTableFrame);
 
-            foreach (var player in players)
+            foreach (var player in _players)
             {
                 this._ioProvider.DisplayLine("{0}: {1}", player.Name, player.Score.ToString());
             }
           
-            this._ioProvider.DisplayLine("{0}{1}", "-------------------------", Environment.NewLine);
+            this._ioProvider.DisplayLine("{0}{1}", UpAndDownTableFrame, Environment.NewLine);
         }
 
         public void OnGameIllegalMove()

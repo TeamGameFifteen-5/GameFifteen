@@ -1,28 +1,28 @@
 ﻿namespace Game.Core.Actions
 {
     using Game.Common;
-    using Game.Core.Actions.ActionInvokers;
+	using Game.Core.Actions.ActionReceiver;
 
 	public abstract class GameAction : IGameAction
 	{
-		public GameAction(ActionType actionType, IActionInvoker actionInvoker)
+		public GameAction(ActionType actionType, IActionReceiver actionReceiver)
 		{
-			this.ActionInvoker = actionInvoker;
+			this.ActionReceiver = actionReceiver;
 			this.ActionType = actionType;
 		}
 
-		protected IActionInvoker ActionInvoker { get; private set; }
+		protected IActionReceiver ActionReceiver { get; private set; }
 		protected ActionType ActionType { get; private set; }
 
 		public virtual void Execute()
 		{
-			this.ActionInvoker.Invoke(this.ActionType);
+			this.ActionReceiver.Execute(this.ActionType);
 		}
 
 		public virtual void UnExecute()
 		{
 			var undoActionType = this.GetUndoActionType(this.ActionType);
-			this.ActionInvoker.Invoke(undoActionType);
+			this.ActionReceiver.Execute(undoActionType);
 		}
 
 		protected virtual ActionType GetUndoActionType(ActionType actionType)

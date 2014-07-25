@@ -1,8 +1,11 @@
-﻿using System;
-namespace Game.Common.Players
+﻿namespace Game.Common.Players
 {
-	public class Player : IPlayer, IComparable<IPlayer>
-	{
+    using System;
+
+    [Serializable]
+
+    public class Player : IPlayer, IComparable<IPlayer>
+    {
 
         public Player()
         {
@@ -15,9 +18,9 @@ namespace Game.Common.Players
             this.Score = player.Score;
         }
 
-		public string Name { get; set; }
+        public string Name { get; set; }
 
-		public int Score { get; set; }
+        public int Score { get; set; }
 
         public int CompareTo(IPlayer player)
         {

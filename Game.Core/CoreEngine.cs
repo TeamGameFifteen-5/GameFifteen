@@ -82,10 +82,8 @@
 		{
 			while (!this._gameExit)
 			{
-				this._field.RandomizeField();
-				this._player.Score = 0;
 				this.OnGameStart();
-				this.Invalidate();
+                this.RestartGame();
 
 				bool isSolved = this.IsGameSolved();
 				while (!this._gameExit && !isSolved)

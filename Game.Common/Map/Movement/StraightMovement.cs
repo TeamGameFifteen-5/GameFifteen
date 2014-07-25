@@ -1,38 +1,38 @@
-﻿namespace Game.Common.Movement
+﻿namespace Game.Common.Map.Movement
 {
     using System;
     using Game.Common.Map;
-
-    public class BackwardMovement : IMovement
+ 
+    public class StraightMovement : IMovement
     {
         private IField _gameField;
 
-        public BackwardMovement(IField gameField)
+        public StraightMovement(IField gameField)
         {
             this._gameField = gameField;
         }
 
         public bool Move(Direction direction)
         {
-            int row = this._gameField.Position.Y;
-            int col = this._gameField.Position.X;
+            int row = this._gameField.StartPosition.Y;
+            int col = this._gameField.StartPosition.X;
 
             switch (direction)
             {
                 case Direction.Up:
-                    row++;
-                    break;
-
-                case Direction.Down:
                     row--;
                     break;
 
+                case Direction.Down:
+                    row++;
+                    break;
+
                 case Direction.Left:
-                    col++;
+                    col--;
                     break;
 
                 case Direction.Right:
-                    col--;
+                    col++;
                     break;
 
                 default:
@@ -42,10 +42,10 @@
             if (this._gameField.IsInLimits(row, col))
             {
                 int numberForSwap = this._gameField.Area[row, col];
-                this._gameField[row, col] = this._gameField[this._gameField.Position.Y, this._gameField.Position.X];
-                this._gameField[this._gameField.Position.Y, this._gameField.Position.X] = numberForSwap;
-                this._gameField.Position.Y = row;
-                this._gameField.Position.X = col;
+                this._gameField[row, col] = this._gameField[this._gameField.StartPosition.Y, this._gameField.StartPosition.X];
+                this._gameField[this._gameField.StartPosition.Y, this._gameField.StartPosition.X] = numberForSwap;
+                this._gameField.StartPosition.Y = row;
+                this._gameField.StartPosition.X = col;
                 return true;
             }
 

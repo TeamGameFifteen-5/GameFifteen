@@ -1,21 +1,18 @@
 ﻿namespace Game.Core.Actions.ActionProviders
 {
-    using Game.Common;
-    using Game.Core.Actions.ActionInvokers;
+	using Game.Common;
+	using Game.Core.Actions.ActionReceiver;
+	using System.Collections.Generic;
 
+	/// <summary>
+	/// Represents default action provider.
+	/// </summary>
+	/// <seealso cref="Game.Core.Actions.ActionProviders.ActionProvider"/>
 	public class DefaultActionProvider : ActionProvider
 	{
-		private ICoreEngine _coreEngine;
-
-		public DefaultActionProvider(ICoreEngine coreEngine, IActionInvoker actionInvoker = null)
-			: base(actionInvoker ?? new DefaultActionInvoker(coreEngine))
+		protected override IGameAction CreateAction(KeyValuePair<ActionType, IActionReceiver> action)
 		{
-			this._coreEngine = coreEngine;
-		}
-
-		public override IGameAction CreateAction(ActionType actionType)
-		{
-			return new DefaultGameAction(this._coreEngine, actionType, this.ActionInvoker);
+			return new DefaultGameAction(action.Key, action.Value);
 		}
 	}
 }

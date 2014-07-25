@@ -1,16 +1,16 @@
-﻿namespace Game.Core.Actions.ActionInvokers
+﻿namespace Game.Core.Actions.ActionReceiver
 {
     using Game.Common;
 
 	/// <summary>
-	/// Interface for action invoker.
+	/// Interface for action reciever.
 	/// </summary>
-	public interface IActionInvoker
+	public interface IActionReceiver
 	{
 		/// <summary>
 		/// Executes the given operation.
 		/// </summary>
 		/// <param name="actionType">Type of the action.</param>
-		void Invoke(ActionType actionType);
+		void Execute(ActionType actionType);
 	}
 }
