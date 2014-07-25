@@ -21,7 +21,7 @@
 	/// Implements Observer, Bridge and Command Design Pattern.
 	/// </summary>
 	/// <seealso cref="Game.Core.IGameEngine"/>
-	public class GameEngine : IGameEngine
+	public class GameEngine : IDefaultGameEngine
 	{
 		private bool _gameExit = false;
 
@@ -98,7 +98,7 @@
 				this.Field.RandomizeField();
 				this.Player.Score = 0;
 				this.OnGameStart();
-				this.Invalidate();
+				this.FieldInvalidate();
 
 				bool isSolved = this.IsItGameOver();
 				while (!this._gameExit && !isSolved)
@@ -126,15 +126,17 @@
 			}
 		}
 
-		public virtual void Move(Direction direction)
+		public virtual bool Move(Direction direction)
 		{
 			var canMove = this.MoveableEntity.Move(direction);
-			this.Invalidate();
+			this.FieldInvalidate();
 
 			if (!canMove)
 			{
 				this.OnGameIllegalMove();
 			}
+
+			return canMove;
 		}
 
 		public virtual void ShowScore()
@@ -151,7 +153,7 @@
 		public virtual void RestartGame()
 		{
 			this.Field.RandomizeField();
-			this.Invalidate();
+			this.FieldInvalidate();
 		}
 
 		public virtual void IllegalMove()
@@ -164,7 +166,7 @@
 			this.OnGameIllegalCommand();
 		}
 
-		public virtual void Invalidate()
+		public virtual void FieldInvalidate()
 		{
 			this.OnGameCustomEvent(new FieldInvalidateEvent(this.Field));
 		}

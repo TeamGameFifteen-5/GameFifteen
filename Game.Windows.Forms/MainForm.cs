@@ -70,7 +70,7 @@
 		{
 			if (_gameEngine != null)
 			{
-				Task.Run(() => _gameEngine.Invalidate());
+				Task.Run(() => _gameEngine.FieldInvalidate());
 			}
 		}
 	}

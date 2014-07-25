@@ -5,9 +5,9 @@
 
 	public class DefaultActionReceiver : IActionReceiver
 	{
-		private IGameEngine _gameEngine;
+		private IDefaultGameEngine _gameEngine;
 
-		public DefaultActionReceiver(IGameEngine gameEngine)
+		public DefaultActionReceiver(IDefaultGameEngine gameEngine)
 		{
 			this._gameEngine = gameEngine;
 		}

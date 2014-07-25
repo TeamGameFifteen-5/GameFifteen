@@ -7,7 +7,7 @@
 
 	/// <summary>
 	/// Represents Action provider.
-	/// Implements FlyWeight Design Pattern.
+	/// Implements FlyWeight and Template Method Design Pattern.
 	/// </summary>
 	/// <seealso cref="Game.Core.Actions.ActionProviders.IActionProvider"/>
 	public abstract class ActionProvider : IActionProvider

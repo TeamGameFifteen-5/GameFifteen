@@ -79,6 +79,7 @@
     <Compile Include="GameEngineSettings.cs" />
     <Compile Include="IGameEngine.cs" />
     <Compile Include="IGameEngineSettings.cs" />
+    <Compile Include="IDefaultGameEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
