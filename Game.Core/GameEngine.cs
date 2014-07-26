@@ -1,17 +1,18 @@
 ﻿namespace Game.Core
 {
-	using Game.Common;
-	using Game.Common.CustomEvents;
-	using Game.Common.GameOverCheckers;
-	using Game.Common.Map;
-	using Game.Common.Map.Decorators;
-	using Game.Common.Players;
-	using Game.Common.Stats;
-	using Game.Core.Actions.ActionProviders;
-	using Game.Core.Actions.ActionReceiver;
-	using Game.UI;
-	using Game.UI.IOProviders;
-	using System;
+    using Game.Common;
+    using Game.Common.CustomEvents;
+    using Game.Common.GameOverCheckers;
+    using Game.Common.Map;
+    using Game.Common.Map.Decorators;
+    using Game.Common.Players;
+    using Game.Common.Stats;
+    using Game.Common.Utils;
+    using Game.Core.Actions.ActionProviders;
+    using Game.Core.Actions.ActionReceiver;
+    using Game.UI;
+    using Game.UI.IOProviders;
+    using System;
 
 	public delegate void CustomEventHandler(object eventObject);
 
@@ -21,9 +22,20 @@
 	/// </summary>
 	/// <seealso cref="Game.Core.IGameEngine"/>
 	public class GameEngine : IDefaultGameEngine
-	{
+	{  
+        #region Fields
 		private bool _gameExit = false;
+        private IDefaultUIEngine _uIEngine;
+        private IInputProvider _inputProvider;
+        private IField _field;
+        private IPlayer _player;
+        private IIntegerStats _highScores;
+        private IMoveable _moveableEntity;
+        private IGameOverChecker _gameOverChecker;
+        private IActionProvider _actionProvider;
+        private IActionReceiver _actionReceiver;
 
+        #endregion Fields
 		public GameEngine(IGameEngineSettings<IDefaultUIEngine, IIntegerStats> settings)
 		{
 			this.UIEngine = settings.UIEngine;
@@ -62,23 +74,131 @@
 
 		#region Properties
 
-		public virtual IDefaultUIEngine UIEngine { get; set; }
+        public virtual IDefaultUIEngine UIEngine
+        {
+            get
+            {
+                return this._uIEngine;
+            }
 
-		public virtual IInputProvider InputProvider { get; set; }
+            set
+            {
+                Validation.ThrowIfNull(value);
+                this._uIEngine = value;
+            }
+        }
 
-		public virtual IField Field { get; set; }
+        public virtual IInputProvider InputProvider
+        {
+            get
+            {
+                return this._inputProvider;
+            }
 
-		public virtual IPlayer Player { get; set; }
+            set
+            {
+                Validation.ThrowIfNull(value);
+                this._inputProvider = value;
+            }
+        }
 
-		public virtual IIntegerStats HighScores { get; set; }
+        public virtual IField Field
+        {
+            get
+            {
+                return this._field;
+            }
 
-		public virtual IMoveable MoveableEntity { get; set; }
+            set
+            {
+                Validation.ThrowIfNull(value);
+                this._field = value;
+            }
+        }
 
-		public virtual IGameOverChecker GameOverChecker { get; set; }
+        public virtual IPlayer Player
+        {
+            get
+            {
+                return this._player;
+            }
 
-		protected virtual IActionProvider ActionProvider { get; set; }
+            set
+            {
+                Validation.ThrowIfNull(value);
+                this._player = value;
+            }
+        }
 
-		protected virtual IActionReceiver ActionReceiver { get; set; }
+        public virtual IIntegerStats HighScores
+        {
+            get
+            {
+                return this._highScores;
+            }
+
+            set
+            {
+                Validation.ThrowIfNull(value);
+                this._highScores = value;
+            }
+        }
+
+        public virtual IMoveable MoveableEntity
+        {
+            get
+            {
+                return this._moveableEntity;
+            }
+
+            set
+            {
+                Validation.ThrowIfNull(value);
+                this._moveableEntity = value;
+            }
+        }
+
+        public virtual IGameOverChecker GameOverChecker
+        {
+            get
+            {
+                return this._gameOverChecker;
+            }
+
+            set
+            {
+                Validation.ThrowIfNull(value);
+                this._gameOverChecker = value;
+            }
+        }
+
+        protected virtual IActionProvider ActionProvider
+        {
+            get
+            {
+                return this._actionProvider;
+            }
+
+            set
+            {
+                Validation.ThrowIfNull(value);
+                this._actionProvider = value;
+            }
+        }
+
+        protected virtual IActionReceiver ActionReceiver
+        {
+            get
+            {
+                return this._actionReceiver;
+            }
+
+            set
+            {
+                Validation.ThrowIfNull(value);
+                this._actionReceiver = value;
+            }
+        }
 
 		#endregion Properties
 

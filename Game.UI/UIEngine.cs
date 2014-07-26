@@ -1,12 +1,13 @@
 ﻿namespace Game.UI
 {
-	using Game.Common;
-	using Game.Common.CustomEvents;
-	using Game.Common.Map;
-	using Game.Common.Players;
-	using Game.Common.Stats;
-	using Game.UI.IOProviders;
-	using System;
+    using Game.Common;
+    using Game.Common.CustomEvents;
+    using Game.Common.Map;
+    using Game.Common.Players;
+    using Game.Common.Stats;
+    using Game.Common.Utils;
+    using Game.UI.IOProviders;
+    using System;
 
 	public class UIEngine<TIOProvider> : IDefaultUIEngine
 			where TIOProvider : IIOProvider
@@ -23,20 +24,46 @@
 
 		public UIEngine(IDefaultUIEngineSettings<TIOProvider, IPlayer, IField, IStatsStorage> settings)
 		{
-			this._settings = settings;
+			this.Settings = settings;
 			this._ioProvider = settings.IOProvider;
-			this._player = settings.Player;
+			this.Player = settings.Player;
 
 			this._ioProvider.ApplySettings(settings.IOProviderSettings);
 		}
 
-		public IInputProvider InputProvider
-		{
+        public IInputProvider InputProvider
+        {
 			get
 			{
 				return this._ioProvider;
 			}
 		}
+
+        public IDefaultUIEngineSettings<TIOProvider, IPlayer, IField, IStatsStorage> Settings
+        {
+            get
+            {
+                return this._settings;
+            }
+            private set
+            {
+                Validation.ThrowIfNull(value);
+                this._settings = value;
+            }
+        }
+
+        public IPlayer Player
+        {
+            get
+            {
+                return this._player;
+            }
+            private set
+            {
+                Validation.ThrowIfNull(value);
+                this._player = value;
+            }
+        }
 
 		public Difficulty Difficulty { get; private set; }
 
