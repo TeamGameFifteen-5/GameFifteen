@@ -1,15 +1,11 @@
 ﻿namespace Game.UI.Renderers
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Text;
-	using System.Threading.Tasks;
+	using Game.UI.IOProviders;
 
-
-	public class DefaultIllegalMoveRenderer : IRenderer
+	public class DefaultIllegalMoveRenderer<TOutputProvider> : IRenderer<TOutputProvider>
+		where TOutputProvider : IOutputProvider
 	{
-		public void Render(IOProviders.IOutputProvider outputProvider)
+		public void Render(TOutputProvider outputProvider)
 		{
 			outputProvider.DisplayLine("Illegal move!");
 		}

@@ -12,24 +12,25 @@
 	/// Interface for default user interface engine settings.
 	/// </summary>
 	/// <seealso cref="IUIEngineSettings"/>
-	public class DefaultUIEngineSettings : IDefaultUIEngineSettings<IPlayer, IField, IStatsStorage>
+	public class DefaultUIEngineSettings<TIOProvider> : IDefaultUIEngineSettings<TIOProvider, IPlayer, IField, IStatsStorage>
+		where TIOProvider : IIOProvider
 	{
 		#region Constructors
 
 		public DefaultUIEngineSettings(
-			IIOProvider ioProvider,
+			TIOProvider ioProvider,
 			IPlayer player,
 			IIOProviderSettings ioProviderSettings = null,
-			IRenderer startRenderer = null,
-			IRenderer chooseDifficultyRenderer = null,
-			IRenderer<IPlayer> endRenderer = null,
-			IRenderer exitRenderer = null,
-			IRenderer illegalMoveRenderer = null,
-			IRenderer illegalCommandRenderer = null,
-			IRenderer helpDisplayRenderer = null,
-			IRenderer invalidInputRenderer = null,
-			IRenderer<IField> fieldRenderer = null,
-			IRenderer<IStatsStorage> scoreRenderer = null)
+			IRenderer<TIOProvider> startRenderer = null,
+			IRenderer<TIOProvider> chooseDifficultyRenderer = null,
+			IRenderer<TIOProvider, IPlayer> endRenderer = null,
+			IRenderer<TIOProvider> exitRenderer = null,
+			IRenderer<TIOProvider> illegalMoveRenderer = null,
+			IRenderer<TIOProvider> illegalCommandRenderer = null,
+			IRenderer<TIOProvider> helpDisplayRenderer = null,
+			IRenderer<TIOProvider> invalidInputRenderer = null,
+			IRenderer<TIOProvider, IField> fieldRenderer = null,
+			IRenderer<TIOProvider, IStatsStorage> scoreRenderer = null)
 		{
 			Validation.ThrowIfNull(ioProvider);
 			Validation.ThrowIfNull(player);
@@ -37,47 +38,47 @@
 			this.IOProvider = ioProvider;
 			this.IOProviderSettings = ioProviderSettings ?? new DefaultIOProviderSettings();
 			this.Player = player;
-			this.StartRenderer = startRenderer ?? new DefaultStartRenderer();
-			this.ChooseDifficultyRenderer = chooseDifficultyRenderer ?? new DefaultChooseDifficultyRenderer();
-			this.EndRenderer = endRenderer ?? new DefaultEndRenderer();
-			this.ExitRenderer = exitRenderer ?? new DefaultExitRenderer();
-			this.IllegalMoveRenderer = illegalMoveRenderer ?? new DefaultIllegalMoveRenderer();
-			this.IllegalCommandRenderer = illegalCommandRenderer ?? new DefaultIllegalCommandRenderer();
-			this.HelpDisplayRenderer = helpDisplayRenderer ?? new DefaultHelpDisplayRenderer();
-			this.InvalidInputRenderer = invalidInputRenderer ?? new DefaultInvalidInputRenderer();
-			this.FieldRenderer = fieldRenderer ?? new DefaultFieldRenderer();
-			this.ScoreRenderer = scoreRenderer ?? new DefaultScoreRenderer();
+			this.StartRenderer = startRenderer ?? new DefaultStartRenderer<TIOProvider>();
+			this.ChooseDifficultyRenderer = chooseDifficultyRenderer ?? new DefaultChooseDifficultyRenderer<TIOProvider>();
+			this.EndRenderer = endRenderer ?? new DefaultEndRenderer<TIOProvider>();
+			this.ExitRenderer = exitRenderer ?? new DefaultExitRenderer<TIOProvider>();
+			this.IllegalMoveRenderer = illegalMoveRenderer ?? new DefaultIllegalMoveRenderer<TIOProvider>();
+			this.IllegalCommandRenderer = illegalCommandRenderer ?? new DefaultIllegalCommandRenderer<TIOProvider>();
+			this.HelpDisplayRenderer = helpDisplayRenderer ?? new DefaultHelpDisplayRenderer<TIOProvider>();
+			this.InvalidInputRenderer = invalidInputRenderer ?? new DefaultInvalidInputRenderer<TIOProvider>();
+			this.FieldRenderer = fieldRenderer ?? new DefaultFieldRenderer<TIOProvider>();
+			this.ScoreRenderer = scoreRenderer ?? new DefaultScoreRenderer<TIOProvider>();
 		}
 
 		#endregion Constructors
 
 		#region Properties
 
-		public IIOProvider IOProvider { get; private set; }
+		public TIOProvider IOProvider { get; private set; }
 
 		public IIOProviderSettings IOProviderSettings { get; private set; }
 
 		public IPlayer Player { get; private set; }
 
-		public IRenderer StartRenderer { get; private set; }
+		public IRenderer<TIOProvider> StartRenderer { get; private set; }
 
-		public IRenderer ChooseDifficultyRenderer { get; private set; }
+		public IRenderer<TIOProvider> ChooseDifficultyRenderer { get; private set; }
 
-		public IRenderer<IPlayer> EndRenderer { get; private set; }
+		public IRenderer<TIOProvider, IPlayer> EndRenderer { get; private set; }
 
-		public IRenderer ExitRenderer { get; private set; }
+		public IRenderer<TIOProvider> ExitRenderer { get; private set; }
 
-		public IRenderer IllegalMoveRenderer { get; private set; }
+		public IRenderer<TIOProvider> IllegalMoveRenderer { get; private set; }
 
-		public IRenderer IllegalCommandRenderer { get; private set; }
+		public IRenderer<TIOProvider> IllegalCommandRenderer { get; private set; }
 
-		public IRenderer HelpDisplayRenderer { get; private set; }
+		public IRenderer<TIOProvider> HelpDisplayRenderer { get; private set; }
 
-		public IRenderer InvalidInputRenderer { get; private set; }
+		public IRenderer<TIOProvider> InvalidInputRenderer { get; private set; }
 
-		public IRenderer<IField> FieldRenderer { get; private set; }
+		public IRenderer<TIOProvider, IField> FieldRenderer { get; private set; }
 
-		public IRenderer<IStatsStorage> ScoreRenderer { get; private set; }
+		public IRenderer<TIOProvider, IStatsStorage> ScoreRenderer { get; private set; }
 
 		#endregion Properties
 	}

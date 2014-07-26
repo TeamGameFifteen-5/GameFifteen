@@ -9,7 +9,7 @@
 	using System.Threading;
 	using System.Windows.Forms;
 
-	public class WindowsFormsIOProvider : IOProvider<Keys>
+	public class WindowsFormsIOProvider : IOProvider<Keys>, IWindowsFormsOutputProvider
 	{
 		private static readonly object _Locker = new object();
 
@@ -25,6 +25,7 @@
 
 		private IGameForm _gameForm;
 		private Graphics _graphics;
+		private string _currentTextInput;
 
 		public WindowsFormsIOProvider(IGameForm gameForm)
 		{
@@ -50,7 +51,38 @@
 
 		public override string GetTextInput()
 		{
-			return this._gameForm.GetTextInput();
+			_currentTextInput = string.Empty;
+			var gameForm = this._gameForm;
+			while (!gameForm.LastKey.HasValue || gameForm.LastKey.Value != Keys.Enter)
+			{
+				while (!gameForm.LastKey.HasValue)
+				{
+					Thread.Sleep(100);
+				}
+
+				Keys key = gameForm.LastKey.Value;
+				if (IsKeyLetterOrDigit(key))
+				{
+					var keyString = key.ToString();
+					if (keyString.Length > 1)
+					{
+						keyString = keyString.Substring(1);
+					}
+
+					if (!gameForm.IsShiftPressed)
+					{
+						keyString = keyString.ToLower();
+					}
+
+					this.Display(keyString);
+					gameForm.LastKey = null;
+					_currentTextInput += keyString;
+				}
+			}
+
+			gameForm.LastKey = null;
+			this.DisplayLine();
+			return _currentTextInput;
 		}
 
 		public override ActionType GetKeyInput(bool displayKey = false)
@@ -123,9 +155,19 @@
 		{
 			this.RunOnUIThread(() =>
 			{
-				this._graphics.Clear(Color.Black);
+				this._graphics.Clear(Color.DarkSeaGreen);
 				this._x = 0;
 				this._y = 0;
+			});
+		}
+
+		public void DrawImage(Image image)
+		{
+			this.RunOnUIThread(() =>
+			{
+				this._graphics.DrawImage(image, new PointF(_x, _y));
+				this._x = 0;
+				this._y += image.Height;
 			});
 		}
 
@@ -133,7 +175,7 @@
 		{
 			this.RunOnUIThread(() =>
 			{
-				this._graphics.DrawString(output, _drawFont, _drawBrush, _x, _y, _drawFormat);
+				this._graphics.DrawString(output, this._drawFont, this._drawBrush, this._x, this._y, this._drawFormat);
 			});
 		}
 
@@ -157,10 +199,25 @@
 
 		private TResult LockGraphics<TResult>(Func<TResult> action)
 		{
-			// lock (_locker)
+			lock (_Locker)
 			{
 				return action();
 			}
+		}
+
+		private bool IsKeyLetterOrDigit(Keys key)
+		{
+			return IsKeyLetter(key) || IsKeyDigit(key);
+		}
+
+		private bool IsKeyLetter(Keys key)
+		{
+			return key >= Keys.A && key <= Keys.Z;
+		}
+
+		private bool IsKeyDigit(Keys key)
+		{
+			return key >= Keys.D0 && key <= Keys.D9;
 		}
 	}
 }

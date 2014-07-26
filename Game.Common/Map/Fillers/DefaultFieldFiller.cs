@@ -19,6 +19,9 @@
 			area[lastXY, lastXY] = 0;
 
 			field.Area = area;
+
+			var lastPosition = size - 1;
+			field.Position = new Position(lastPosition, lastPosition);
 		}
 	}
 }

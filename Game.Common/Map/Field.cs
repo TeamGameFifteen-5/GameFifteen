@@ -23,9 +23,6 @@
 			this.Size = size;
 			this.DefaultRandomizer = defaultRandomizer ?? new DefaultFieldRandomizer(DefaultRandomGenerator.Instance);
 			this.DefaultFiller = defaultFiller ?? new DefaultFieldFiller();
-
-			var lastPosition = size - 1;
-			this.StartPosition = new Position(lastPosition, lastPosition);
 		}
 
 		#region Properties
@@ -34,7 +31,7 @@
 
 		public int Size { get; private set; }
 
-		public Position StartPosition { get; protected set; }
+		public Position Position { get; set; }
 
 		protected IFieldRandomizer DefaultRandomizer { get; set; }
 

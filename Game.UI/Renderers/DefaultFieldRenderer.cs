@@ -1,8 +1,10 @@
 ﻿namespace Game.UI.Renderers
 {
 	using Game.Common.Map;
+	using Game.UI.IOProviders;
 
-	public class DefaultFieldRenderer : IRenderer<IField>
+	public class DefaultFieldRenderer<TOutputProvider> : IRenderer<TOutputProvider, IField>
+		where TOutputProvider : IOutputProvider
 	{
 		#region Constants
 
@@ -15,7 +17,7 @@
 
 		#endregion Constants
 
-		public void Render(IOProviders.IOutputProvider outputProvider, IField field)
+		public void Render(TOutputProvider outputProvider, IField field)
 		{
 			var upperLine = string.Format("{0}{1}{2}", UPPER_LEFT_CORNER, new string(HORIZONTAL_LINE, 13), UPPER_RIGHT_CORNER);
 			var lowerLine = string.Format("{0}{1}{2}", LOWER_LEFT_CORNER, new string(HORIZONTAL_LINE, 13), LOWER_RIGHT_CORNER);

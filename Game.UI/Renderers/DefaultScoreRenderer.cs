@@ -1,9 +1,11 @@
 ﻿namespace Game.UI.Renderers
 {
 	using Game.Common.Stats;
+	using Game.UI.IOProviders;
 	using System;
 
-	public class DefaultScoreRenderer : IRenderer<IStatsStorage>
+	public class DefaultScoreRenderer<TOutputProvider> : IRenderer<TOutputProvider, IStatsStorage>
+		where TOutputProvider : IOutputProvider
 	{
 		#region Constants
 
@@ -11,7 +13,7 @@
 
 		#endregion Constants
 
-		public void Render(IOProviders.IOutputProvider outputProvider, IStatsStorage stats)
+		public void Render(TOutputProvider outputProvider, IStatsStorage stats)
 		{
 			var playerScores = stats.Load();
 

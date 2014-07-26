@@ -1,8 +1,11 @@
 ﻿namespace Game.UI.Renderers
 {
-	public class DefaultStartRenderer : IRenderer
+	using Game.UI.IOProviders;
+
+	public class DefaultStartRenderer<TOutputProvider> : IRenderer<TOutputProvider>
+		where TOutputProvider : IOutputProvider
 	{
-		public void Render(IOProviders.IOutputProvider outputProvider)
+		public void Render(TOutputProvider outputProvider)
 		{
 			outputProvider.DisplayLine();
 			outputProvider.DisplayLine();
@@ -15,8 +18,7 @@
 			outputProvider.DisplayLine(" ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚═╝     ╚═╝╚═╝        ╚═╝   ╚══════╝╚══════╝╚═╝  ╚═══╝");
 			outputProvider.DisplayLine();
 			outputProvider.DisplayLine();
-			outputProvider.Display("Please enter your name: ");
-
+			outputProvider.DisplayLine("Please enter your name: ");
 		}
 	}
 }

@@ -1,8 +1,11 @@
 ﻿namespace Game.UI.Renderers
 {
-	public class DefaultHelpDisplayRenderer : IRenderer
+	using Game.UI.IOProviders;
+
+	public class DefaultHelpDisplayRenderer<TOutputProvider> : IRenderer<TOutputProvider>
+		where TOutputProvider : IOutputProvider
 	{
-		public void Render(IOProviders.IOutputProvider outputProvider)
+		public void Render(TOutputProvider outputProvider)
 		{
 			outputProvider.DisplayLine();
 			outputProvider.DisplayLine();

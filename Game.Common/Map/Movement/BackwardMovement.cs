@@ -14,8 +14,8 @@
 
         public bool Move(Direction direction)
         {
-            int row = this._gameField.StartPosition.Y;
-            int col = this._gameField.StartPosition.X;
+            int row = this._gameField.Position.Y;
+            int col = this._gameField.Position.X;
 
             switch (direction)
             {
@@ -42,10 +42,10 @@
             if (this._gameField.IsInLimits(row, col))
             {
                 int numberForSwap = this._gameField.Area[row, col];
-                this._gameField[row, col] = this._gameField[this._gameField.StartPosition.Y, this._gameField.StartPosition.X];
-                this._gameField[this._gameField.StartPosition.Y, this._gameField.StartPosition.X] = numberForSwap;
-                this._gameField.StartPosition.Y = row;
-                this._gameField.StartPosition.X = col;
+                this._gameField[row, col] = this._gameField[this._gameField.Position.Y, this._gameField.Position.X];
+                this._gameField[this._gameField.Position.Y, this._gameField.Position.X] = numberForSwap;
+                this._gameField.Position.Y = row;
+                this._gameField.Position.X = col;
                 return true;
             }
 

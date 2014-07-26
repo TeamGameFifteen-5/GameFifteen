@@ -8,7 +8,8 @@
 	using Game.UI.IOProviders;
 	using System;
 
-	public class UIEngine : IDefaultUIEngine
+	public class UIEngine<TIOProvider> : IDefaultUIEngine
+			where TIOProvider : IIOProvider
 	{
 		#region Constants
 
@@ -16,11 +17,11 @@
 
 		#endregion Constants
 
-		private IIOProvider _ioProvider;
+		private TIOProvider _ioProvider;
 		private IPlayer _player;
-		private IDefaultUIEngineSettings<IPlayer, IField, IStatsStorage> _settings;
+		private IDefaultUIEngineSettings<TIOProvider, IPlayer, IField, IStatsStorage> _settings;
 
-		public UIEngine(IDefaultUIEngineSettings<IPlayer, IField, IStatsStorage> settings)
+		public UIEngine(IDefaultUIEngineSettings<TIOProvider, IPlayer, IField, IStatsStorage> settings)
 		{
 			this._settings = settings;
 			this._ioProvider = settings.IOProvider;

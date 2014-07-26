@@ -1,15 +1,18 @@
 ﻿namespace Game.UI
 {
+	using Game.UI.IOProviders;
 	using Game.UI.Renderers;
 
 	/// <summary>
 	/// Interface for default user interface engine settings.
 	/// </summary>
-	/// <typeparam name="TEndArg">  Type of the end argument.</typeparam>
-	/// <typeparam name="TFieldArg">Type of the field argument.</typeparam>
-	/// <typeparam name="TScoreArg">Type of the score argument.</typeparam>
-	/// <seealso cref="IUIEngineSettings"/>
-	public interface IDefaultUIEngineSettings<TEndArg, TFieldArg, TScoreArg> : IUIEngineSettings
+	/// <typeparam name="TIOProvider">Type of the tio provider.</typeparam>
+	/// <typeparam name="TEndArg">	  Type of the end argument.</typeparam>
+	/// <typeparam name="TFieldArg">  Type of the field argument.</typeparam>
+	/// <typeparam name="TScoreArg">  Type of the score argument.</typeparam>
+	/// <seealso cref="IUIEngineSettings{TIOProvider}"/>
+	public interface IDefaultUIEngineSettings<TIOProvider, TEndArg, TFieldArg, TScoreArg> : IUIEngineSettings<TIOProvider>
+		where TIOProvider : IIOProvider
 	{
 		/// <summary>
 		/// Gets the start renderer.
@@ -17,7 +20,7 @@
 		/// <value>
 		/// The start renderer.
 		/// </value>
-		IRenderer StartRenderer { get; }
+		IRenderer<TIOProvider> StartRenderer { get; }
 
 		/// <summary>
 		/// Gets the choose difficulty.
@@ -25,7 +28,7 @@
 		/// <value>
 		/// The choose difficulty.
 		/// </value>
-		IRenderer ChooseDifficultyRenderer { get; }
+		IRenderer<TIOProvider> ChooseDifficultyRenderer { get; }
 
 		/// <summary>
 		/// Gets the end renderer.
@@ -33,7 +36,7 @@
 		/// <value>
 		/// The end renderer.
 		/// </value>
-		IRenderer<TEndArg> EndRenderer { get; }
+		IRenderer<TIOProvider, TEndArg> EndRenderer { get; }
 
 		/// <summary>
 		/// Gets the exit renderer.
@@ -41,7 +44,7 @@
 		/// <value>
 		/// The exit renderer.
 		/// </value>
-		IRenderer ExitRenderer { get; }
+		IRenderer<TIOProvider> ExitRenderer { get; }
 
 		/// <summary>
 		/// Gets the illegal move renderer.
@@ -49,7 +52,7 @@
 		/// <value>
 		/// The illegal move renderer.
 		/// </value>
-		IRenderer IllegalMoveRenderer { get; }
+		IRenderer<TIOProvider> IllegalMoveRenderer { get; }
 
 		/// <summary>
 		/// Gets the illegal command renderer.
@@ -57,7 +60,7 @@
 		/// <value>
 		/// The illegal command renderer.
 		/// </value>
-		IRenderer IllegalCommandRenderer { get; }
+		IRenderer<TIOProvider> IllegalCommandRenderer { get; }
 
 		/// <summary>
 		/// Gets the help display renderer.
@@ -65,7 +68,7 @@
 		/// <value>
 		/// The help display renderer.
 		/// </value>
-		IRenderer HelpDisplayRenderer { get; }
+		IRenderer<TIOProvider> HelpDisplayRenderer { get; }
 
 		/// <summary>
 		/// Gets the invalid input renderer.
@@ -73,7 +76,7 @@
 		/// <value>
 		/// The invalid input renderer.
 		/// </value>
-		IRenderer InvalidInputRenderer { get; }
+		IRenderer<TIOProvider> InvalidInputRenderer { get; }
 
 		/// <summary>
 		/// Gets the field renderer.
@@ -81,7 +84,7 @@
 		/// <value>
 		/// The field renderer.
 		/// </value>
-		IRenderer<TFieldArg> FieldRenderer { get; }
+		IRenderer<TIOProvider, TFieldArg> FieldRenderer { get; }
 
 		/// <summary>
 		/// Gets the score renderer.
@@ -89,6 +92,6 @@
 		/// <value>
 		/// The score renderer.
 		/// </value>
-		IRenderer<TScoreArg> ScoreRenderer { get; }
+		IRenderer<TIOProvider, TScoreArg> ScoreRenderer { get; }
 	}
 }

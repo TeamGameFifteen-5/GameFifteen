@@ -1,8 +1,11 @@
 ﻿namespace Game.UI.Renderers
 {
-	public class DefaultChooseDifficultyRenderer : IRenderer
+	using Game.UI.IOProviders;
+
+	public class DefaultChooseDifficultyRenderer<TOutputProvider> : IRenderer<TOutputProvider>
+		where TOutputProvider : IOutputProvider
 	{
-		public void Render(IOProviders.IOutputProvider outputProvider)
+		public void Render(TOutputProvider outputProvider)
 		{
 			outputProvider.DisplayLine();
 			outputProvider.DisplayLine();
@@ -15,12 +18,12 @@
 			outputProvider.DisplayLine(@"  \_____|_| |_|\___/ \___/|___/\___| |_____/|_|_| |_| |_|\___|\__,_|_|\__|\__, (_)");
 			outputProvider.DisplayLine(@"                                                                           __/ |  ");
 			outputProvider.DisplayLine(@"                                                                          |___/   ");
-			outputProvider.DisplayLine("");
+			outputProvider.DisplayLine();
 			outputProvider.DisplayLine("1. Easy");
 			outputProvider.DisplayLine("2. Normal");
 			outputProvider.DisplayLine("3. Hard");
 			outputProvider.DisplayLine();
-			outputProvider.Display("[1|2|3]: ");
+			outputProvider.DisplayLine("[1|2|3]: ");
 		}
 	}
 }

@@ -7,7 +7,7 @@
 	{
 		public void Apply(UI.IOProviders.IIOProvider ioProvider)
 		{
-			ioProvider.ChangeColor(Color.White);
+			ioProvider.ChangeColor(Color.Black);
 		}
 	}
 }

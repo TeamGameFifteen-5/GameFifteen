@@ -134,6 +134,7 @@
 
 		public virtual void StartGame()
 		{
+			this.Player.Score = 0;
 			this.Field.Fill();
 			this.Field.RandomizeField(this.UIEngine.Difficulty);
 			this.FieldInvalidate();

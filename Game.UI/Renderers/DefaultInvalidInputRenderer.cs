@@ -1,8 +1,11 @@
 ﻿namespace Game.UI.Renderers
 {
-	public class DefaultInvalidInputRenderer : IRenderer
+	using Game.UI.IOProviders;
+
+	public class DefaultInvalidInputRenderer<TOutputProvider> : IRenderer<TOutputProvider>
+		where TOutputProvider : IOutputProvider
 	{
-		public void Render(IOProviders.IOutputProvider outputProvider)
+		public void Render(TOutputProvider outputProvider)
 		{
 			outputProvider.DisplayLine("The provided input is not valid in this context!");
 		}

@@ -7,7 +7,9 @@
 	/// <summary>
 	/// Interface for iui engine settings.
 	/// </summary>
-	public interface IUIEngineSettings
+	/// <typeparam name="TIOProvider">Type of the tio provider.</typeparam>
+	public interface IUIEngineSettings<TIOProvider>
+		where TIOProvider : IIOProvider
 	{
 		/// <summary>
 		/// Gets the i/o provider.
@@ -15,7 +17,7 @@
 		/// <value>
 		/// The i/o provider.
 		/// </value>
-		IIOProvider IOProvider { get; }
+		TIOProvider IOProvider { get; }
 
 		/// <summary>
 		/// Gets the i/o provider settings.

@@ -34,12 +34,14 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(902, 504);
+			this.ClientSize = new System.Drawing.Size(1044, 574);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "MainForm";
 			this.ShowIcon = false;
 			this.Text = "MainForm";
 			this.Load += new System.EventHandler(this.MainForm_Load);
-			this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainForm_Paint);
 			this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyUp);
 			this.ResumeLayout(false);
 

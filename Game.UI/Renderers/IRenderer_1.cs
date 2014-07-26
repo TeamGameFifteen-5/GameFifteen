@@ -2,8 +2,9 @@
 
 namespace Game.UI.Renderers
 {
-	public interface IRenderer<TArgs>
+	public interface IRenderer<TOutputProvider, TArgs>
+		where TOutputProvider : IOutputProvider
 	{
-		void Render(IOutputProvider outputProvider, TArgs args);
+		void Render(TOutputProvider outputProvider, TArgs args);
 	}
 }

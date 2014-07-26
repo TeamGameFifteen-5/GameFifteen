@@ -7,6 +7,7 @@
 	/// <summary>
 	/// Interface for field.
 	/// </summary>
+	/// <seealso cref="IEnumerable{IEnumerable}"/>
 	public interface IField : IEnumerable<IEnumerable<int>>
 	{
 		/// <summary>
@@ -26,12 +27,12 @@
 		int Size { get; }
 
 		/// <summary>
-		/// Gets the start position.
+		/// Gets or sets the position.
 		/// </summary>
 		/// <value>
-		/// The start position.
+		/// The position.
 		/// </value>
-		Position StartPosition { get; }
+		Position Position { get; set; }
 
 		/// <summary>
 		/// Indexer to get or set items within this collection using array index syntax.
@@ -46,6 +47,7 @@
 		/// <summary>
 		/// Randomize the field.
 		/// </summary>
+		/// <param name="difficulty">The difficulty.</param>
 		/// <param name="randomizer">(optional) the randomizer.</param>
 		void RandomizeField(Difficulty difficulty, IFieldRandomizer randomizer = null);
 
