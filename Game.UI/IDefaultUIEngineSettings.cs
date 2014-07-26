@@ -5,6 +5,9 @@
 	/// <summary>
 	/// Interface for default user interface engine settings.
 	/// </summary>
+	/// <typeparam name="TEndArg">  Type of the end argument.</typeparam>
+	/// <typeparam name="TFieldArg">Type of the field argument.</typeparam>
+	/// <typeparam name="TScoreArg">Type of the score argument.</typeparam>
 	/// <seealso cref="IUIEngineSettings"/>
 	public interface IDefaultUIEngineSettings<TEndArg, TFieldArg, TScoreArg> : IUIEngineSettings
 	{
@@ -15,6 +18,14 @@
 		/// The start renderer.
 		/// </value>
 		IRenderer StartRenderer { get; }
+
+		/// <summary>
+		/// Gets the choose difficulty.
+		/// </summary>
+		/// <value>
+		/// The choose difficulty.
+		/// </value>
+		IRenderer ChooseDifficultyRenderer { get; }
 
 		/// <summary>
 		/// Gets the end renderer.
@@ -55,6 +66,14 @@
 		/// The help display renderer.
 		/// </value>
 		IRenderer HelpDisplayRenderer { get; }
+
+		/// <summary>
+		/// Gets the invalid input renderer.
+		/// </summary>
+		/// <value>
+		/// The invalid input renderer.
+		/// </value>
+		IRenderer InvalidInputRenderer { get; }
 
 		/// <summary>
 		/// Gets the field renderer.

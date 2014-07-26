@@ -1,8 +1,8 @@
 ﻿namespace Game.Common.Map
 {
-    using Game.Common.Map.Fillers;
-    using Game.Common.Map.Randomizers;
-    using System.Collections.Generic;
+	using Game.Common.Map.Fillers;
+	using Game.Common.Map.Randomizers;
+	using System.Collections.Generic;
 
 	/// <summary>
 	/// Interface for field.
@@ -18,20 +18,12 @@
 		int[,] Area { get; set; }
 
 		/// <summary>
-		/// Gets the width.
+		/// Gets the size.
 		/// </summary>
 		/// <value>
-		/// The width.
+		/// The size.
 		/// </value>
-		int Width { get; }
-
-		/// <summary>
-		/// Gets the height.
-		/// </summary>
-		/// <value>
-		/// The height.
-		/// </value>
-		int Height { get; }
+		int Size { get; }
 
 		/// <summary>
 		/// Gets the start position.
@@ -60,9 +52,8 @@
 		/// <summary>
 		/// Fills the field with the specified filler and size.
 		/// </summary>
-		/// <param name="size">  The size.</param>
 		/// <param name="filler">(optional) the filler.</param>
-		void Fill(int size, IFieldFiller filler = null);
+		void Fill(IFieldFiller filler = null);
 
 		/// <summary>
 		/// Check if 'row' and 'col' is in field limits.

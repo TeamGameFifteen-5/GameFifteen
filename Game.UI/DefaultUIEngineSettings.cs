@@ -21,11 +21,13 @@
 			IPlayer player,
 			IIOProviderSettings ioProviderSettings = null,
 			IRenderer startRenderer = null,
+			IRenderer chooseDifficultyRenderer = null,
 			IRenderer<IPlayer> endRenderer = null,
 			IRenderer exitRenderer = null,
 			IRenderer illegalMoveRenderer = null,
 			IRenderer illegalCommandRenderer = null,
 			IRenderer helpDisplayRenderer = null,
+			IRenderer invalidInputRenderer = null,
 			IRenderer<IField> fieldRenderer = null,
 			IRenderer<IStatsStorage> scoreRenderer = null)
 		{
@@ -36,11 +38,13 @@
 			this.IOProviderSettings = ioProviderSettings ?? new DefaultIOProviderSettings();
 			this.Player = player;
 			this.StartRenderer = startRenderer ?? new DefaultStartRenderer();
+			this.ChooseDifficultyRenderer = chooseDifficultyRenderer ?? new DefaultChooseDifficultyRenderer();
 			this.EndRenderer = endRenderer ?? new DefaultEndRenderer();
 			this.ExitRenderer = exitRenderer ?? new DefaultExitRenderer();
 			this.IllegalMoveRenderer = illegalMoveRenderer ?? new DefaultIllegalMoveRenderer();
 			this.IllegalCommandRenderer = illegalCommandRenderer ?? new DefaultIllegalCommandRenderer();
 			this.HelpDisplayRenderer = helpDisplayRenderer ?? new DefaultHelpDisplayRenderer();
+			this.InvalidInputRenderer = invalidInputRenderer ?? new DefaultInvalidInputRenderer();
 			this.FieldRenderer = fieldRenderer ?? new DefaultFieldRenderer();
 			this.ScoreRenderer = scoreRenderer ?? new DefaultScoreRenderer();
 		}
@@ -57,6 +61,8 @@
 
 		public IRenderer StartRenderer { get; private set; }
 
+		public IRenderer ChooseDifficultyRenderer { get; private set; }
+
 		public IRenderer<IPlayer> EndRenderer { get; private set; }
 
 		public IRenderer ExitRenderer { get; private set; }
@@ -66,6 +72,8 @@
 		public IRenderer IllegalCommandRenderer { get; private set; }
 
 		public IRenderer HelpDisplayRenderer { get; private set; }
+
+		public IRenderer InvalidInputRenderer { get; private set; }
 
 		public IRenderer<IField> FieldRenderer { get; private set; }
 

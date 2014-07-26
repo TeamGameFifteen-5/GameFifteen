@@ -55,7 +55,7 @@
 		/// <summary>
 		/// Restart game.
 		/// </summary>
-		void RestartGame();
+		void StartGame();
 
 		/// <summary>
 		/// Illegal move.

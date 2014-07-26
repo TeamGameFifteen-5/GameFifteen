@@ -34,14 +34,6 @@
 		event CustomEventHandler GameCustomEvent;
 
 		/// <summary>
-		/// Gets the difficulty.
-		/// </summary>
-		/// <value>
-		/// The difficulty.
-		/// </value>
-		Difficulty Difficulty { get; }
-
-		/// <summary>
 		/// Gets the input provider.
 		/// </summary>
 		/// <value>

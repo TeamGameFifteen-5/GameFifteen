@@ -1,5 +1,6 @@
 ﻿namespace Game.UI
 {
+	using Game.Common;
 	using Game.Common.CustomEvents;
 	using Game.Common.Map;
 	using Game.Common.Players;
@@ -36,15 +37,42 @@
 			}
 		}
 
+		public Difficulty Difficulty { get; private set; }
+
 		public virtual void OnGameStart()
 		{
-			if (string.IsNullOrEmpty(this._player.Name))
+			bool hasName = !string.IsNullOrWhiteSpace(this._player.Name);
+
+			if (!hasName)
 			{
-				this._ioProvider.Invalidate();
-				this._settings.StartRenderer.Render(this._ioProvider);
-				while (string.IsNullOrEmpty(this._player.Name))
+				bool? isInputValid = null;
+				while (!isInputValid.HasValue || !isInputValid.Value)
 				{
+					this._ioProvider.Invalidate();
+					this._settings.StartRenderer.Render(this._ioProvider);
 					this._player.Name = this._ioProvider.GetTextInput();
+
+					isInputValid = !string.IsNullOrWhiteSpace(this._player.Name);
+				}
+
+				isInputValid = null;
+				while (!isInputValid.HasValue || !isInputValid.Value)
+				{
+					this._ioProvider.Invalidate();
+					this._settings.ChooseDifficultyRenderer.Render(this._ioProvider);
+					string difficultyIndex = this._ioProvider.GetTextInput();
+					byte difficulty;
+					isInputValid = byte.TryParse(difficultyIndex, out difficulty);
+
+					if (isInputValid.Value)
+					{
+						difficulty -= 1;
+						isInputValid = Enum.GetNames(typeof(Difficulty)).Length > difficulty;
+						if (isInputValid.Value)
+						{
+							this.Difficulty = (Difficulty)difficulty;
+						}
+					}
 				}
 			}
 		}

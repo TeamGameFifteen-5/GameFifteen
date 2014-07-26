@@ -20,34 +20,19 @@
 
 		public Field(int size = SIZE, IFieldRandomizer defaultRandomizer = null, IFieldFiller defaultFiller = null)
 		{
+			this.Size = size;
 			this.DefaultRandomizer = defaultRandomizer ?? new DefaultFieldRandomizer(DefaultRandomGenerator.Instance);
 			this.DefaultFiller = defaultFiller ?? new DefaultFieldFiller();
 
 			var lastPosition = size - 1;
 			this.StartPosition = new Position(lastPosition, lastPosition);
-
-			this.Fill(size);
 		}
 
 		#region Properties
 
 		public int[,] Area { get; set; }
 
-		public int Width
-		{
-			get
-			{
-				return this.Area.GetLength(0);
-			}
-		}
-
-		public int Height
-		{
-			get
-			{
-				return this.Area.GetLength(1);
-			}
-		}
+		public int Size { get; private set; }
 
 		public Position StartPosition { get; protected set; }
 
@@ -76,15 +61,15 @@
 			(randomizer ?? this.DefaultRandomizer).Randomize(this, difficulty);
 		}
 
-		public void Fill(int size, IFieldFiller filler = null)
+		public void Fill(IFieldFiller filler = null)
 		{
-			(filler ?? this.DefaultFiller).Fill(this, size);
+			(filler ?? this.DefaultFiller).Fill(this, this.Size);
 		}
 
 		public bool IsInLimits(int row, int col)
 		{
-			bool isInRowLimits = row >= 0 && row < this.Width;
-			bool isInColLimits = col >= 0 && col < this.Height;
+			bool isInRowLimits = row >= 0 && row < this.Size;
+			bool isInColLimits = col >= 0 && col < this.Size;
 			return isInRowLimits && isInColLimits;
 		}
 
@@ -92,10 +77,10 @@
 
 		IEnumerator<IEnumerable<int>> IEnumerable<IEnumerable<int>>.GetEnumerator()
 		{
-			for (int row = 0; row < this.Height; row++)
+			for (int row = 0; row < this.Size; row++)
 			{
-				int[] rowColumns = new int[this.Width];
-				for (int col = 0; col < this.Width; col++)
+				int[] rowColumns = new int[this.Size];
+				for (int col = 0; col < this.Size; col++)
 				{
 					rowColumns[col] = this.Area[row, col];
 				}

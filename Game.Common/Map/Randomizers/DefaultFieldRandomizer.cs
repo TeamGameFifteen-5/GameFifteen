@@ -6,6 +6,14 @@
 
 	public class DefaultFieldRandomizer : IFieldRandomizer
 	{
+		#region Constants
+
+		private const int EASY_RANDOMIZE_CYCLES = 20;
+		private const int NORMAL_RANDOMIZE_CYCLES = 100;
+		private const int HARD_RANDOMIZE_CYCLES = 1000;
+
+		#endregion Constants
+
 		private IRandomGenerator _randomGenerator;
 		private int _totalElementsInDirection;
 
@@ -27,15 +35,15 @@
 			switch (difficulty)
 			{
 				case Difficulty.Easy:
-					randomizeCycles = 10;
+					randomizeCycles = EASY_RANDOMIZE_CYCLES;
 					break;
 
 				case Difficulty.Normal:
-					randomizeCycles = 100;
+					randomizeCycles = NORMAL_RANDOMIZE_CYCLES;
 					break;
 
 				case Difficulty.Hard:
-					randomizeCycles = 1000;
+					randomizeCycles = HARD_RANDOMIZE_CYCLES;
 					break;
 
 				default:

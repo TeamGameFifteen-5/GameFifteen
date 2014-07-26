@@ -34,7 +34,7 @@
 					break;
 
 				case DefaultActionTypes.Reset:
-					this._gameEngine.RestartGame();
+					this._gameEngine.StartGame();
 					break;
 
 				case DefaultActionTypes.Scores:

@@ -1,7 +1,7 @@
 ﻿namespace Game.UI
 {
-    using System;
-    using Game.UI.IOProviders;
+	using Game.Common;
+	using Game.UI.IOProviders;
 
 	/// <summary>
 	/// Interface for the UI Engine.
@@ -9,8 +9,19 @@
 	public interface IUIEngine
 	{
 		/// <summary>
+		/// Gets the difficulty.
+		/// </summary>
+		/// <value>
+		/// The difficulty.
+		/// </value>
+		Difficulty Difficulty { get; }
+
+		/// <summary>
 		/// The input provider.
 		/// </summary>
+		/// <value>
+		/// The input provider.
+		/// </value>
 		IInputProvider InputProvider { get; }
 
 		/// <summary>
@@ -31,6 +42,7 @@
 		/// <summary>
 		/// Executes the game invalidate action.
 		/// </summary>
+		/// <param name="eventObject">The event object.</param>
 		void OnGameCustomEvent(object eventObject);
 	}
 }
