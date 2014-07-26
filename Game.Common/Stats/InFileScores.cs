@@ -75,7 +75,8 @@
 			}
 			catch (Exception)
 			{
-				// TODO: Implement appropriate message for the user
+				// If the file is empty, ArgumentNullException appears. For this reason the Stream must be closed manualy.
+                // For every other exception we don't need to close it, because the try body breaks before it started.
 				if (stream != null)
 				{
 					stream.Close();
