@@ -9,7 +9,7 @@
 	/// <seealso cref="Game.Common.Utils.IRandomGenerator"/>
 	public sealed class DefaultRandomGenerator : IRandomGenerator
 	{
-		private static readonly DefaultRandomGenerator _instance = new DefaultRandomGenerator();
+		private static readonly DefaultRandomGenerator _Instance = new DefaultRandomGenerator();
 
 		private Random _random = new Random();
 
@@ -21,7 +21,7 @@
 		{
 			get
 			{
-				return _instance;
+				return _Instance;
 			}
 		}
 

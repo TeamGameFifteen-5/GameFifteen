@@ -14,9 +14,14 @@
 
 		protected IList<TNameValue> Stats { get; set; }
 
-		public virtual IEnumerable<TNameValue> Load()
+		public virtual IEnumerable<TNameValue> LoadTyped()
 		{
 			return this.Stats;
+		}
+
+		IEnumerable<INameValue> IStatsStorage.Load()
+		{
+			return (IEnumerable<INameValue>)this.Stats;
 		}
 
 		public abstract void Save(TNameValue stats);

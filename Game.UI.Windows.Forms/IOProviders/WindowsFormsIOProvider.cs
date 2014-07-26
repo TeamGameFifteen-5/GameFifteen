@@ -12,7 +12,7 @@
 
 	public class WindowsFormsIOProvider : IOProvider<Keys>
 	{
-		private static readonly object _locker = new object();
+		private static readonly object _Locker = new object();
 
 		private Font _drawFont = new Font("Arial", 16);
 		private SolidBrush _drawBrush = new SolidBrush(Color.White);

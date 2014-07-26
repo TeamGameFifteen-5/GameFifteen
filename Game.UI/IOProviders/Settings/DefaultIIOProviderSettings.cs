@@ -11,7 +11,7 @@
 		/// <summary>
 		/// The default color.
 		/// </summary>
-		private static readonly Color _defaultColor = Color.Cyan;
+		private static readonly Color _DefaultColor = Color.Cyan;
 
 		/// <summary>
 		/// The color.
@@ -24,7 +24,7 @@
 		/// <param name="color">The color.</param>
 		public DefaultIOProviderSettings(Color? color = null)
 		{
-			this._color = color ?? _defaultColor;
+			this._color = color ?? _DefaultColor;
 		}
 
 		/// <summary>

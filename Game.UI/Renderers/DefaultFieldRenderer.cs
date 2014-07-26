@@ -1,0 +1,40 @@
+﻿namespace Game.UI.Renderers
+{
+	using Game.Common.Map;
+
+	public class DefaultFieldRenderer : IRenderer<IField>
+	{
+		#region Constants
+
+		private const char HORIZONTAL_LINE = '\u2500';
+		private const char VERTICAL_LINE = '\u2502';
+		private const char UPPER_LEFT_CORNER = '\u250c';
+		private const char UPPER_RIGHT_CORNER = '\u2510';
+		private const char LOWER_LEFT_CORNER = '\u2514';
+		private const char LOWER_RIGHT_CORNER = '\u2518';
+
+		#endregion Constants
+
+		public void Render(IOProviders.IOutputProvider outputProvider, IField field)
+		{
+			var upperLine = string.Format("{0}{1}{2}", UPPER_LEFT_CORNER, new string(HORIZONTAL_LINE, 13), UPPER_RIGHT_CORNER);
+			var lowerLine = string.Format("{0}{1}{2}", LOWER_LEFT_CORNER, new string(HORIZONTAL_LINE, 13), LOWER_RIGHT_CORNER);
+
+			outputProvider.DisplayLine(upperLine);
+
+			foreach (var row in field)
+			{
+				outputProvider.Display(VERTICAL_LINE.ToString() + " ");
+
+				foreach (var col in row)
+				{
+					outputProvider.Display(col >= 10 ? "{0} " : " {0} ", col == 0 ? " " : col.ToString());
+				}
+
+				outputProvider.DisplayLine(VERTICAL_LINE.ToString());
+			}
+
+			outputProvider.DisplayLine(lowerLine);
+		}
+	}
+}
