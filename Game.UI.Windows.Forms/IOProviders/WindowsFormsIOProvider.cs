@@ -51,7 +51,7 @@
 
 		public override string GetTextInput()
 		{
-			_currentTextInput = string.Empty;
+			this._currentTextInput = string.Empty;
 			var gameForm = this._gameForm;
 			while (!gameForm.LastKey.HasValue || gameForm.LastKey.Value != Keys.Enter)
 			{
@@ -61,7 +61,7 @@
 				}
 
 				Keys key = gameForm.LastKey.Value;
-				if (IsKeyLetterOrDigit(key))
+				if (this.IsKeyLetterOrDigit(key))
 				{
 					var keyString = key.ToString();
 					if (keyString.Length > 1)
@@ -76,13 +76,13 @@
 
 					this.Display(keyString);
 					gameForm.LastKey = null;
-					_currentTextInput += keyString;
+					this._currentTextInput += keyString;
 				}
 			}
 
 			gameForm.LastKey = null;
 			this.DisplayLine();
-			return _currentTextInput;
+			return this._currentTextInput;
 		}
 
 		public override ActionType GetKeyInput(bool displayKey = false)
@@ -207,7 +207,7 @@
 
 		private bool IsKeyLetterOrDigit(Keys key)
 		{
-			return IsKeyLetter(key) || IsKeyDigit(key);
+			return this.IsKeyLetter(key) || this.IsKeyDigit(key);
 		}
 
 		private bool IsKeyLetter(Keys key)

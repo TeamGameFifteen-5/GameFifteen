@@ -1,7 +1,7 @@
-﻿using Game.UI.IOProviders;
-
-namespace Game.UI.Renderers
+﻿namespace Game.UI.Renderers
 {
+	using Game.UI.IOProviders;
+
 	public interface IRenderer<TOutputProvider>
 		where TOutputProvider : IOutputProvider
 	{
