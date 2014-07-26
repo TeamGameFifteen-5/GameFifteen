@@ -8,8 +8,6 @@
 		public void Render(TOutputProvider outputProvider)
 		{
 			outputProvider.DisplayLine();
-			outputProvider.DisplayLine();
-			outputProvider.DisplayLine();
 			outputProvider.DisplayLine(" ██████╗  █████╗ ███╗   ███╗███████╗███████╗██╗███████╗████████╗███████╗███████╗███╗   ██╗");
 			outputProvider.DisplayLine("██╔════╝ ██╔══██╗████╗ ████║██╔════╝██╔════╝██║██╔════╝╚══██╔══╝██╔════╝██╔════╝████╗  ██║");
 			outputProvider.DisplayLine("██║  ███╗███████║██╔████╔██║█████╗  █████╗  ██║█████╗     ██║   █████╗  █████╗  ██╔██╗ ██║");

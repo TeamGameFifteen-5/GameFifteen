@@ -2,7 +2,6 @@
 {
 	using Game.Common.Stats;
 	using Game.UI.IOProviders;
-	using System;
 
 	public class DefaultScoreRenderer<TOutputProvider> : IRenderer<TOutputProvider, IStatsStorage>
 		where TOutputProvider : IOutputProvider
@@ -17,14 +16,14 @@
 		{
 			var playerScores = stats.Load();
 
-			outputProvider.DisplayLine("{0}{1}", Environment.NewLine, UP_DOWN_TABLE_FRAME);
+			outputProvider.DisplayLine(UP_DOWN_TABLE_FRAME);
 
 			foreach (var playerScore in playerScores)
 			{
 				outputProvider.DisplayLine("{0}: {1}", playerScore.Name, playerScore.Value);
 			}
 
-			outputProvider.DisplayLine("{0}{1}", UP_DOWN_TABLE_FRAME, Environment.NewLine);
+			outputProvider.DisplayLine(UP_DOWN_TABLE_FRAME);
 		}
 	}
 }

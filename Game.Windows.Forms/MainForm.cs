@@ -40,9 +40,11 @@
 				ioProvider,
 				player,
 				ioProviderSettings: new WindowsFormsIOProviderSettings(),
-				startRenderer: new StartImageRenderer<WindowsFormsIOProvider>(),
-				chooseDifficultyRenderer: new ChooseDifficultyImageRenderer<WindowsFormsIOProvider>(),
-				helpDisplayRenderer: new HelpDisplayImageRenderer<WindowsFormsIOProvider>());
+				startRenderer: new StartWindowRenderer<WindowsFormsIOProvider>(),
+				exitRenderer: new ExitWindowRenderer<WindowsFormsIOProvider>(),
+				chooseDifficultyRenderer: new ChooseDifficultyWindowRenderer<WindowsFormsIOProvider>(),
+				helpDisplayRenderer: new HelpDisplayWindowRenderer<WindowsFormsIOProvider>(),
+				fieldRenderer: new FieldWindowsRenderer<WindowsFormsIOProvider>());
 
 			var gameUI = new UIEngine<WindowsFormsIOProvider>(gameUISettngs);
 			var gameEngineSettings = new GameEngineSettings<IDefaultUIEngine, IIntegerStats>(gameUI, field, player, InMemoryScores.Instance);

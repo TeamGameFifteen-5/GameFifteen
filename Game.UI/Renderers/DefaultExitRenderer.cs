@@ -5,7 +5,7 @@
 	public class DefaultExitRenderer<TOutputProvider> : IRenderer<TOutputProvider>
 		where TOutputProvider : IOutputProvider
 	{
-		public void Render(TOutputProvider outputProvider)
+		public virtual void Render(TOutputProvider outputProvider)
 		{
 			outputProvider.DisplayLine("Good bye!");
 		}

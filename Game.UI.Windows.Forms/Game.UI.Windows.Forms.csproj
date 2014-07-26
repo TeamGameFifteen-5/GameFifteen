@@ -54,9 +54,11 @@
     <Compile Include="IOProviders\WindowsFormsIOProvider.cs" />
     <Compile Include="KeyMappings\WindowsFormsKeyMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Renderers\ChooseDifficultyImageRenderer.cs" />
-    <Compile Include="Renderers\HelpDisplayImageRenderer.cs" />
-    <Compile Include="Renderers\StartImageRenderer.cs" />
+    <Compile Include="Renderers\ChooseDifficultyWindowRenderer.cs" />
+    <Compile Include="Renderers\FieldWindowsRenderer.cs" />
+    <Compile Include="Renderers\HelpDisplayWindowRenderer.cs" />
+    <Compile Include="Renderers\ExitWindowRenderer.cs" />
+    <Compile Include="Renderers\StartWindowRenderer.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -5,15 +5,13 @@
 	using System.Drawing;
 	using System.Windows.Forms;
 
-	public class ChooseDifficultyImageRenderer<TOutputProvider> : IRenderer<TOutputProvider>
+	public class ChooseDifficultyWindowRenderer<TOutputProvider> : IRenderer<TOutputProvider>
 		where TOutputProvider : IWindowsFormsOutputProvider
 	{
 		private const string IMAGE_PATH = @"\..\..\Content\ChooseDifficulty.png";
 
 		public void Render(TOutputProvider outputProvider)
 		{
-			outputProvider.DisplayLine();
-			outputProvider.DisplayLine();
 			outputProvider.DisplayLine();
 			outputProvider.DrawImage(Image.FromFile(Application.StartupPath + IMAGE_PATH));
 			outputProvider.DisplayLine();
