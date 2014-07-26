@@ -50,11 +50,12 @@
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			var consoleIOProvider = new WindowsFormsIOProvider(this);
+			var ioProvider = new WindowsFormsIOProvider(this);
 			var player = new Player();
 			var field = new Field();
 
-			var gameUI = new UIEngine(player, consoleIOProvider);
+			var gameUISettngs = new DefaultUIEngineSettings(ioProvider, player);
+			var gameUI = new UIEngine(gameUISettngs);
 			var gameEngineSettings = new GameEngineSettings<IDefaultUIEngine, IIntegerStats>(Difficulty.Easy, gameUI, field, player, InMemoryScores.Instance);
 			var gameEngine = new GameEngine(gameEngineSettings);
 			this._gameEngine = gameEngine;

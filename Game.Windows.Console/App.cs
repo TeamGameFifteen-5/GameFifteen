@@ -12,11 +12,12 @@
 	{
 		public static void Main(string[] args)
 		{
-			var consoleIOProvider = new ConsoleIOProvider();
+			var ioProvider = new ConsoleIOProvider();
 			var player = new Player();
 			var field = new Field();
 
-			var gameUI = new UIEngine(player, consoleIOProvider);
+			var gameUISettngs = new DefaultUIEngineSettings(ioProvider, player);
+			var gameUI = new UIEngine(gameUISettngs);
 			var gameEngineSettings = new GameEngineSettings<IDefaultUIEngine, IIntegerStats>(Difficulty.Easy, gameUI, field, player, InMemoryScores.Instance);
 			var gameEngine = new GameEngine(gameEngineSettings);
 			gameEngine.Start();

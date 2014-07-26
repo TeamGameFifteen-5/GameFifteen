@@ -1,28 +1,31 @@
 ﻿namespace Game.UI
 {
 	using Game.Common.CustomEvents;
+	using Game.Common.Map;
 	using Game.Common.Players;
+	using Game.Common.Stats;
 	using Game.UI.IOProviders;
-	using Game.UI.Renderers;
 	using System;
 
 	public class UIEngine : IDefaultUIEngine
 	{
 		#region Constants
 
-		private const string ContinueOnKeyPress = "Press a any key to try again . .";
+		private const string CONTINUE_ON_KEYPRESS = "Press a any key to try again . .";
 
 		#endregion Constants
 
 		private IIOProvider _ioProvider;
 		private IPlayer _player;
+		private IDefaultUIEngineSettings<IPlayer, IField, IStatsStorage> _settings;
 
-		public UIEngine(IPlayer player, IIOProvider ioProvider)
+		public UIEngine(IDefaultUIEngineSettings<IPlayer, IField, IStatsStorage> settings)
 		{
-			this._ioProvider = ioProvider;
-			this._player = player;
+			this._settings = settings;
+			this._ioProvider = settings.IOProvider;
+			this._player = settings.Player;
 
-			this._ioProvider.ApplySettings();
+			this._ioProvider.ApplySettings(settings.IOProviderSettings);
 		}
 
 		public IInputProvider InputProvider
@@ -38,7 +41,7 @@
 			if (string.IsNullOrEmpty(this._player.Name))
 			{
 				this._ioProvider.Invalidate();
-				new DefaultStartRenderer().Render(this._ioProvider);
+				this._settings.StartRenderer.Render(this._ioProvider);
 				while (string.IsNullOrEmpty(this._player.Name))
 				{
 					this._player.Name = this._ioProvider.GetTextInput();
@@ -48,14 +51,14 @@
 
 		public virtual void OnGameEnd()
 		{
-			new DefaultEndRenderer().Render(this._ioProvider, this._player);
-			this._ioProvider.DisplayLine(ContinueOnKeyPress);
+			this._settings.EndRenderer.Render(this._ioProvider, this._player);
+			this._ioProvider.DisplayLine(CONTINUE_ON_KEYPRESS);
 			this._ioProvider.GetKeyInput();
 		}
 
 		public virtual void OnGameExit()
 		{
-			new DefaultExitRenderer().Render(this._ioProvider);
+			this._settings.ExitRenderer.Render(this._ioProvider);
 		}
 
 		public virtual void OnGameMovement()
@@ -64,12 +67,12 @@
 
 		public virtual void OnGameIllegalMove()
 		{
-			new DefaultIllegalMoveRenderer().Render(this._ioProvider);
+			this._settings.IllegalMoveRenderer.Render(this._ioProvider);
 		}
 
 		public virtual void OnGameIllegalCommand()
 		{
-			new DefaultIllegalCommandRenderer().Render(this._ioProvider);
+			this._settings.IllegalCommandRenderer.Render(this._ioProvider);
 		}
 
 		public virtual void OnGameCustomEvent(object eventObject)
@@ -79,14 +82,14 @@
 				var fieldInvalidateEvent = (FieldInvalidateEvent)eventObject;
 				var field = fieldInvalidateEvent.EventArgs;
 				this._ioProvider.Invalidate();
-				new DefaultHelpDisplayRenderer().Render(this._ioProvider);
-				new DefaultFieldRenderer().Render(this._ioProvider, field);
+				this._settings.HelpDisplayRenderer.Render(this._ioProvider);
+				this._settings.FieldRenderer.Render(this._ioProvider, field);
 			}
 			else if (eventObject is ShowScoreEvent)
 			{
 				var showScoreEvent = (ShowScoreEvent)eventObject;
 				var inMemoryPlayerScores = showScoreEvent.EventArgs;
-				new DefaultScoreRenderer().Render(this._ioProvider, inMemoryPlayerScores);
+				this._settings.ScoreRenderer.Render(this._ioProvider, inMemoryPlayerScores);
 			}
 			else
 			{

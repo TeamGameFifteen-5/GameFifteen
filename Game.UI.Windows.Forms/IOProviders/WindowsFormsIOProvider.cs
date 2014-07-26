@@ -3,7 +3,6 @@
 	using Game.Common;
 	using Game.UI.IOProviders;
 	using Game.UI.KeyMappings;
-	using Game.UI.Windows.Forms.IOProviders.Settings;
 	using Game.UI.Windows.Forms.KeyMappings;
 	using System;
 	using System.Drawing;
@@ -28,7 +27,6 @@
 		private Graphics _graphics;
 
 		public WindowsFormsIOProvider(IGameForm gameForm)
-			: base(new WindowsFormsIOProviderSettings())
 		{
 			this._gameForm = gameForm;
 			this._graphics = this._gameForm.CreateGraphics();
