@@ -23,7 +23,7 @@
 			outputProvider.DisplayLine("2. Normal");
 			outputProvider.DisplayLine("3. Hard");
 			outputProvider.DisplayLine();
-			outputProvider.DisplayLine("[1|2|3]: ");
+			outputProvider.Display("[1|2|3]: ");
 		}
 	}
 }

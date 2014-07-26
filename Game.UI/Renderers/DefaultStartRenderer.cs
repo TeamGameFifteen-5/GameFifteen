@@ -16,7 +16,7 @@
 			outputProvider.DisplayLine(" ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚═╝     ╚═╝╚═╝        ╚═╝   ╚══════╝╚══════╝╚═╝  ╚═══╝");
 			outputProvider.DisplayLine();
 			outputProvider.DisplayLine();
-			outputProvider.DisplayLine("Please enter your name: ");
+			outputProvider.Display("Please enter your name: ");
 		}
 	}
 }
