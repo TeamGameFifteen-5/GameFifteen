@@ -1,5 +1,8 @@
 ﻿namespace Game.Common
 {
+	using System;
+
+	[Serializable]
 	public class NameValue<TValue> : NameValue, INameValue<TValue>
 	{
 		public NameValue(string name, TValue value)

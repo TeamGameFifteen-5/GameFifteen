@@ -1,6 +1,7 @@
 ﻿namespace Game.Common.Stats
 {
 	using System;
+	using System.Collections.Generic;
 	using System.IO;
 	using System.Runtime.Serialization.Formatters.Binary;
 
@@ -13,6 +14,11 @@
 		private InFileScores()
 			: base(MAX_TOP_PLAYERS)
 		{
+			this.Stats = this.LoadFromFile();
+			if (this.Stats == null)
+			{
+				this.Stats = new List<INameValue<int>>(MAX_TOP_PLAYERS);
+			}
 		}
 
 		public static IIntegerStats Instance
@@ -55,16 +61,16 @@
 			}
 		}
 
-		private INameValue<int> LoadFromFile()
+		private IList<INameValue<int>> LoadFromFile()
 		{
 			Stream stream = null;
-			INameValue<int> stats;
+			IList<INameValue<int>> stats;
 			try
 			{
 				using (stream = File.Open(FILE_PATH, FileMode.OpenOrCreate))
 				{
 					BinaryFormatter formatter = new BinaryFormatter();
-					stats = (INameValue<int>)formatter.Deserialize(stream);
+					stats = (IList<INameValue<int>>)formatter.Deserialize(stream);
 				}
 			}
 			catch (Exception)
