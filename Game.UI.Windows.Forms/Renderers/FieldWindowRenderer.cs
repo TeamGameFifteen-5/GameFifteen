@@ -14,6 +14,14 @@
 	public class FieldWindowsRenderer<TOutputProvider> : DefaultFieldRenderer<TOutputProvider>
 		where TOutputProvider : IOutputProvider
 	{
+		protected override int HorizontalLineLength
+		{
+			get
+			{
+				return 7;
+			}
+		}
+
 		/// <summary>
 		/// Renders the field screen.
 		/// </summary>
