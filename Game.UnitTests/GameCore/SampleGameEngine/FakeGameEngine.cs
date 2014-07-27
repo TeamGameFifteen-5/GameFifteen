@@ -8,7 +8,6 @@
     using Game.UI;
     using Game.UI.Windows.Console.IOProviders;
     using Game.Common.Map.Movement;
-    using Game.UI.IOProviders;
     
     public class FakeGameEngine
     {
