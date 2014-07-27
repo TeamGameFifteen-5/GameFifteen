@@ -2,6 +2,7 @@
 {
     using Game.Common;
 	using Game.Core.Actions.ActionReceiver;
+    using System.Diagnostics.CodeAnalysis;
 
 	public class DefaultGameAction : GameAction
 	{

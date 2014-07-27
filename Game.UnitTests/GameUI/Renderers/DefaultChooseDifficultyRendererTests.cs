@@ -12,7 +12,7 @@
 	{
 		[TestMethod]
 		[ExpectedException(typeof(ArgumentNullException))]
-		public void CreateWithNull1()
+		public void CreateWithNull()
 		{
 			new DefaultChooseDifficultyRenderer<ConsoleIOProvider>().Render(null);
 		}

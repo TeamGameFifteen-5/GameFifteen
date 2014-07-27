@@ -1,11 +1,11 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Diagnostics.CodeAnalysis;
-using Game.UI.Renderers;
-using Game.UI.Windows.Console.IOProviders;
-
-namespace Game.UnitTests.GameUI.Renderers
+﻿namespace Game.UnitTests.GameUI.Renderers
 {
+    using System;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System.Diagnostics.CodeAnalysis;
+    using Game.UI.Renderers;
+    using Game.UI.Windows.Console.IOProviders;
+
     [TestClass]
     [ExcludeFromCodeCoverage]
     public class DefaultInvalidInputRendererTests

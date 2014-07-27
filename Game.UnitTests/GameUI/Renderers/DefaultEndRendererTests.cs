@@ -12,11 +12,16 @@
 	{
 		[TestMethod]
 		[ExpectedException(typeof(ArgumentNullException))]
-		public void CreateWithNull1()
+        public void CreateWithNullOutputProvider()
 		{
 			new DefaultEndRenderer<ConsoleIOProvider>().Render(null, null);
 		}
 
-		//TODO: Add tests
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void CreateWithPlayer()
+        {
+            new DefaultEndRenderer<ConsoleIOProvider>().Render(new ConsoleIOProvider(), null);
+        }
 	}
 }
