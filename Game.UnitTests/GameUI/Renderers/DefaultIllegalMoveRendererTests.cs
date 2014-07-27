@@ -16,5 +16,11 @@
         {
             new DefaultIllegalMoveRenderer<ConsoleIOProvider>().Render(null);
         }
+
+        [TestMethod]
+        public void IllegalMoveRendererCorrectExecution()
+        {
+            new DefaultIllegalMoveRenderer<ConsoleIOProvider>().Render(new ConsoleIOProvider());
+        }
     }
 }

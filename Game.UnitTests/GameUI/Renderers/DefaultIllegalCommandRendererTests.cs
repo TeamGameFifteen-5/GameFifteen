@@ -16,5 +16,11 @@
         {
             new DefaultIllegalCommandRenderer<ConsoleIOProvider>().Render(null);
         }
+
+        [TestMethod]
+        public void IllegalCommandRendererCorrectExecution()
+        {
+            new DefaultIllegalCommandRenderer<ConsoleIOProvider>().Render(new ConsoleIOProvider());
+        }
     }
 }
