@@ -1,7 +1,8 @@
 ﻿namespace Game.UI.Renderers
 {
-	using Game.Common.Map;
-	using Game.UI.IOProviders;
+    using Game.Common.Map;
+    using Game.Common.Utils;
+    using Game.UI.IOProviders;
 
 	public class DefaultFieldRenderer<TOutputProvider> : IRenderer<TOutputProvider, IField>
 		where TOutputProvider : IOutputProvider
@@ -21,6 +22,9 @@
 		{
 			var upperLine = string.Format("{0}{1}{2}", UPPER_LEFT_CORNER, new string(HORIZONTAL_LINE, 13), UPPER_RIGHT_CORNER);
 			var lowerLine = string.Format("{0}{1}{2}", LOWER_LEFT_CORNER, new string(HORIZONTAL_LINE, 13), LOWER_RIGHT_CORNER);
+
+            Validation.ThrowIfNull(outputProvider);
+            Validation.ThrowIfNull(field);
 
 			outputProvider.DisplayLine(upperLine);
 

@@ -51,6 +51,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="GameCommon\Stats\InMemoryScoresTest.cs" />
+    <Compile Include="GameCommon\Stats\InFileScoresTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +60,10 @@
     <Folder Include="GameUI\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Game.Common\Game.Common.csproj">
+      <Project>{f0f3c450-90b5-4c57-a77e-4d4f208d7eab}</Project>
+      <Name>Game.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Game.Core\Game.Core.csproj">
       <Project>{315457b2-f729-4ecc-b4b3-a0c4d0b226cd}</Project>
       <Name>Game.Core</Name>

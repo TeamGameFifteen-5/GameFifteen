@@ -56,7 +56,7 @@
 				case DefaultActionTypes.Left: return Direction.Left;
 				case DefaultActionTypes.Right: return Direction.Right;
 				default:
-					throw new NotImplementedException();
+					throw new ArgumentException("Invalid action type name. The Action type should be Up, Down, Left or Right.", "actionType.Name");
 			}
 		}
 	}
