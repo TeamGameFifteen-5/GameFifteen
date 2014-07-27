@@ -35,5 +35,43 @@
 			var action = ActionType.Get(name);
 			Assert.AreEqual(action.Name, name);
 		}
+
+		[TestMethod]
+		public void CompareEqualsWithString()
+		{
+			var name = "Action";
+			var actionType = ActionType.Get(name);
+			bool areEquals = actionType == name;
+			Assert.IsTrue(areEquals);
+		}
+
+		[TestMethod]
+		public void CompareEqualsWithActionType()
+		{
+			var name = "Action";
+			var actionType = ActionType.Get(name);
+			var actionType2 = ActionType.Get(name);
+			bool areEquals = actionType == actionType2;
+			Assert.IsTrue(areEquals);
+		}
+
+		[TestMethod]
+		public void CompareDifferentWithString()
+		{
+			var name = "Action";
+			var actionType = ActionType.Get(name);
+			bool areEquals = actionType != name;
+			Assert.IsFalse(areEquals);
+		}
+
+		[TestMethod]
+		public void CompareDifferentWithActionType()
+		{
+			var name = "Action";
+			var actionType = ActionType.Get(name);
+			var actionType2 = ActionType.Get(name);
+			bool areEquals = actionType != actionType2;
+			Assert.IsFalse(areEquals);
+		}
 	}
 }
