@@ -19,7 +19,7 @@
 		{
 			if (instance == null)
 			{
-				var exceptionMessage = message ?? string.Format("The value of {0} cannot be null.", instance.GetType().Name);
+				var exceptionMessage = message ?? string.Format("The value of cannot be null.");
 				throw new ArgumentNullException(exceptionMessage);
 			}
 		}
@@ -51,10 +51,14 @@
 		/// <param name="message">  (optional) the message.</param>
 		public static void ThrowIfInvalidEnumValue(object enumValue, string message = null)
 		{
-			if (!Enum.IsDefined(enumValue.GetType(), enumValue))
+			Validation.ThrowIfNull(enumValue);
+
+			var enumType = enumValue.GetType();
+
+			if (!enumType.IsEnumDefined(enumValue))
 			{
-				var exceptionMessage = message ?? string.Format("The value of {0} is not defined.", enumValue.GetType().Name);
-				throw new ArgumentNullException(exceptionMessage);
+				var exceptionMessage = message ?? string.Format("The value of {0} is not defined.", enumType.Name);
+				throw new ArgumentException(exceptionMessage);
 			}
 		}
 

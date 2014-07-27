@@ -60,6 +60,8 @@
 			this.Size = size;
 			this.DefaultRandomizer = defaultRandomizer ?? new DefaultFieldRandomizer(DefaultRandomGenerator.Instance);
 			this.DefaultFiller = defaultFiller ?? new DefaultFieldFiller();
+
+			this.Fill();
 		}
 
 		#region Properties
