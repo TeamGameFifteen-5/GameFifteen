@@ -39,5 +39,16 @@
 		{
 			Assert.AreEqual(new Position(0, 1).Y, 1);
 		}
+
+		[TestMethod]
+		public void DeepCopy()
+		{
+			var position = new Position(0, 1);
+			var clonablePosition = (IClonable<IPosition>)position;
+			var positionDeepCopy = clonablePosition.DeepCopy();
+
+			Assert.AreEqual(position.X, positionDeepCopy.X);
+			Assert.AreEqual(position.Y, positionDeepCopy.Y);
+		}
 	}
 }

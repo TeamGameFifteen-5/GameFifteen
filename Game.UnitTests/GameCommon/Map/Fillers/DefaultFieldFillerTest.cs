@@ -21,7 +21,7 @@ namespace Game.UnitTests.GameCommon.Map.Fillers
 		public void FillRepositioningOfFieldPosition()
 		{
 			var field = new Field();
-			field.RandomizeField(Difficulty.Normal);
+			field.RandomizeField(Difficulty.Hard);
 
 			var originalPosition = field.Position.Clone();
 			var defaultFieldFiller = new DefaultFieldFiller();
