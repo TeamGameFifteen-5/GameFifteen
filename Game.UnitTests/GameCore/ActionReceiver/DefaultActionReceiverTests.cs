@@ -1,17 +1,16 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Game.Core.Actions.ActionReceiver;
-using Game.UnitTests.GameCore.SampleGameEngine;
-using Game.Common;
-using System.IO;
-using Game.Common.Stats;
-using System.Text;
-using Game.Common.Players;
-using Game.Core;
-using Game.Common.Map.Movement;
-
-namespace Game.UnitTests.GameCore.ActionReceiver
+﻿namespace Game.UnitTests.GameCore.ActionReceiver
 {
+    using System;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Game.Core.Actions.ActionReceiver;
+    using Game.UnitTests.GameCore.SampleGameEngine;
+    using Game.Common;
+    using System.IO;
+    using Game.Common.Stats;
+    using System.Text;
+    using Game.Common.Players;
+    using Game.Common.Map.Movement;
+
     [TestClass]
     public class DefaultActionReceiverTests
     {
