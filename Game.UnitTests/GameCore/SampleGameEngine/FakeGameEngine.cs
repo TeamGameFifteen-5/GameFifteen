@@ -7,7 +7,8 @@
     using Game.Core;
     using Game.UI;
     using Game.UI.Windows.Console.IOProviders;
-using Game.Common.Map.Movement;
+    using Game.Common.Map.Movement;
+    using Game.UI.IOProviders;
     
     public class FakeGameEngine
     {
@@ -16,19 +17,20 @@ using Game.Common.Map.Movement;
         private IPlayer _player;
         private IField _field;
         private IMovement _movement;
-
+        private GameEngineSettings<IDefaultUIEngine, IIntegerStats> _gameEngineSettings;
+        private ConsoleIOProvider _ioProvider;
         private FakeGameEngine()
         {
-            var ioProvider = new ConsoleIOProvider();
+            this._ioProvider = new ConsoleIOProvider();
             this._player = new Player();
             this._field = new Field();
             this._movement = new StraightMovement(this._field);
 
-            var gameUISettngs = new DefaultUIEngineSettings<ConsoleIOProvider>(ioProvider, this._player);
+            var gameUISettngs = new DefaultUIEngineSettings<ConsoleIOProvider>(this._ioProvider, this._player);
             var gameUI = new UIEngine<ConsoleIOProvider>(gameUISettngs);
-            var gameEngineSettings = new GameEngineSettings<IDefaultUIEngine, IIntegerStats>(gameUI, this._field, this._player, InFileScores.Instance, this._movement);
-           
-            this._sampleGameEngine = new GameEngine(gameEngineSettings);
+            this._gameEngineSettings = new GameEngineSettings<IDefaultUIEngine, IIntegerStats>(gameUI, this._field, this._player, InFileScores.Instance, this._movement);
+
+            this._sampleGameEngine = new GameEngine(this._gameEngineSettings);
         }
 
         public static IDefaultGameEngine Engine
@@ -60,6 +62,22 @@ using Game.Common.Map.Movement;
             get
             {
                 return fakeGameEngine._movement;
+            }
+        }
+
+        public static GameEngineSettings<IDefaultUIEngine, IIntegerStats> GameEngineSettings
+        {
+            get
+            {
+                return fakeGameEngine._gameEngineSettings;
+            }
+        }
+
+        public static ConsoleIOProvider IOProvider
+        {
+            get
+            {
+                return fakeGameEngine._ioProvider;
             }
         }
     }

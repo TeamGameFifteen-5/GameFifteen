@@ -55,11 +55,19 @@
     <Compile Include="GameCommon\Stats\InFileScoresTest.cs" />
     <Compile Include="GameCore\ActionReceiver\DefaultActionReceiverTests.cs" />
     <Compile Include="GameCore\SampleGameEngine\FakeGameEngine.cs" />
+    <Compile Include="GameUI\Renderers\DefaultChooseDifficultyRendererTests.cs" />
+    <Compile Include="GameUI\Renderers\DefaultEndRendererTests.cs" />
+    <Compile Include="GameUI\Renderers\DefaultExitRendererTests.cs" />
+    <Compile Include="GameUI\Renderers\DefaultFieldRendererTests.cs" />
+    <Compile Include="GameUI\Renderers\DefaultHelpDisplayRendererTests.cs" />
+    <Compile Include="GameUI\Renderers\DefaultIllegalCommandRendererTests.cs" />
+    <Compile Include="GameUI\Renderers\DefaultIllegalMoveRendererTests.cs" />
+    <Compile Include="GameUI\Renderers\DefaultInvalidInputRendererTests.cs" />
+    <Compile Include="GameUI\Renderers\DefaultScoreRendererTests.cs" />
+    <Compile Include="GameUI\Renderers\DefaultStartRendererTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GameUI\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Game.Common\Game.Common.csproj">
       <Project>{f0f3c450-90b5-4c57-a77e-4d4f208d7eab}</Project>
