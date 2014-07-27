@@ -7,32 +7,34 @@
 	using Game.UnitTests.GameCore.SampleGameEngine;
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
 	using System;
+	using System.Diagnostics.CodeAnalysis;
 	using System.IO;
+	using System.Linq;
+	using System.Text;
 
 	[TestClass]
 	public class DefaultActionProviderTest
 	{
 		[TestMethod]
+		[ExcludeFromCodeCoverage]
 		public void CreateAction()
 		{
 			var defaultActionProvider = new DefaultActionProvider();
 			var defaultActionReceiver = new DefaultActionReceiver(FakeGameEngine.Engine);
 			IGameAction gameAction = defaultActionProvider.GetAction(ActionType.Get(DefaultActionTypes.Unmapped), defaultActionReceiver);
 
-			byte[] buffer = new byte[102400];
-			using (var memoryStream = new MemoryStream(buffer))
+			using (var memoryStream = new MemoryStream(1000))
 			using (var streamWriter = new StreamWriter(memoryStream))
 			{
 				Console.SetOut(streamWriter);
 
 				gameAction.Execute();
+				streamWriter.Flush();
 
-				memoryStream.Seek(0, SeekOrigin.Begin);
-				using (var streamReader = new StreamReader(memoryStream))
-				{
-					var result = streamReader.ReadLine();
-					Assert.AreEqual("Illegal command!", result);
-				}
+				var result = Encoding.ASCII.GetString(memoryStream.ToArray())
+					.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
+					.Last();
+				Assert.AreEqual("Illegal command!", result);
 			}
 		}
 	}
