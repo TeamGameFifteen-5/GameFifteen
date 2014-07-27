@@ -53,10 +53,11 @@
   <ItemGroup>
     <Compile Include="GameCommon\Stats\InMemoryScoresTest.cs" />
     <Compile Include="GameCommon\Stats\InFileScoresTest.cs" />
+    <Compile Include="GameCore\ActionReceiver\DefaultActionReceiverTests.cs" />
+    <Compile Include="GameCore\SampleGameEngine\FakeGameEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="GameCore\" />
     <Folder Include="GameUI\" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +68,10 @@
     <ProjectReference Include="..\Game.Core\Game.Core.csproj">
       <Project>{315457b2-f729-4ecc-b4b3-a0c4d0b226cd}</Project>
       <Name>Game.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Game.UI.Windows.Console\Game.UI.Windows.Console.csproj">
+      <Project>{a0ee9cdd-c51e-4f51-8a0d-a9d92cf398c2}</Project>
+      <Name>Game.UI.Windows.Console</Name>
     </ProjectReference>
     <ProjectReference Include="..\Game.UI\Game.UI.csproj">
       <Project>{34c92930-54b7-48f6-8ed6-ea35c0af964e}</Project>
