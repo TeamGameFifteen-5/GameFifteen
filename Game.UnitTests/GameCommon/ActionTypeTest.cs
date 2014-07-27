@@ -37,7 +37,7 @@
 		}
 
 		[TestMethod]
-		public void CompareEqualsWithString()
+		public void CompareEqualsOperatorWithString()
 		{
 			var name = "Action";
 			var actionType = ActionType.Get(name);
@@ -46,7 +46,7 @@
 		}
 
 		[TestMethod]
-		public void CompareEqualsWithActionType()
+		public void CompareEqualsOperatorWithActionType()
 		{
 			var name = "Action";
 			var actionType = ActionType.Get(name);
@@ -56,7 +56,7 @@
 		}
 
 		[TestMethod]
-		public void CompareDifferentWithString()
+		public void CompareDifferenceOperatorWithString()
 		{
 			var name = "Action";
 			var actionType = ActionType.Get(name);
@@ -65,13 +65,78 @@
 		}
 
 		[TestMethod]
-		public void CompareDifferentWithActionType()
+		public void CompareDifferenceOperatorWithActionType()
 		{
 			var name = "Action";
 			var actionType = ActionType.Get(name);
 			var actionType2 = ActionType.Get(name);
 			bool areEquals = actionType != actionType2;
 			Assert.IsFalse(areEquals);
+		}
+
+		[TestMethod]
+		public void CompareEqualsWithNull()
+		{
+			var name = "Action";
+			var actionType = ActionType.Get(name);
+			bool areEquals = actionType.Equals(null);
+			Assert.IsFalse(areEquals);
+		}
+
+		[TestMethod]
+		public void CompareEqualsWithString()
+		{
+			var name = "Action";
+			var actionType = ActionType.Get(name);
+			bool areEquals = actionType.Equals(name);
+			Assert.IsTrue(areEquals);
+		}
+
+		[TestMethod]
+		public void CompareEqualsWithActionType()
+		{
+			var name = "Action";
+			var actionType = ActionType.Get(name);
+			var actionType2 = ActionType.Get(name);
+			bool areEquals = actionType.Equals(actionType2);
+			Assert.IsTrue(areEquals);
+		}
+
+		[TestMethod]
+		public void CompareObjectEqualsWithActionType()
+		{
+			var name = "Action";
+			var actionType = (object)ActionType.Get(name);
+			var actionType2 = ActionType.Get(name);
+			bool areEquals = actionType.Equals(actionType2);
+			Assert.IsTrue(areEquals);
+		}
+
+		[TestMethod]
+		public void CompareDifferenceWithString()
+		{
+			var name = "Action";
+			var actionType = ActionType.Get(name);
+			bool areEquals = !actionType.Equals(name);
+			Assert.IsFalse(areEquals);
+		}
+
+		[TestMethod]
+		public void CompareDifferenceWithActionType()
+		{
+			var name = "Action";
+			var actionType = ActionType.Get(name);
+			var actionType2 = ActionType.Get(name);
+			bool areEquals = !actionType.Equals(actionType2);
+			Assert.IsFalse(areEquals);
+		}
+
+		[TestMethod]
+		public void GetHashCodeActionTypeWithName()
+		{
+			var name = "Action";
+			var actionType = ActionType.Get(name);
+			Assert.AreEqual(name.GetHashCode(), actionType.GetHashCode());
 		}
 	}
 }

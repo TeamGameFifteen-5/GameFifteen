@@ -165,7 +165,7 @@
 		/// </returns>
 		public override int GetHashCode()
 		{
-			return this.Name != null ? this.Name.GetHashCode() : 0;
+			return this.Name.GetHashCode();
 		}
 	}
 }
