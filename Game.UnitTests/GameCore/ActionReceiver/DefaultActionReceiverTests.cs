@@ -21,6 +21,7 @@
         private readonly TextWriter oldOut = Console.Out;
         private StreamReader reader;
         private readonly string filePath = "../../console-output.game15";
+        private const int SIDE = 3;
 
         private void ChangeConsoleOutPut()
         {
@@ -185,21 +186,43 @@
             var startPositionX = FakeGameEngine.Field.Position.X;
             var startPositionY = FakeGameEngine.Field.Position.Y;
 
-            receiver.Execute(ActionType.Get("Right"));
-            Assert.AreEqual(startPositionY, FakeGameEngine.Field.Position.Y);
-            Assert.AreEqual(startPositionX - 1, FakeGameEngine.Field.Position.X);
+            if (startPositionX != 0)
+            {
+                receiver.Execute(ActionType.Get("Right"));
+                Assert.AreEqual(startPositionY, FakeGameEngine.Field.Position.Y);
+                Assert.AreEqual(startPositionX - 1, FakeGameEngine.Field.Position.X);
 
-            receiver.Execute(ActionType.Get("Down"));
-            Assert.AreEqual(startPositionY - 1, FakeGameEngine.Field.Position.Y);
-            Assert.AreEqual(startPositionX - 1, FakeGameEngine.Field.Position.X);
+                FakeGameEngine.Field.Position.X = startPositionX;
+                FakeGameEngine.Field.Position.Y = startPositionY;
+            }
 
-            receiver.Execute(ActionType.Get("Left"));
-            Assert.AreEqual(startPositionY - 1, FakeGameEngine.Field.Position.Y);
-            Assert.AreEqual(startPositionX, FakeGameEngine.Field.Position.X);
 
-            receiver.Execute(ActionType.Get("Up"));
-            Assert.AreEqual(startPositionY, FakeGameEngine.Field.Position.Y);
-            Assert.AreEqual(startPositionX, FakeGameEngine.Field.Position.X);
+            if (startPositionY != 0)
+            {
+                receiver.Execute(ActionType.Get("Down"));
+                Assert.AreEqual(startPositionY - 1, FakeGameEngine.Field.Position.Y);
+                Assert.AreEqual(startPositionX, FakeGameEngine.Field.Position.X);
+
+                FakeGameEngine.Field.Position.X = startPositionX;
+                FakeGameEngine.Field.Position.Y = startPositionY;
+            }
+
+            if (startPositionX != SIDE)
+            {
+                receiver.Execute(ActionType.Get("Left"));
+                Assert.AreEqual(startPositionY, FakeGameEngine.Field.Position.Y);
+                Assert.AreEqual(startPositionX + 1, FakeGameEngine.Field.Position.X);
+
+                FakeGameEngine.Field.Position.X = startPositionX;
+                FakeGameEngine.Field.Position.Y = startPositionY;
+            }
+
+            if (startPositionY != SIDE)
+            {
+                receiver.Execute(ActionType.Get("Up"));
+                Assert.AreEqual(startPositionY + 1, FakeGameEngine.Field.Position.Y);
+                Assert.AreEqual(startPositionX, FakeGameEngine.Field.Position.X);
+            }
         }
 
         [Ignore]
@@ -208,22 +231,42 @@
             var startPositionX = FakeGameEngine.Field.Position.X;
             var startPositionY = FakeGameEngine.Field.Position.Y;
 
-            receiver.Execute(ActionType.Get("Right"));
-            Assert.AreEqual(startPositionY, FakeGameEngine.Field.Position.Y);
-            Assert.AreEqual(startPositionX + 1, FakeGameEngine.Field.Position.X);
+            if (startPositionX != SIDE)
+            {
+                receiver.Execute(ActionType.Get("Right"));
+                Assert.AreEqual(startPositionY, FakeGameEngine.Field.Position.Y);
+                Assert.AreEqual(startPositionX + 1, FakeGameEngine.Field.Position.X);
 
-            receiver.Execute(ActionType.Get("Down"));
-            Assert.AreEqual(startPositionY + 1, FakeGameEngine.Field.Position.Y);
-            Assert.AreEqual(startPositionX + 1, FakeGameEngine.Field.Position.X);
+                FakeGameEngine.Field.Position.X = startPositionX;
+                FakeGameEngine.Field.Position.Y = startPositionY;
+            }
 
-            receiver.Execute(ActionType.Get("Left"));
-            Assert.AreEqual(startPositionY + 1, FakeGameEngine.Field.Position.Y);
-            Assert.AreEqual(startPositionX, FakeGameEngine.Field.Position.X);
+            if (startPositionY != SIDE)
+            {
+                receiver.Execute(ActionType.Get("Down"));
+                Assert.AreEqual(startPositionY + 1, FakeGameEngine.Field.Position.Y);
+                Assert.AreEqual(startPositionX, FakeGameEngine.Field.Position.X);
 
-            receiver.Execute(ActionType.Get("Up"));
-            Assert.AreEqual(startPositionY, FakeGameEngine.Field.Position.Y);
-            Assert.AreEqual(startPositionX, FakeGameEngine.Field.Position.X);
+                FakeGameEngine.Field.Position.X = startPositionX;
+                FakeGameEngine.Field.Position.Y = startPositionY;
+            }
 
+            if (startPositionX != 0)
+            {
+                receiver.Execute(ActionType.Get("Left"));
+                Assert.AreEqual(startPositionY, FakeGameEngine.Field.Position.Y);
+                Assert.AreEqual(startPositionX - 1, FakeGameEngine.Field.Position.X);
+
+                FakeGameEngine.Field.Position.X = startPositionX;
+                FakeGameEngine.Field.Position.Y = startPositionY;
+            }
+
+            if (startPositionY != 0)
+            {
+                receiver.Execute(ActionType.Get("Up"));
+                Assert.AreEqual(startPositionY - 1, FakeGameEngine.Field.Position.Y);
+                Assert.AreEqual(startPositionX, FakeGameEngine.Field.Position.X);
+            }
         }
     }
 }
