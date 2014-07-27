@@ -1,4 +1,5 @@
-﻿using Game.Common.Map;
+﻿using Game.Common;
+using Game.Common.Map;
 using Game.Common.Map.Fillers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -20,9 +21,12 @@ namespace Game.UnitTests.GameCommon.Map.Fillers
 		public void FillRepositioningOfFieldPosition()
 		{
 			var field = new Field();
+			field.RandomizeField(Difficulty.Normal);
+
 			var originalPosition = field.Position.Clone();
 			var defaultFieldFiller = new DefaultFieldFiller();
 			defaultFieldFiller.Fill(field);
+
 			Assert.AreNotEqual(originalPosition.X, field.Position.X);
 			Assert.AreNotEqual(originalPosition.Y, field.Position.Y);
 		}
