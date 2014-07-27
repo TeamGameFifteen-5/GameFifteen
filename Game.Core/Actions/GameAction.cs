@@ -27,7 +27,7 @@
 
 		protected virtual ActionType GetUndoActionType(ActionType actionType)
 		{
-			return new ActionType("Unmapped");
+			return ActionType.Get("Unmapped");
 		}
 	}
 }

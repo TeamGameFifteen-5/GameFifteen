@@ -18,7 +18,7 @@
 
 		#endregion Constants
 
-		public void Render(TOutputProvider outputProvider, IField field)
+		public virtual void Render(TOutputProvider outputProvider, IField field)
 		{
 			var upperLine = string.Format("{0}{1}{2}", UPPER_LEFT_CORNER, new string(HORIZONTAL_LINE, 13), UPPER_RIGHT_CORNER);
 			var lowerLine = string.Format("{0}{1}{2}", LOWER_LEFT_CORNER, new string(HORIZONTAL_LINE, 13), LOWER_RIGHT_CORNER);

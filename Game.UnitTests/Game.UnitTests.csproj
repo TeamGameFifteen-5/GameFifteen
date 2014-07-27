@@ -51,6 +51,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="GameCommon\ActionTypeTest.cs" />
     <Compile Include="GameCommon\Stats\InMemoryScoresTest.cs" />
     <Compile Include="GameCommon\Stats\InFileScoresTest.cs" />
     <Compile Include="GameCore\ActionReceiver\DefaultActionReceiverTests.cs" />

@@ -30,13 +30,13 @@
 		/// <exception cref="ArgumentException">
 		/// Thrown when argument has unsupported or illegal values.
 		/// </exception>
-		/// <param name="instance">The instance.</param>
+		/// <param name="value">The value.</param>
 		/// <param name="message"> (optional) the message.</param>
-		public static void ThrowIfNullOrWhiteSpace(string instance, string message = null)
+		public static void ThrowIfNullOrWhiteSpace(string value, string message = null)
 		{
-			if (string.IsNullOrWhiteSpace(instance))
+			if (string.IsNullOrWhiteSpace(value))
 			{
-				var exceptionMessage = message ?? "The value cannot be null or whitespace.";
+				var exceptionMessage = message ?? string.Format("The value({0}) cannot be null or whitespace.", value);
 				throw new ArgumentException(exceptionMessage);
 			}
 		}

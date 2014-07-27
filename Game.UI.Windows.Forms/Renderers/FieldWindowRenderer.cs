@@ -17,7 +17,7 @@
 		/// </summary>
 		/// <param name="outputProvider">The output provider.</param>
 		/// <param name="field">		 The field.</param>
-		public void Render(TOutputProvider outputProvider, IField field)
+		public override void Render(TOutputProvider outputProvider, IField field)
 		{
 			Validation.ThrowIfNull(outputProvider);
 			Validation.ThrowIfNull(field);

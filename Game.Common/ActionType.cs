@@ -1,5 +1,6 @@
 ﻿namespace Game.Common
 {
+	using Game.Common.Utils;
 	using System.Collections.Concurrent;
 
 	/// <summary>
@@ -23,7 +24,7 @@
 		/// Initializes a new instance of the ActionType class.
 		/// </summary>
 		/// <param name="name">The name.</param>
-		public ActionType(string name)
+		private ActionType(string name)
 			: this()
 		{
 			this.Name = name;
@@ -43,6 +44,7 @@
 			}
 			private set
 			{
+				Validation.ThrowIfNullOrWhiteSpace(value);
 				this._name = value;
 			}
 		}
@@ -56,6 +58,7 @@
 		/// </returns>
 		public static ActionType Get(string name)
 		{
+			Validation.ThrowIfNullOrWhiteSpace(name);
 			return _ActionTypesCache.GetOrAdd(name, actionTypeName => new ActionType(actionTypeName));
 		}
 

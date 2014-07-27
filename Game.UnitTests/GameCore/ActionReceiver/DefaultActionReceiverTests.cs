@@ -52,7 +52,7 @@ namespace Game.UnitTests.GameCore.ActionReceiver
         {
             ChangeConsoleOutPut();
 
-            var actionType = new ActionType("Unmapped");
+            var actionType = ActionType.Get("Unmapped");
             receiver.Execute(actionType);
 
             ReverseConsoleOutPut();
@@ -70,7 +70,7 @@ namespace Game.UnitTests.GameCore.ActionReceiver
         {
             ChangeConsoleOutPut();
 
-            var actionType = new ActionType("Exit");
+            var actionType = ActionType.Get("Exit");
             receiver.Execute(actionType);
 
             ReverseConsoleOutPut();
@@ -88,7 +88,7 @@ namespace Game.UnitTests.GameCore.ActionReceiver
         {
             ChangeConsoleOutPut();
 
-            var actionType = new ActionType("IlligalCommand");
+            var actionType = ActionType.Get("IlligalCommand");
             receiver.Execute(actionType);
 
             ReverseConsoleOutPut();
@@ -106,7 +106,7 @@ namespace Game.UnitTests.GameCore.ActionReceiver
         {
             ChangeConsoleOutPut();
 
-            var actionType = new ActionType("Scores");
+            var actionType = ActionType.Get("Scores");
             receiver.Execute(actionType);
 
             ReverseConsoleOutPut();
@@ -141,7 +141,7 @@ namespace Game.UnitTests.GameCore.ActionReceiver
             FakeGameEngine.Engine.StartGame();
 
             var playerScoreBeforeAction = player.Score;
-            var actionType = new ActionType("Down");
+            var actionType = ActionType.Get("Down");
             receiver.Execute(actionType);
 
             var playerScoreAfterAction = player.Score;
@@ -174,19 +174,19 @@ namespace Game.UnitTests.GameCore.ActionReceiver
             var startPositionX = FakeGameEngine.Field.Position.X;
             var startPositionY = FakeGameEngine.Field.Position.Y;
 
-            receiver.Execute(new ActionType("Right"));
+            receiver.Execute(ActionType.Get("Right"));
             Assert.AreEqual(startPositionY, FakeGameEngine.Field.Position.Y);
             Assert.AreEqual(startPositionX - 1, FakeGameEngine.Field.Position.X);
 
-            receiver.Execute(new ActionType("Down"));
+            receiver.Execute(ActionType.Get("Down"));
             Assert.AreEqual(startPositionY - 1, FakeGameEngine.Field.Position.Y);
             Assert.AreEqual(startPositionX - 1, FakeGameEngine.Field.Position.X);
 
-            receiver.Execute(new ActionType("Left"));
+            receiver.Execute(ActionType.Get("Left"));
             Assert.AreEqual(startPositionY - 1, FakeGameEngine.Field.Position.Y);
             Assert.AreEqual(startPositionX, FakeGameEngine.Field.Position.X);
 
-            receiver.Execute(new ActionType("Up"));
+            receiver.Execute(ActionType.Get("Up"));
             Assert.AreEqual(startPositionY, FakeGameEngine.Field.Position.Y);
             Assert.AreEqual(startPositionX, FakeGameEngine.Field.Position.X);
         }
@@ -197,19 +197,19 @@ namespace Game.UnitTests.GameCore.ActionReceiver
             var startPositionX = FakeGameEngine.Field.Position.X;
             var startPositionY = FakeGameEngine.Field.Position.Y;
 
-            receiver.Execute(new ActionType("Right"));
+            receiver.Execute(ActionType.Get("Right"));
             Assert.AreEqual(startPositionY, FakeGameEngine.Field.Position.Y);
             Assert.AreEqual(startPositionX + 1, FakeGameEngine.Field.Position.X);
 
-            receiver.Execute(new ActionType("Down"));
+			receiver.Execute(ActionType.Get("Down"));
             Assert.AreEqual(startPositionY + 1, FakeGameEngine.Field.Position.Y);
             Assert.AreEqual(startPositionX + 1, FakeGameEngine.Field.Position.X);
 
-            receiver.Execute(new ActionType("Left"));
+			receiver.Execute(ActionType.Get("Left"));
             Assert.AreEqual(startPositionY + 1, FakeGameEngine.Field.Position.Y);
             Assert.AreEqual(startPositionX, FakeGameEngine.Field.Position.X);
 
-            receiver.Execute(new ActionType("Up"));
+			receiver.Execute(ActionType.Get("Up"));
             Assert.AreEqual(startPositionY, FakeGameEngine.Field.Position.Y);
             Assert.AreEqual(startPositionX, FakeGameEngine.Field.Position.X);
 
