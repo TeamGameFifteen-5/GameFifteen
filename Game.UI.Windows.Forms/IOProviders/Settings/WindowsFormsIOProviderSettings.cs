@@ -1,12 +1,23 @@
 ﻿namespace Game.UI.Windows.Forms.IOProviders.Settings
 {
-    using System.Drawing;
-    using Game.UI.IOProviders.Settings;
+	using Game.Common.Utils;
+	using Game.UI.IOProviders.Settings;
+	using System.Drawing;
 
+	/// <summary>
+	/// Windows forms i/o provider settings.
+	/// </summary>
+	/// <seealso cref="Game.UI.IOProviders.Settings.IIOProviderSettings"/>
 	public class WindowsFormsIOProviderSettings : IIOProviderSettings
 	{
+		/// <summary>
+		/// Applies the implemented settings to the given ioProvider.
+		/// </summary>
+		/// <param name="ioProvider">The i/o provider.</param>
 		public void Apply(UI.IOProviders.IIOProvider ioProvider)
 		{
+			Validation.ThrowIfNull(ioProvider);
+
 			ioProvider.ChangeColor(Color.Black);
 		}
 	}

@@ -4,8 +4,19 @@
     using Game.Common;
     using Game.UI.KeyMappings;
 
+	/// <summary>
+	/// Windows forms key mapping.
+	/// </summary>
+	/// <seealso cref="T:Game.UI.KeyMappings.IKeyMapping{System.Windows.Forms.Keys}"/>
 	public class WindowsFormsKeyMapping : IKeyMapping<Keys>
 	{
+		/// <summary>
+		/// Maps the given windows forms keys.
+		/// </summary>
+		/// <param name="windowsFormsKeys">The windows forms keys.</param>
+		/// <returns>
+		/// The mapped action type
+		/// </returns>
 		public Common.ActionType Map(Keys windowsFormsKeys)
 		{
 			ActionType key;

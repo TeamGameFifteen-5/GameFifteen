@@ -1,12 +1,13 @@
 ﻿namespace Game.UI.KeyMappings
 {
-    using Game.Common;
+	using Game.Common;
 
 	/// <summary>
 	/// Interface for key mapping.
 	/// </summary>
 	/// <typeparam name="TKey">Type of the key.</typeparam>
 	public interface IKeyMapping<TKey>
+		where TKey : struct
 	{
 		/// <summary>
 		/// Maps the given key.

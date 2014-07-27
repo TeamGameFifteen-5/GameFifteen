@@ -1,6 +1,7 @@
 ﻿namespace Game.UI.Windows.Forms.IOProviders
 {
 	using Game.Common;
+	using Game.Common.Utils;
 	using Game.UI.IOProviders;
 	using Game.UI.KeyMappings;
 	using Game.UI.Windows.Forms.KeyMappings;
@@ -29,6 +30,8 @@
 
 		public WindowsFormsIOProvider(IGameForm gameForm)
 		{
+			Validation.ThrowIfNull(gameForm);
+
 			this._gameForm = gameForm;
 			this._graphics = this._gameForm.CreateGraphics();
 
@@ -113,6 +116,8 @@
 
 		public override void Display(string format, params string[] args)
 		{
+			this.ValidateFormatAndArgs(format, args);
+
 			var output = string.Format(format, args);
 			this.DrawString(output);
 			this._x += this._characterWidth;
@@ -135,6 +140,8 @@
 
 		public override void DisplayLine(string format, params string[] args)
 		{
+			this.ValidateFormatAndArgs(format, args);
+
 			var output = string.Format(format, args);
 			this.DrawString(output);
 			var sizeF = this.MeasureText(output);
@@ -163,6 +170,8 @@
 
 		public void DrawImage(Image image)
 		{
+			Validation.ThrowIfNull(image);
+
 			this.RunOnUIThread(() =>
 			{
 				this._graphics.DrawImage(image, new PointF(_x, _y));

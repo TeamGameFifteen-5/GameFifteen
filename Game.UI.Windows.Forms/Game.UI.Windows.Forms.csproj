@@ -55,7 +55,7 @@
     <Compile Include="KeyMappings\WindowsFormsKeyMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\ChooseDifficultyWindowRenderer.cs" />
-    <Compile Include="Renderers\FieldWindowsRenderer.cs" />
+    <Compile Include="Renderers\FieldWindowRenderer.cs" />
     <Compile Include="Renderers\HelpDisplayWindowRenderer.cs" />
     <Compile Include="Renderers\ExitWindowRenderer.cs" />
     <Compile Include="Renderers\StartWindowRenderer.cs" />

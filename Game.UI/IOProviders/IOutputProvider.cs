@@ -1,8 +1,10 @@
 ﻿namespace Game.UI.IOProviders
 {
-	using Game.UI.IOProviders.Settings;
 	using System.Drawing;
 
+	/// <summary>
+	/// Interface for output provider.
+	/// </summary>
 	public interface IOutputProvider
 	{
 		/// <summary>
@@ -12,20 +14,20 @@
 		void Display(string output = null);
 
 		/// <summary>
-		/// Displays the given output.
+		/// Displays the given arguments formated.
 		/// </summary>
 		/// <param name="format">Describes the format to use.</param>
 		/// <param name="args">  A variable-length parameters list containing arguments.</param>
 		void Display(string format, params string[] args);
 
 		/// <summary>
-		/// Displays a line described by output.
+		/// Displays the given output and puts a new line at the end.
 		/// </summary>
 		/// <param name="output">(optional) the output.</param>
 		void DisplayLine(string output = null);
 
 		/// <summary>
-		/// Displays a line described by output.
+		/// Displays the given arguments formated and puts a new line at the end.
 		/// </summary>
 		/// <param name="format">Describes the format to use.</param>
 		/// <param name="args">  A variable-length parameters list containing arguments.</param>
