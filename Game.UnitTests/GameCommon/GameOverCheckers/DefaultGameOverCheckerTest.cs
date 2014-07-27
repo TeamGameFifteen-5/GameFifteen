@@ -4,8 +4,10 @@
 	using Game.Common.GameOverCheckers;
 	using Game.Common.Map;
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
+	using System.Diagnostics.CodeAnalysis;
 
 	[TestClass]
+	[ExcludeFromCodeCoverage]
 	public class DefaultGameOverCheckerTest
 	{
 		[TestMethod]

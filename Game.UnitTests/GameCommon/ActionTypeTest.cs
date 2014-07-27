@@ -3,8 +3,10 @@
 	using Game.Common;
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
 	using System;
+	using System.Diagnostics.CodeAnalysis;
 
 	[TestClass]
+	[ExcludeFromCodeCoverage]
 	public class ActionTypeTest
 	{
 		[TestMethod]

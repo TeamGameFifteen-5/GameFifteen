@@ -52,6 +52,17 @@
 		}
 
 		/// <summary>
+		/// Loads the collection.
+		/// </summary>
+		/// <returns>
+		/// The loaded from file scores.
+		/// </returns>
+		public override IEnumerable<INameValue<int>> LoadTyped()
+		{
+			return this.LoadFromFile();
+		}
+
+		/// <summary>
 		/// Saves the given score.
 		/// </summary>
 		/// <param name="score">The score to save.</param>

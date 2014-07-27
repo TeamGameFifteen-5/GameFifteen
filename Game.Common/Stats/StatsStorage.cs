@@ -65,7 +65,7 @@
 		/// </returns>
 		IEnumerable<INameValue> IStatsStorage.Load()
 		{
-			return (IEnumerable<INameValue>)this.Stats;
+			return (IEnumerable<INameValue>)this.LoadTyped();
 		}
 
 		/// <summary>

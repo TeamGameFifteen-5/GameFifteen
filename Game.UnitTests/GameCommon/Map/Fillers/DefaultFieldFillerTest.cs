@@ -1,12 +1,14 @@
-﻿using Game.Common;
-using Game.Common.Map;
-using Game.Common.Map.Fillers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-
-namespace Game.UnitTests.GameCommon.Map.Fillers
+﻿namespace Game.UnitTests.GameCommon.Map.Fillers
 {
+	using Game.Common;
+	using Game.Common.Map;
+	using Game.Common.Map.Fillers;
+	using Microsoft.VisualStudio.TestTools.UnitTesting;
+	using System;
+	using System.Diagnostics.CodeAnalysis;
+
 	[TestClass]
+	[ExcludeFromCodeCoverage]
 	public class DefaultFieldFillerTest
 	{
 		[TestMethod]
@@ -23,6 +25,7 @@ namespace Game.UnitTests.GameCommon.Map.Fillers
 			var field = new Field();
 			field.RandomizeField(Difficulty.Hard);
 
+			field.Position = new Position(0, 0);
 			var originalPosition = field.Position.Clone();
 			var defaultFieldFiller = new DefaultFieldFiller();
 			defaultFieldFiller.Fill(field);

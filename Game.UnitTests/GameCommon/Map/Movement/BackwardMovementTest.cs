@@ -4,8 +4,10 @@
 	using Game.Common.Map;
 	using Game.Common.Map.Movement;
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
+	using System.Diagnostics.CodeAnalysis;
 
 	[TestClass]
+	[ExcludeFromCodeCoverage]
 	public class BackwardMovementTest
 	{
 		private IField _field;

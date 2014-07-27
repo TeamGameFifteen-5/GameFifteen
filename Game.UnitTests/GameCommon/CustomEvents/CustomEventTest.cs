@@ -3,8 +3,10 @@
 	using Game.Common.CustomEvents;
 	using Game.Common.Map;
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
+	using System.Diagnostics.CodeAnalysis;
 
 	[TestClass]
+	[ExcludeFromCodeCoverage]
 	public class CustomEventTest
 	{
 		[TestMethod]

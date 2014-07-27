@@ -1,11 +1,11 @@
 ﻿namespace Game.UI.Windows.Console.IOProviders
 {
 	using Game.Common;
-	using Game.Common.Utils;
 	using Game.UI.IOProviders;
 	using Game.UI.KeyMappings;
 	using Game.UI.Windows.Console.KeyMappings;
 	using System;
+	using System.Diagnostics.CodeAnalysis;
 	using Console = System.Console;
 
 	/// <summary>
@@ -55,6 +55,7 @@
 		/// <returns>
 		/// The key input.
 		/// </returns>
+		[ExcludeFromCodeCoverage]
 		public override ActionType GetKeyInput(bool displayKey = false)
 		{
 			var consoleKeyInfo = Console.ReadKey(!displayKey);

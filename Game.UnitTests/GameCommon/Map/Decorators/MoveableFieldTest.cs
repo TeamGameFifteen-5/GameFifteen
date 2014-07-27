@@ -5,8 +5,10 @@
 	using Game.Common.Map.Decorators;
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
 	using System;
+	using System.Diagnostics.CodeAnalysis;
 
 	[TestClass]
+	[ExcludeFromCodeCoverage]
 	public class MoveableFieldTest
 	{
 		[TestMethod]
