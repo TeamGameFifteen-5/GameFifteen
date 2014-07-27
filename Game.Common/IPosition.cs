@@ -3,7 +3,7 @@
 	/// <summary>
 	/// Interface for position.
 	/// </summary>
-	public interface IPosition
+	public interface IPosition : IClonable<IPosition>
 	{
 		/// <summary>
 		/// Gets the x coordinate.

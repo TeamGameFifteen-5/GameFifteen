@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionType.cs" />
+    <Compile Include="Clonable.cs" />
     <Compile Include="CustomEvents\CustomEvent.cs" />
     <Compile Include="CustomEvents\FieldInvalidateEvent.cs" />
     <Compile Include="CustomEvents\ICustomEvent.cs" />
@@ -48,6 +49,7 @@
     <Compile Include="DefaultActionTypes.cs" />
     <Compile Include="Difficulty.cs" />
     <Compile Include="Direction.cs" />
+    <Compile Include="IClonable.cs" />
     <Compile Include="IMoveable.cs" />
     <Compile Include="INameValue_1.cs" />
     <Compile Include="INameValue.cs" />

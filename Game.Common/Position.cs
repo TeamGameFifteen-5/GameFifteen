@@ -1,12 +1,15 @@
 ﻿namespace Game.Common
 {
 	using Game.Common.Utils;
+	using System;
 
 	/// <summary>
-	/// Position.
+	/// Represents a position.
+	/// Implements Prototype Design Pattern.
 	/// </summary>
 	/// <seealso cref="Game.Common.IPosition"/>
-	public class Position : IPosition
+	[Serializable]
+	public class Position : Clonable<Position>, IPosition
 	{
 		#region Constants
 
@@ -83,6 +86,16 @@
 				Validation.ThrowIfOutOfRange(value, VALIDATION_LOWER_BOUNDARY, VALIDATION_UPPER_BOUNDARY);
 				this._y = value;
 			}
+		}
+
+		IPosition IClonable<IPosition>.Clone()
+		{
+			return this.Clone();
+		}
+
+		IPosition IClonable<IPosition>.DeepCopy()
+		{
+			return this.DeepCopy();
 		}
 	}
 }

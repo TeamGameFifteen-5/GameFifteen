@@ -58,6 +58,7 @@
     <Compile Include="GameCommon\GameOverCheckers\DefaultGameOverCheckerTest.cs" />
     <Compile Include="GameCommon\Map\Decorators\MoveableFieldTest.cs" />
     <Compile Include="GameCommon\Map\FieldTest.cs" />
+    <Compile Include="GameCommon\Map\Fillers\DefaultFieldFillerTest.cs" />
     <Compile Include="GameCommon\PositionTest.cs" />
     <Compile Include="GameCommon\Stats\InMemoryScoresTest.cs" />
     <Compile Include="GameCommon\Stats\InFileScoresTest.cs" />
@@ -66,7 +67,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="GameCommon\Map\Fillers\" />
     <Folder Include="GameUI\Renderers\" />
   </ItemGroup>
   <ItemGroup>
