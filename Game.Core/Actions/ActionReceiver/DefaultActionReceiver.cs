@@ -1,7 +1,6 @@
 ﻿namespace Game.Core.Actions.ActionReceiver
 {
 	using Game.Common;
-	using System;
 
 	public class DefaultActionReceiver : IActionReceiver
 	{
@@ -57,15 +56,28 @@
 
 		private Direction GetMoveDirection(ActionType actionType)
 		{
+			Direction direction = 0;
+
 			switch (actionType.Name)
 			{
-				case DefaultActionTypes.Up: return Direction.Up;
-				case DefaultActionTypes.Down: return Direction.Down;
-				case DefaultActionTypes.Left: return Direction.Left;
-				case DefaultActionTypes.Right: return Direction.Right;
-				default:
-					throw new ArgumentException("Invalid action type name. The Action type should be Up, Down, Left or Right.", "actionType.Name");
+				case DefaultActionTypes.Up:
+					direction = Direction.Up;
+					break;
+
+				case DefaultActionTypes.Down:
+					direction = Direction.Down;
+					break;
+
+				case DefaultActionTypes.Left:
+					direction = Direction.Left;
+					break;
+
+				case DefaultActionTypes.Right:
+					direction = Direction.Right;
+					break;
 			}
+
+			return direction;
 		}
 	}
 }

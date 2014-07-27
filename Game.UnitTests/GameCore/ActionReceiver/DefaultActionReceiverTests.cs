@@ -22,7 +22,6 @@
 		private FileStream ostrm;
 		private StreamWriter writer;
 		private readonly TextWriter oldOut = Console.Out;
-		private StreamReader reader;
 		private readonly string filePath = "../../console-output.game15";
 		private const int SIDE = 3;
 
@@ -164,6 +163,17 @@
 			else
 			{
 				IsValidStraightMovementTest();
+			}
+
+			receiver.Execute(ActionType.Get(DefaultActionTypes.Reset));
+			receiver.Execute(ActionType.Get(DefaultActionTypes.Up));
+			receiver.Execute(ActionType.Get(DefaultActionTypes.Down));
+			receiver.Execute(ActionType.Get(DefaultActionTypes.Left));
+			receiver.Execute(ActionType.Get(DefaultActionTypes.Right));
+
+			for (int i = -1; i < SIDE; i++)
+			{
+				receiver.Execute(ActionType.Get(DefaultActionTypes.Up));
 			}
 		}
 
