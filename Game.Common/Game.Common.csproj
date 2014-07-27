@@ -51,6 +51,7 @@
     <Compile Include="IMoveable.cs" />
     <Compile Include="INameValue_1.cs" />
     <Compile Include="INameValue.cs" />
+    <Compile Include="IPosition.cs" />
     <Compile Include="Map\Decorators\MoveableField.cs" />
     <Compile Include="Map\Movement\BackwardMovement.cs" />
     <Compile Include="Map\Movement\IMovement.cs" />

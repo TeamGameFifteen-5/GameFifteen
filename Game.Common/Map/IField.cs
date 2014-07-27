@@ -32,7 +32,7 @@
 		/// <value>
 		/// The position.
 		/// </value>
-		Position Position { get; set; }
+		IPosition Position { get; set; }
 
 		/// <summary>
 		/// Indexer to get or set items within this collection using array index syntax.

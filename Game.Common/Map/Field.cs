@@ -31,7 +31,7 @@
 
 		public int Size { get; private set; }
 
-		public Position Position { get; set; }
+		public IPosition Position { get; set; }
 
 		protected IFieldRandomizer DefaultRandomizer { get; set; }
 
