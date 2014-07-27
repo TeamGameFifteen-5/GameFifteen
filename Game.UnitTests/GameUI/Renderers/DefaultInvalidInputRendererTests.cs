@@ -16,5 +16,11 @@
         {
             new DefaultInvalidInputRenderer<ConsoleIOProvider>().Render(null);
         }
+
+        [TestMethod]
+        public void InvalidInputRendererCorrectExecution()
+        {
+            new DefaultInvalidInputRenderer<ConsoleIOProvider>().Render(new ConsoleIOProvider());
+        }
     }
 }

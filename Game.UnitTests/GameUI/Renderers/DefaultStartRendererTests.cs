@@ -16,5 +16,11 @@
         {
             new DefaultStartRenderer<ConsoleIOProvider>().Render(null);
         }
+
+        [TestMethod]
+        public void StartRendererCorrectExecution()
+        {
+            new DefaultStartRenderer<ConsoleIOProvider>().Render(new ConsoleIOProvider());
+        }
     }
 }

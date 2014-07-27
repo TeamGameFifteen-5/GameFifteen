@@ -16,5 +16,11 @@
         {
             new DefaultExitRenderer<ConsoleIOProvider>().Render(null);
         }
+
+        [TestMethod]
+        public void ExitRendererCorrectExecution()
+        {
+            new DefaultExitRenderer<ConsoleIOProvider>().Render(new ConsoleIOProvider());
+        }
     }
 }

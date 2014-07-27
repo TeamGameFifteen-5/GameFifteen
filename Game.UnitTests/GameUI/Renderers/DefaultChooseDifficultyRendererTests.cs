@@ -16,5 +16,11 @@
 		{
 			new DefaultChooseDifficultyRenderer<ConsoleIOProvider>().Render(null);
 		}
+
+        [TestMethod]
+        public void ChooseDificultyCorrectExecution()
+        {
+            new DefaultChooseDifficultyRenderer<ConsoleIOProvider>().Render(new ConsoleIOProvider());
+        }
 	}
 }

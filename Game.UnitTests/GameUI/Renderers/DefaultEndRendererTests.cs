@@ -1,10 +1,11 @@
 ﻿namespace Game.UnitTests.GameUI.Renderers
 {
-	using Game.UI.Renderers;
-	using Game.UI.Windows.Console.IOProviders;
-	using Microsoft.VisualStudio.TestTools.UnitTesting;
-	using System;
-	using System.Diagnostics.CodeAnalysis;
+    using Game.Common.Players;
+    using Game.UI.Renderers;
+    using Game.UI.Windows.Console.IOProviders;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
+    using System.Diagnostics.CodeAnalysis;
 
 	[TestClass]
 	[ExcludeFromCodeCoverage]
@@ -22,6 +23,12 @@
         public void CreateWithPlayer()
         {
             new DefaultEndRenderer<ConsoleIOProvider>().Render(new ConsoleIOProvider(), null);
+        }
+
+        [TestMethod]
+        public void IllegalMoveRendererCorrectExecution()
+        {
+            new DefaultEndRenderer<ConsoleIOProvider>().Render(new ConsoleIOProvider(), new Player());
         }
 	}
 }

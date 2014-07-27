@@ -5,6 +5,7 @@
     using Game.UI.Renderers;
     using Game.UI.Windows.Console.IOProviders;
     using System.Diagnostics.CodeAnalysis;
+    using Game.Common.Map;
 
     [TestClass]
     [ExcludeFromCodeCoverage]
@@ -22,6 +23,12 @@
         public void CreateWithField()
         {
             new DefaultFieldRenderer<ConsoleIOProvider>().Render(new ConsoleIOProvider(), null);
+        }
+
+        [TestMethod]
+        public void FieldRendererCorrectExecution()
+        {
+            new DefaultFieldRenderer<ConsoleIOProvider>().Render(new ConsoleIOProvider(), new Field());
         }
     }
 }

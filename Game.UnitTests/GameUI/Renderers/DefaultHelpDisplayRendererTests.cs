@@ -16,5 +16,11 @@
         {
             new DefaultHelpDisplayRenderer<ConsoleIOProvider>().Render(null);
         }
+
+        [TestMethod]
+        public void HelpDisplayRendererCorrectExecution()
+        {
+            new DefaultHelpDisplayRenderer<ConsoleIOProvider>().Render(new ConsoleIOProvider());
+        }
     }
 }
