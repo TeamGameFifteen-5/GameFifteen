@@ -35,7 +35,7 @@
 			: base(MAX_TOP_PLAYERS)
 		{
 			this.Stats = this.LoadFromFile();
-			if (this.Stats == null)
+			if (this.Stats.Count == 0)
 			{
 				this.Stats = new List<INameValue<int>>(MAX_TOP_PLAYERS);
 			}
@@ -105,13 +105,16 @@
 		private IList<INameValue<int>> LoadFromFile()
 		{
 			Stream stream = null;
-			IList<INameValue<int>> stats;
+			IList<INameValue<int>> stats = new List<INameValue<int>>();
 
-			using (stream = File.Open(FILE_PATH, FileMode.OpenOrCreate))
-			{
-				BinaryFormatter formatter = new BinaryFormatter();
-				stats = (IList<INameValue<int>>)formatter.Deserialize(stream);
-			}
+            if (File.Exists(FILE_PATH))
+            {
+                using (stream = File.Open(FILE_PATH, FileMode.Open))
+                {
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    stats = (IList<INameValue<int>>)formatter.Deserialize(stream);
+                }
+            }
 
 			return stats;
 		}
