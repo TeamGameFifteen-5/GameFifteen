@@ -130,13 +130,7 @@
                 expectedResult.AppendFormat("{0}: {1}{2}", playerScore.Name, playerScore.Value, Environment.NewLine);
             }
 
-            //if (expectedResult.ToString() == UP_DOWN_TABLE_FRAME + Environment.NewLine)
-            //{
-            //    expectedResult.AppendLine("");
-            //}
-
             expectedResult.AppendLine(UP_DOWN_TABLE_FRAME);
-
 
             using (reader = new StreamReader(filePath))
             {
