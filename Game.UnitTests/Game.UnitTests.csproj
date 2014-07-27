@@ -73,6 +73,14 @@
     <Compile Include="GameUI\IOProviders\ConsoleIOProviderTest.cs" />
     <Compile Include="GameUI\Renderers\DefaultChooseDifficultyRendererTests.cs" />
     <Compile Include="GameUI\Renderers\DefaultEndRendererTests.cs" />
+    <Compile Include="GameUI\Renderers\DefaultExitRendererTests.cs" />
+    <Compile Include="GameUI\Renderers\DefaultFieldRendererTests.cs" />
+    <Compile Include="GameUI\Renderers\DefaultHelpDisplayRendererTests.cs" />
+    <Compile Include="GameUI\Renderers\DefaultIllegalCommandRendererTests.cs" />
+    <Compile Include="GameUI\Renderers\DefaultIllegalMoveRendererTests.cs" />
+    <Compile Include="GameUI\Renderers\DefaultInvalidInputRendererTests.cs" />
+    <Compile Include="GameUI\Renderers\DefaultScoreRendererTests.cs" />
+    <Compile Include="GameUI\Renderers\DefaultStartRendererTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
