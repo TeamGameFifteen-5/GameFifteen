@@ -1,9 +1,22 @@
-﻿namespace Game.Common.Map.Fillers
+﻿using Game.Common.Utils;
+
+namespace Game.Common.Map.Fillers
 {
+	/// <summary>
+	/// Default field filler.
+	/// </summary>
+	/// <seealso cref="Game.Common.Map.Fillers.IFieldFiller"/>
 	public class DefaultFieldFiller : IFieldFiller
 	{
-		public void Fill(IField field, int size)
+		/// <summary>
+		/// Fills the field with the specified filler.
+		/// </summary>
+		/// <param name="field">The field.</param>
+		public void Fill(IField field)
 		{
+			Validation.ThrowIfNull(field);
+
+			int size = field.Size;
 			var area = new int[size, size];
 			var currentNumber = 1;
 

@@ -1,7 +1,11 @@
 ﻿namespace Game.Common.CustomEvents
 {
-    using Game.Common.Map;
+	using Game.Common.Map;
 
+	/// <summary>
+	/// Represents field invalidate event.
+	/// </summary>
+	/// <seealso cref="Game.Common.CustomEvents.CustomEvent"/>
 	public class FieldInvalidateEvent : CustomEvent<IField>
 	{
 		/// <summary>

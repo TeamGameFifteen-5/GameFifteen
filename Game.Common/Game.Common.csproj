@@ -55,6 +55,7 @@
     <Compile Include="Map\Decorators\MoveableField.cs" />
     <Compile Include="Map\Movement\BackwardMovement.cs" />
     <Compile Include="Map\Movement\IMovement.cs" />
+    <Compile Include="Map\Movement\Movement.cs" />
     <Compile Include="Map\Movement\StraightMovement.cs" />
     <Compile Include="NameValue_1.cs" />
     <Compile Include="NameValue.cs" />

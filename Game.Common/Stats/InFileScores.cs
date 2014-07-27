@@ -1,16 +1,36 @@
 ﻿namespace Game.Common.Stats
 {
-	using System;
+	using Game.Common.Utils;
 	using System.Collections.Generic;
 	using System.IO;
 	using System.Runtime.Serialization.Formatters.Binary;
 
+	/// <summary>
+	/// In file scores.
+	/// Implements Singleton Design Pattern
+	/// </summary>
+	/// <seealso cref="Game.Common.Stats.StatsStorage"/>
+	/// <seealso cref="Game.Common.Stats.IIntegerStats"/>
 	public sealed class InFileScores : StatsStorage<INameValue<int>>, IIntegerStats
 	{
+		/// <summary>
+		/// The maximum top players.
+		/// </summary>
 		private const int MAX_TOP_PLAYERS = 5;
+
+		/// <summary>
+		/// Full pathname of the file.
+		/// </summary>
 		private const string FILE_PATH = @"../../GameFifteen.game15";
+
+		/// <summary>
+		/// The instance.
+		/// </summary>
 		private static readonly IIntegerStats _Instance = new InFileScores();
 
+		/// <summary>
+		/// Prevents a default instance of the InFileScores class from being created.
+		/// </summary>
 		private InFileScores()
 			: base(MAX_TOP_PLAYERS)
 		{
@@ -21,6 +41,12 @@
 			}
 		}
 
+		/// <summary>
+		/// Gets the instance.
+		/// </summary>
+		/// <value>
+		/// The instance.
+		/// </value>
 		public static IIntegerStats Instance
 		{
 			get
@@ -29,8 +55,14 @@
 			}
 		}
 
+		/// <summary>
+		/// Saves the given score.
+		/// </summary>
+		/// <param name="score">The score to save.</param>
 		public override void Save(INameValue<int> score)
 		{
+			Validation.ThrowIfNull(score);
+
 			if (this.Stats.Count < MAX_TOP_PLAYERS)
 			{
 				this.Stats.Add(score);
@@ -52,6 +84,9 @@
 			this.SaveInFile();
 		}
 
+		/// <summary>
+		/// Saves the in file.
+		/// </summary>
 		private void SaveInFile()
 		{
 			using (Stream file = File.Open(FILE_PATH, FileMode.OpenOrCreate))
@@ -61,28 +96,21 @@
 			}
 		}
 
+		/// <summary>
+		/// Loads from file.
+		/// </summary>
+		/// <returns>
+		/// from file.
+		/// </returns>
 		private IList<INameValue<int>> LoadFromFile()
 		{
 			Stream stream = null;
 			IList<INameValue<int>> stats;
-			try
-			{
-				using (stream = File.Open(FILE_PATH, FileMode.OpenOrCreate))
-				{
-					BinaryFormatter formatter = new BinaryFormatter();
-					stats = (IList<INameValue<int>>)formatter.Deserialize(stream);
-				}
-			}
-			catch (Exception)
-			{
-				// If the file is empty, ArgumentNullException appears. For this reason the Stream must be closed manualy.
-                // For every other exception we don't need to close it, because the try body breaks before it started.
-				if (stream != null)
-				{
-					stream.Close();
-				}
 
-				return null;
+			using (stream = File.Open(FILE_PATH, FileMode.OpenOrCreate))
+			{
+				BinaryFormatter formatter = new BinaryFormatter();
+				stats = (IList<INameValue<int>>)formatter.Deserialize(stream);
 			}
 
 			return stats;

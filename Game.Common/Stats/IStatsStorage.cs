@@ -8,7 +8,7 @@
 	public interface IStatsStorage
 	{
 		/// <summary>
-		/// Gets the load.
+		/// Gets the stats.
 		/// </summary>
 		/// <returns>
 		/// The loaded stats.

@@ -1,55 +1,48 @@
 ﻿namespace Game.Common.Map.Movement
 {
-    using System;
-    using Game.Common.Map;
- 
-    public class StraightMovement : IMovement
-    {
-        private IField _gameField;
+	using Game.Common.Map;
 
-        public StraightMovement(IField gameField)
-        {
-            this._gameField = gameField;
-        }
+	/// <summary>
+	/// Straight movement.
+	/// </summary>
+	/// <seealso cref="Game.Common.Map.Movement.Movement"/>
+	public class StraightMovement : Movement
+	{
+		/// <summary>
+		/// Initializes a new instance of the StraightMovement class.
+		/// </summary>
+		/// <param name="gameField">The game field.</param>
+		public StraightMovement(IField gameField)
+			: base(gameField)
+		{
+		}
 
-        public bool Move(Direction direction)
-        {
-            int row = this._gameField.Position.Y;
-            int col = this._gameField.Position.X;
+		/// <summary>
+		/// Move to direction.
+		/// </summary>
+		/// <param name="direction">The direction.</param>
+		/// <param name="row">		[in,out] The row.</param>
+		/// <param name="col">		[in,out] The col.</param>
+		protected override void MoveToDirection(Direction direction, ref int row, ref int col)
+		{
+			switch (direction)
+			{
+				case Direction.Up:
+					row--;
+					break;
 
-            switch (direction)
-            {
-                case Direction.Up:
-                    row--;
-                    break;
+				case Direction.Down:
+					row++;
+					break;
 
-                case Direction.Down:
-                    row++;
-                    break;
+				case Direction.Left:
+					col--;
+					break;
 
-                case Direction.Left:
-                    col--;
-                    break;
-
-                case Direction.Right:
-                    col++;
-                    break;
-
-                default:
-                    throw new NotImplementedException();
-            }
-
-            if (this._gameField.IsInLimits(row, col))
-            {
-                int numberForSwap = this._gameField.Area[row, col];
-                this._gameField[row, col] = this._gameField[this._gameField.Position.Y, this._gameField.Position.X];
-                this._gameField[this._gameField.Position.Y, this._gameField.Position.X] = numberForSwap;
-                this._gameField.Position.Y = row;
-                this._gameField.Position.X = col;
-                return true;
-            }
-
-            return false;
-        }
-    }
+				case Direction.Right:
+					col++;
+					break;
+			}
+		}
+	}
 }

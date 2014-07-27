@@ -1,5 +1,8 @@
 ﻿namespace Game.Common
 {
+	/// <summary>
+	/// Default action types.
+	/// </summary>
 	public static class DefaultActionTypes
 	{
 		public const string Unmapped = "Unmapped";

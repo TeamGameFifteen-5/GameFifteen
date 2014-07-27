@@ -6,10 +6,9 @@
 	public interface IFieldFiller
 	{
 		/// <summary>
-		/// Fills the field with the specified filler and size.
+		/// Fills the field with the specified filler.
 		/// </summary>
 		/// <param name="field">The field.</param>
-		/// <param name="size"> The size.</param>
-		void Fill(IField field, int size);
+		void Fill(IField field);
 	}
 }
