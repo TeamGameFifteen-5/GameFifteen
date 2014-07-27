@@ -14,18 +14,25 @@
 
 		public void Execute(ActionType actionType)
 		{
+			this._gameEngine.FieldInvalidate();
+
 			switch (actionType.Name)
 			{
-				case DefaultActionTypes.Unmapped:
-					this._gameEngine.IllegalMove();
-					break;
-
 				case DefaultActionTypes.Up:
 				case DefaultActionTypes.Down:
 				case DefaultActionTypes.Left:
 				case DefaultActionTypes.Right:
 					var direction = this.GetMoveDirection(actionType);
-					this._gameEngine.Move(direction);
+
+					if (this._gameEngine.Move(direction))
+					{
+						this._gameEngine.FieldInvalidate();
+					}
+					else
+					{
+						this._gameEngine.IllegalMove();
+					}
+
 					this._gameEngine.Player.Score++;
 					break;
 
@@ -41,6 +48,7 @@
 					this._gameEngine.ShowScore();
 					break;
 
+				case DefaultActionTypes.Unmapped:
 				default:
 					this._gameEngine.IllegalCommand();
 					break;

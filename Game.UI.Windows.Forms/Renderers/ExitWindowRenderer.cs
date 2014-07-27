@@ -3,6 +3,7 @@
 	using Game.Common.Utils;
 	using Game.UI.IOProviders;
 	using Game.UI.Renderers;
+	using System.Diagnostics.CodeAnalysis;
 	using System.Windows.Forms;
 
 	/// <summary>
@@ -10,6 +11,7 @@
 	/// </summary>
 	/// <typeparam name="TIOProvider">Type of the tio provider.</typeparam>
 	/// <seealso cref="Game.UI.Renderers.DefaultExitRenderer{TIOProvider}"/>
+	[ExcludeFromCodeCoverage]
 	public class ExitWindowRenderer<TIOProvider> : DefaultExitRenderer<TIOProvider>
 		where TIOProvider : IIOProvider
 	{

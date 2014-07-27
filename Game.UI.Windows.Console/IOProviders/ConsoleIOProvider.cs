@@ -12,6 +12,7 @@
 	/// Represents Console Input/Output provider.
 	/// </summary>
 	/// <seealso cref="Game.UI.IOProviders.IOProvider"/>
+	[ExcludeFromCodeCoverage]
 	public class ConsoleIOProvider : IOProvider<ConsoleKeyInfo>
 	{
 		/// <summary>
@@ -55,7 +56,6 @@
 		/// <returns>
 		/// The key input.
 		/// </returns>
-		[ExcludeFromCodeCoverage]
 		public override ActionType GetKeyInput(bool displayKey = false)
 		{
 			var consoleKeyInfo = Console.ReadKey(!displayKey);

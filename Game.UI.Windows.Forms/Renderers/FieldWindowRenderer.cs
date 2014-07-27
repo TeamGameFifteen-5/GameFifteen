@@ -4,11 +4,13 @@
 	using Game.Common.Utils;
 	using Game.UI.IOProviders;
 	using Game.UI.Renderers;
+	using System.Diagnostics.CodeAnalysis;
 
 	/// <summary>
 	/// Field window renderer.
 	/// </summary>
 	/// <typeparam name="TOutputProvider">Type of the output provider.</typeparam>
+	[ExcludeFromCodeCoverage]
 	public class FieldWindowsRenderer<TOutputProvider> : DefaultFieldRenderer<TOutputProvider>
 		where TOutputProvider : IOutputProvider
 	{

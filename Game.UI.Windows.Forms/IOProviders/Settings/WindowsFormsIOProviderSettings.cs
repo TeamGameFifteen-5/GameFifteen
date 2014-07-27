@@ -2,12 +2,14 @@
 {
 	using Game.Common.Utils;
 	using Game.UI.IOProviders.Settings;
+	using System.Diagnostics.CodeAnalysis;
 	using System.Drawing;
 
 	/// <summary>
 	/// Windows forms i/o provider settings.
 	/// </summary>
 	/// <seealso cref="Game.UI.IOProviders.Settings.IIOProviderSettings"/>
+	[ExcludeFromCodeCoverage]
 	public class WindowsFormsIOProviderSettings : IIOProviderSettings
 	{
 		/// <summary>

@@ -3,6 +3,7 @@
 	using Game.Common.Utils;
 	using Game.UI.Renderers;
 	using Game.UI.Windows.Forms.IOProviders;
+	using System.Diagnostics.CodeAnalysis;
 	using System.Drawing;
 	using System.Windows.Forms;
 
@@ -11,6 +12,7 @@
 	/// </summary>
 	/// <typeparam name="TOutputProvider">Type of the output provider.</typeparam>
 	/// <seealso cref="TGame.UI.Renderers.IRenderer{TOutputProvider}"/>
+	[ExcludeFromCodeCoverage]
 	public class HelpDisplayWindowRenderer<TOutputProvider> : IRenderer<TOutputProvider>
 		where TOutputProvider : IWindowsFormsOutputProvider
 	{

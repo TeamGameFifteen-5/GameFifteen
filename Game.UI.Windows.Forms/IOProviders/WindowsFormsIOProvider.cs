@@ -6,10 +6,12 @@
 	using Game.UI.KeyMappings;
 	using Game.UI.Windows.Forms.KeyMappings;
 	using System;
+	using System.Diagnostics.CodeAnalysis;
 	using System.Drawing;
 	using System.Threading;
 	using System.Windows.Forms;
 
+	[ExcludeFromCodeCoverage]
 	public class WindowsFormsIOProvider : IOProvider<Keys>, IWindowsFormsOutputProvider
 	{
 		private static readonly object _Locker = new object();

@@ -1,13 +1,15 @@
 ﻿namespace Game.UI.Windows.Console.KeyMappings
 {
-    using System;
-    using Game.Common;
-    using Game.UI.KeyMappings;
+	using Game.Common;
+	using Game.UI.KeyMappings;
+	using System;
+	using System.Diagnostics.CodeAnalysis;
 
 	/// <summary>
 	/// Represents Console key mapping.
 	/// </summary>
 	/// <seealso cref="Game.UI.KeyMappings.IKeyMapping"/>
+	[ExcludeFromCodeCoverage]
 	public class ConsoleKeyMapping : IKeyMapping<ConsoleKeyInfo>
 	{
 		public ActionType Map(ConsoleKeyInfo consoleKeyInfo)

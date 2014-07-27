@@ -70,7 +70,6 @@
     <Compile Include="GameCommon\Utils\DefaultRandomGeneratorTest.cs" />
     <Compile Include="GameCore\ActionReceiver\DefaultActionReceiverTests.cs" />
     <Compile Include="GameCore\SampleGameEngine\FakeGameEngine.cs" />
-    <Compile Include="GameUIWindowsConsole\IOProviders\ConsoleIOProviderTest.cs" />
     <Compile Include="GameUI\Renderers\DefaultChooseDifficultyRendererTests.cs" />
     <Compile Include="GameUI\Renderers\DefaultEndRendererTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
