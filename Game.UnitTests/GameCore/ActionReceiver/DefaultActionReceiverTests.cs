@@ -26,12 +26,17 @@
         {
             try
             {
+                if (!File.Exists(filePath))
+                {
+                    File.Create(filePath);
+                }
+
                 ostrm = new FileStream(filePath, FileMode.Truncate, FileAccess.Write);
                 writer = new StreamWriter(ostrm);
             }
             catch (Exception e)
             {
-                Console.WriteLine("Cannot open console-output.txt for writing");
+                Console.WriteLine("Cannot open console-output.game15 for writing");
                 Console.WriteLine(e.Message);
                 return;
             }
@@ -118,18 +123,25 @@
 
             expectedResult.AppendLine(UP_DOWN_TABLE_FRAME);
 
+
             foreach (var playerScore in playerScores)
             {
                 expectedResult.AppendFormat("{0}: {1}{2}", playerScore.Name, playerScore.Value, Environment.NewLine);
             }
 
+            //if (expectedResult.ToString() == UP_DOWN_TABLE_FRAME + Environment.NewLine)
+            //{
+            //    expectedResult.AppendLine("");
+            //}
+
             expectedResult.AppendLine(UP_DOWN_TABLE_FRAME);
+
 
             using (reader = new StreamReader(filePath))
             {
                 string result = reader.ReadToEnd();
-
-                Assert.AreEqual(result, expectedResult.ToString());
+                string expected = expectedResult.ToString();
+                Assert.AreEqual(result, expected);
             }
         }
 
@@ -154,7 +166,7 @@
         {
             // Assigned field position and player and player score
             FakeGameEngine.Engine.StartGame();
-        
+
             var movement = FakeGameEngine.Movement as BackwardMovement;
 
             if (movement != null)
@@ -200,15 +212,15 @@
             Assert.AreEqual(startPositionY, FakeGameEngine.Field.Position.Y);
             Assert.AreEqual(startPositionX + 1, FakeGameEngine.Field.Position.X);
 
-			receiver.Execute(ActionType.Get("Down"));
+            receiver.Execute(ActionType.Get("Down"));
             Assert.AreEqual(startPositionY + 1, FakeGameEngine.Field.Position.Y);
             Assert.AreEqual(startPositionX + 1, FakeGameEngine.Field.Position.X);
 
-			receiver.Execute(ActionType.Get("Left"));
+            receiver.Execute(ActionType.Get("Left"));
             Assert.AreEqual(startPositionY + 1, FakeGameEngine.Field.Position.Y);
             Assert.AreEqual(startPositionX, FakeGameEngine.Field.Position.X);
 
-			receiver.Execute(ActionType.Get("Up"));
+            receiver.Execute(ActionType.Get("Up"));
             Assert.AreEqual(startPositionY, FakeGameEngine.Field.Position.Y);
             Assert.AreEqual(startPositionX, FakeGameEngine.Field.Position.X);
 
