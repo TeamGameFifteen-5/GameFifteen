@@ -17,54 +17,25 @@
 	[ExcludeFromCodeCoverage]
 	public class DefaultActionReceiverTests
 	{
+        private const int SIDE = 3;
 		private readonly DefaultActionReceiver receiver = new DefaultActionReceiver(FakeGameEngine.Engine);
 		private readonly IPlayer player = FakeGameEngine.Player;
-		private FileStream ostrm;
-		private StreamWriter writer;
 		private readonly TextWriter oldOut = Console.Out;
 		private readonly string filePath = "../../console-output.game15";
-		private const int SIDE = 3;
-
-		private void ChangeConsoleOutPut()
-		{
-			try
-			{
-				if (!File.Exists(filePath))
-				{
-					File.Create(filePath);
-				}
-
-				ostrm = new FileStream(filePath, FileMode.Truncate, FileAccess.Write);
-				writer = new StreamWriter(ostrm);
-			}
-			catch (Exception e)
-			{
-				Console.WriteLine("Cannot open console-output.game15 for writing");
-				Console.WriteLine(e.Message);
-				return;
-			}
-
-			Console.SetOut(writer);
-		}
-
-		private void ReverseConsoleOutPut()
-		{
-			Console.SetOut(oldOut);
-			writer.Close();
-			ostrm.Close();
-		}
+        private FileStream ostrm;
+        private StreamWriter writer;
 
 		[TestMethod]
 		public void IsValidExecuteWithUnmappedActionTypeNameTest()
 		{
-			ChangeConsoleOutPut();
+            this.ChangeConsoleOutPut();
 
 			var actionType = ActionType.Get("Unmapped");
-			receiver.Execute(actionType);
+            this.receiver.Execute(actionType);
 
-			ReverseConsoleOutPut();
+            this.ReverseConsoleOutPut();
 
-			string result = File.ReadAllLines(filePath).Last();
+            string result = File.ReadAllLines(this.filePath).Last();
 
 			Assert.AreEqual(result, "Illegal command!");
 		}
@@ -72,14 +43,14 @@
 		[TestMethod]
 		public void IsValidExecuteWithExitActionTypeNameTest()
 		{
-			ChangeConsoleOutPut();
+            this.ChangeConsoleOutPut();
 
 			var actionType = ActionType.Get("Exit");
-			receiver.Execute(actionType);
+            this.receiver.Execute(actionType);
 
-			ReverseConsoleOutPut();
+            this.ReverseConsoleOutPut();
 
-			string result = File.ReadAllLines(filePath).Last();
+            string result = File.ReadAllLines(this.filePath).Last();
 
 			Assert.AreEqual(result, "Good bye!");
 		}
@@ -87,14 +58,14 @@
 		[TestMethod]
 		public void IsValidExecuteWithIllegalCommandActionTypeNameTest()
 		{
-			ChangeConsoleOutPut();
+            this.ChangeConsoleOutPut();
 
 			var actionType = ActionType.Get("IlligalCommand");
-			receiver.Execute(actionType);
+            this.receiver.Execute(actionType);
 
-			ReverseConsoleOutPut();
+            this.ReverseConsoleOutPut();
 
-			string result = File.ReadAllLines(filePath).Last();
+            string result = File.ReadAllLines(this.filePath).Last();
 
 			Assert.AreEqual(result, "Illegal command!");
 		}
@@ -102,14 +73,14 @@
 		[TestMethod]
 		public void IsValidExecuteWithScoresActionTypeNameTest()
 		{
-			ChangeConsoleOutPut();
+            this.ChangeConsoleOutPut();
 
 			var actionType = ActionType.Get("Scores");
-			receiver.Execute(actionType);
+            this.receiver.Execute(actionType);
 
-			ReverseConsoleOutPut();
+            this.ReverseConsoleOutPut();
 
-			var UP_DOWN_TABLE_FRAME = "-------------------------";
+			const var UP_DOWN_TABLE_FRAME = "-------------------------";
 			var stats = InFileScores.Instance;
 			var playerScores = stats.Load();
 
@@ -124,7 +95,7 @@
 
 			expectedResult.AppendLine(UP_DOWN_TABLE_FRAME);
 
-			string[] resultLines = File.ReadAllLines(filePath);
+            string[] resultLines = File.ReadAllLines(this.filePath);
 			var scoreLines = resultLines.Skip(resultLines.Length - 7);
 			string result = string.Join(Environment.NewLine, scoreLines) + Environment.NewLine;
 
@@ -138,11 +109,11 @@
 			// Assigned field position and player and player score
 			FakeGameEngine.Engine.StartGame();
 
-			var playerScoreBeforeAction = player.Score;
+            var playerScoreBeforeAction = this.player.Score;
 			var actionType = ActionType.Get("Down");
-			receiver.Execute(actionType);
+            this.receiver.Execute(actionType);
 
-			var playerScoreAfterAction = player.Score;
+            var playerScoreAfterAction = this.player.Score;
 			playerScoreBeforeAction++;
 
 			Assert.AreEqual(playerScoreBeforeAction, playerScoreAfterAction);
@@ -158,22 +129,22 @@
 
 			if (movement != null)
 			{
-				IsValidBackwardMovementTest();
+                this.IsValidBackwardMovementTest();
 			}
 			else
 			{
-				IsValidStraightMovementTest();
+                this.IsValidStraightMovementTest();
 			}
 
-			receiver.Execute(ActionType.Get(DefaultActionTypes.Reset));
-			receiver.Execute(ActionType.Get(DefaultActionTypes.Up));
-			receiver.Execute(ActionType.Get(DefaultActionTypes.Down));
-			receiver.Execute(ActionType.Get(DefaultActionTypes.Left));
-			receiver.Execute(ActionType.Get(DefaultActionTypes.Right));
+            this.receiver.Execute(ActionType.Get(DefaultActionTypes.Reset));
+            this.receiver.Execute(ActionType.Get(DefaultActionTypes.Up));
+            this.receiver.Execute(ActionType.Get(DefaultActionTypes.Down));
+            this.receiver.Execute(ActionType.Get(DefaultActionTypes.Left));
+            this.receiver.Execute(ActionType.Get(DefaultActionTypes.Right));
 
 			for (int i = -1; i < SIDE; i++)
 			{
-				receiver.Execute(ActionType.Get(DefaultActionTypes.Up));
+                this.receiver.Execute(ActionType.Get(DefaultActionTypes.Up));
 			}
 		}
 
@@ -185,7 +156,7 @@
 
 			if (startPositionX != 0)
 			{
-				receiver.Execute(ActionType.Get("Right"));
+                this.receiver.Execute(ActionType.Get("Right"));
 				Assert.AreEqual(startPositionY, FakeGameEngine.Field.Position.Y);
 				Assert.AreEqual(startPositionX - 1, FakeGameEngine.Field.Position.X);
 
@@ -195,7 +166,7 @@
 
 			if (startPositionY != 0)
 			{
-				receiver.Execute(ActionType.Get("Down"));
+                this.receiver.Execute(ActionType.Get("Down"));
 				Assert.AreEqual(startPositionY - 1, FakeGameEngine.Field.Position.Y);
 				Assert.AreEqual(startPositionX, FakeGameEngine.Field.Position.X);
 
@@ -205,7 +176,7 @@
 
 			if (startPositionX != SIDE)
 			{
-				receiver.Execute(ActionType.Get("Left"));
+                this.receiver.Execute(ActionType.Get("Left"));
 				Assert.AreEqual(startPositionY, FakeGameEngine.Field.Position.Y);
 				Assert.AreEqual(startPositionX + 1, FakeGameEngine.Field.Position.X);
 
@@ -215,7 +186,7 @@
 
 			if (startPositionY != SIDE)
 			{
-				receiver.Execute(ActionType.Get("Up"));
+                this.receiver.Execute(ActionType.Get("Up"));
 				Assert.AreEqual(startPositionY + 1, FakeGameEngine.Field.Position.Y);
 				Assert.AreEqual(startPositionX, FakeGameEngine.Field.Position.X);
 			}
@@ -229,7 +200,7 @@
 
 			if (startPositionX != SIDE)
 			{
-				receiver.Execute(ActionType.Get("Right"));
+                this.receiver.Execute(ActionType.Get("Right"));
 				Assert.AreEqual(startPositionY, FakeGameEngine.Field.Position.Y);
 				Assert.AreEqual(startPositionX + 1, FakeGameEngine.Field.Position.X);
 
@@ -239,7 +210,7 @@
 
 			if (startPositionY != SIDE)
 			{
-				receiver.Execute(ActionType.Get("Down"));
+                this.receiver.Execute(ActionType.Get("Down"));
 				Assert.AreEqual(startPositionY + 1, FakeGameEngine.Field.Position.Y);
 				Assert.AreEqual(startPositionX, FakeGameEngine.Field.Position.X);
 
@@ -249,7 +220,7 @@
 
 			if (startPositionX != 0)
 			{
-				receiver.Execute(ActionType.Get("Left"));
+                this.receiver.Execute(ActionType.Get("Left"));
 				Assert.AreEqual(startPositionY, FakeGameEngine.Field.Position.Y);
 				Assert.AreEqual(startPositionX - 1, FakeGameEngine.Field.Position.X);
 
@@ -259,10 +230,39 @@
 
 			if (startPositionY != 0)
 			{
-				receiver.Execute(ActionType.Get("Up"));
+                this.receiver.Execute(ActionType.Get("Up"));
 				Assert.AreEqual(startPositionY - 1, FakeGameEngine.Field.Position.Y);
 				Assert.AreEqual(startPositionX, FakeGameEngine.Field.Position.X);
 			}
 		}
+
+        private void ChangeConsoleOutPut()
+        {
+            try
+            {
+                if (!File.Exists(this.filePath))
+                {
+                    File.Create(this.filePath);
+                }
+
+                this.ostrm = new FileStream(this.filePath, FileMode.Truncate, FileAccess.Write);
+                this.writer = new StreamWriter(this.ostrm);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Cannot open console-output.game15 for writing");
+                Console.WriteLine(e.Message);
+                return;
+            }
+
+            Console.SetOut(this.writer);
+        }
+
+        private void ReverseConsoleOutPut()
+        {
+            Console.SetOut(this.oldOut);
+            this.writer.Close();
+            this.ostrm.Close();
+        }
 	}
 }

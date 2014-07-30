@@ -1,6 +1,7 @@
-﻿using Game.Common.Utils;
-namespace Game.Common.Stats
+﻿namespace Game.Common.Stats
 {
+    using Game.Common.Utils;
+
 	/// <summary>
 	/// In memory scores.
 	/// Implements Singleton Design Pattern.

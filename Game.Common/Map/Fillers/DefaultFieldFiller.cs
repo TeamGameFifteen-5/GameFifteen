@@ -1,7 +1,7 @@
-﻿using Game.Common.Utils;
-
-namespace Game.Common.Map.Fillers
+﻿namespace Game.Common.Map.Fillers
 {
+    using Game.Common.Utils;
+
 	/// <summary>
 	/// Default field filler.
 	/// </summary>

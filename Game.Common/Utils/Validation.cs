@@ -73,7 +73,7 @@
 		/// <param name="upperBoundary">The upper boundary.</param>
 		public static void ThrowIfOutOfRange(int value, int lowerBoundary, int upperBoundary)
 		{
-			const string messageTemplate = "The value({0}) cannot be smaller than {1} and bigger than {2}.";
+			const string MESSAGE_TEMPLATE = "The value({0}) cannot be smaller than {1} and bigger than {2}.";
 			string exceptionMessage = null;
 
 			bool isSmallerThanLowerBoundary = value < lowerBoundary;
@@ -81,7 +81,7 @@
 
 			if (isSmallerThanLowerBoundary || isBiggerThanUpperBoundary)
 			{
-				exceptionMessage = string.Format(messageTemplate, value, lowerBoundary, upperBoundary);
+                exceptionMessage = string.Format(MESSAGE_TEMPLATE, value, lowerBoundary, upperBoundary);
 				throw new ArgumentOutOfRangeException(exceptionMessage);
 			}
 		}

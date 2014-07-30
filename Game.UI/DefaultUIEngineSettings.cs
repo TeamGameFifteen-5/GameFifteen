@@ -17,8 +17,8 @@
     {
         #region Fields
 
-        public TIOProvider _iOProvider;
-        public IPlayer _player;
+        private TIOProvider _iOProvider;
+        private IPlayer _player;
 
         #endregion Fields
 

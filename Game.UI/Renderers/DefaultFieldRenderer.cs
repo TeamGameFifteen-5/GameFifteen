@@ -28,8 +28,8 @@
 
 		public virtual void Render(TOutputProvider outputProvider, IField field)
 		{
-			var upperLine = string.Format("{0}{1}{2}", UPPER_LEFT_CORNER, new string(HORIZONTAL_LINE, HorizontalLineLength), UPPER_RIGHT_CORNER);
-			var lowerLine = string.Format("{0}{1}{2}", LOWER_LEFT_CORNER, new string(HORIZONTAL_LINE, HorizontalLineLength), LOWER_RIGHT_CORNER);
+            var upperLine = string.Format("{0}{1}{2}", UPPER_LEFT_CORNER, new string(HORIZONTAL_LINE, this.HorizontalLineLength), UPPER_RIGHT_CORNER);
+            var lowerLine = string.Format("{0}{1}{2}", LOWER_LEFT_CORNER, new string(HORIZONTAL_LINE, this.HorizontalLineLength), LOWER_RIGHT_CORNER);
 
 			Validation.ThrowIfNull(outputProvider);
 			Validation.ThrowIfNull(field);

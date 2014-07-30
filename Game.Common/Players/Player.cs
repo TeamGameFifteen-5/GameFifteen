@@ -1,7 +1,7 @@
-﻿using Game.Common.Utils;
-
-namespace Game.Common.Players
+﻿namespace Game.Common.Players
 {
+    using Game.Common.Utils;
+
 	/// <summary>
 	/// Player.
 	/// </summary>

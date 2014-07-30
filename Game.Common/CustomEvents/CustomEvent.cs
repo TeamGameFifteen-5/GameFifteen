@@ -1,7 +1,7 @@
-﻿using Game.Common.Utils;
-
-namespace Game.Common.CustomEvents
+﻿namespace Game.Common.CustomEvents
 {
+    using Game.Common.Utils;
+
 	/// <summary>
 	/// Represents Custom event.
 	/// </summary>
