@@ -10,15 +10,15 @@
 	/// <seealso cref="Game.Common.IMoveable"/>
 	public class MoveableField : IMoveable
 	{
-		/// <summary>
-		/// The field.
-		/// </summary>
-		private IField _field;
+        /// <summary>
+        /// The field.
+        /// </summary>
+        private readonly IField _field;
 
-		/// <summary>
-		/// The movement.
-		/// </summary>
-		private IMovement _movement;
+        /// <summary>
+        /// The movement.
+        /// </summary>
+        private readonly IMovement _movement;
 
 		/// <summary>
 		/// Initializes a new instance of the MoveableField class.

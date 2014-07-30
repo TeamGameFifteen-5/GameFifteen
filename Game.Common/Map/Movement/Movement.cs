@@ -9,10 +9,10 @@
 	/// <seealso cref="Game.Common.Map.Movement.IMovement"/>
 	public abstract class Movement : IMovement
 	{
-		/// <summary>
-		/// The game field.
-		/// </summary>
-		private IField _gameField;
+        /// <summary>
+        /// The game field.
+        /// </summary>
+        private readonly IField _gameField;
 
 		/// <summary>
 		/// Initializes a new instance of the StraightMovement class.

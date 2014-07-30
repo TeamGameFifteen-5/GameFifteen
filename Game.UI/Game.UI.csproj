@@ -54,8 +54,8 @@
     <Compile Include="DefaultUIEngineSettings.cs" />
     <Compile Include="IUIEngineSettings.cs" />
     <Compile Include="KeyMappings\IKeyMapping.cs" />
-    <Compile Include="IOProviders\Settings\DefaultIIOProviderSettings.cs" />
-    <Compile Include="IOProviders\Settings\IOProviderSettings.cs" />
+    <Compile Include="IOProviders\Settings\DefaultIOProviderSettings.cs" />
+    <Compile Include="IOProviders\Settings\IIOProviderSettings.cs" />
     <Compile Include="Renderers\DefaultChooseDifficultyRenderer.cs" />
     <Compile Include="Renderers\DefaultEndRenderer.cs" />
     <Compile Include="Renderers\DefaultExitRenderer.cs" />

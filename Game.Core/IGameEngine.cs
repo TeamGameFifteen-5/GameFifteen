@@ -1,6 +1,5 @@
 ﻿namespace Game.Core
 {
-	using Game.Common;
 	using Game.Common.GameOverCheckers;
 	using Game.Common.Map;
 	using Game.Common.Players;

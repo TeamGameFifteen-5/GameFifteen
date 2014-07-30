@@ -18,8 +18,8 @@
 
 		#endregion Constants
 
-		private TIOProvider _ioProvider;
-		private IPlayer _player;
+        private readonly TIOProvider _ioProvider;
+        private IPlayer _player;
 		private IDefaultUIEngineSettings<TIOProvider, IPlayer, IField, IStatsStorage> _settings;
 
 		public UIEngine(IDefaultUIEngineSettings<TIOProvider, IPlayer, IField, IStatsStorage> settings)

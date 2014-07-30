@@ -16,19 +16,17 @@
 	{
 		private static readonly object _Locker = new object();
 
-		private Font _drawFont = new Font("Arial", 16);
-		private SolidBrush _drawBrush = new SolidBrush(Color.White);
-		private float _x;
-		private float _y;
-		private float _characterWidth;
-		private float _characterHeight;
-		private StringFormat _drawFormat = new StringFormat();
-
+        private readonly Font _drawFont = new Font("Arial", 16);
+        private readonly StringFormat _drawFormat = new StringFormat();
+        private readonly float _characterWidth;
+        private readonly IGameForm _gameForm;
+        private readonly Graphics _graphics;
+        private SolidBrush _drawBrush = new SolidBrush(Color.White);
+        private float _x;
+        private float _y;
+        private float _characterHeight;
 		private IKeyMapping<Keys> _keyMapping;
-
-		private IGameForm _gameForm;
-		private Graphics _graphics;
-		private string _currentTextInput;
+        private string _currentTextInput;
 
 		public WindowsFormsIOProvider(IGameForm gameForm)
 		{

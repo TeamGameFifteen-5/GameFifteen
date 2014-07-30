@@ -4,7 +4,7 @@
 
 	public class DefaultActionReceiver : IActionReceiver
 	{
-		private IDefaultGameEngine _gameEngine;
+        private readonly IDefaultGameEngine _gameEngine;
 
 		public DefaultActionReceiver(IDefaultGameEngine gameEngine)
 		{

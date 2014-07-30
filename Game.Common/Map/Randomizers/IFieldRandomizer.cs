@@ -1,7 +1,5 @@
 ﻿namespace Game.Common.Map.Randomizers
 {
-	using Game.Common.Map.Movement;
-
 	/// <summary>
 	/// Interface for field randomizer.
 	/// </summary>

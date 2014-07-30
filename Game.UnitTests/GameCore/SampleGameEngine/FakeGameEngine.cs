@@ -12,13 +12,13 @@
 	[ExcludeFromCodeCoverage]
 	public class FakeGameEngine
 	{
-		private static FakeGameEngine fakeGameEngine = new FakeGameEngine();
-		private IDefaultGameEngine _sampleGameEngine;
-		private IPlayer _player;
-		private IField _field;
-		private IMovement _movement;
-		private GameEngineSettings<IDefaultUIEngine, IIntegerStats> _gameEngineSettings;
-		private ConsoleIOProvider _ioProvider;
+        private static readonly FakeGameEngine fakeGameEngine = new FakeGameEngine();
+        private readonly IDefaultGameEngine _sampleGameEngine;
+        private readonly IPlayer _player;
+        private readonly IField _field;
+        private readonly IMovement _movement;
+        private readonly GameEngineSettings<IDefaultUIEngine, IIntegerStats> _gameEngineSettings;
+        private readonly ConsoleIOProvider _ioProvider;
 
 		private FakeGameEngine()
 		{

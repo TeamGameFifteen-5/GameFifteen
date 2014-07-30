@@ -29,15 +29,15 @@
 
 		#endregion Constants
 
-		/// <summary>
-		/// The random generator.
-		/// </summary>
-		private IRandomGenerator _randomGenerator;
+        /// <summary>
+        /// The random generator.
+        /// </summary>
+        private readonly IRandomGenerator _randomGenerator;
 
-		/// <summary>
-		/// The total elements in direction.
-		/// </summary>
-		private int _totalElementsInDirection;
+        /// <summary>
+        /// The total elements in direction.
+        /// </summary>
+        private readonly int _totalElementsInDirection;
 
 		/// <summary>
 		/// Initializes a new instance of the DefaultFieldRandomizer class.

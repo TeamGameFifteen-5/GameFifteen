@@ -14,10 +14,10 @@
 		/// </summary>
 		private static readonly DefaultRandomGenerator _Instance = new DefaultRandomGenerator();
 
-		/// <summary>
-		/// The random.
-		/// </summary>
-		private Random _random = new Random();
+        /// <summary>
+        /// The random.
+        /// </summary>
+        private readonly Random _random = new Random();
 
 		/// <summary>
 		/// Prevents a default instance of the DefaultRandomGenerator class from being created.
